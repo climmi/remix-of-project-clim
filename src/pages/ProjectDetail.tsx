@@ -1,13 +1,12 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { projects } from '@/data/projects';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { projects, ProjectMedia } from '@/data/projects';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const project = projects.find(p => p.id === id);
   
   // Get other projects for "More Projects" section
@@ -25,6 +24,9 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  // Build media array from either media prop or images
+  const mediaItems: ProjectMedia[] = project.media || project.images.map(url => ({ type: 'image' as const, url }));
 
   return (
     <div className="min-h-screen bg-background">
@@ -96,18 +98,14 @@ const ProjectDetail = () => {
                 </div>
               </motion.div>
               
-              {/* Right: Hero Image */}
+              {/* Right: Hero Media */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <div className="aspect-[4/5] bg-muted overflow-hidden">
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <MediaItem media={mediaItems[0]} title={project.title} />
                 </div>
               </motion.div>
             </div>
@@ -129,32 +127,16 @@ const ProjectDetail = () => {
           </div>
         </section>
         
-        {/* Image Gallery - Various Sizes */}
+        {/* Media Gallery - Various Sizes */}
         <section className="px-6 md:px-12 lg:px-24 mb-16 md:mb-24">
           <div className="max-w-7xl mx-auto space-y-8 md:space-y-12">
-            {project.images.slice(1).map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6 }}
-                className={`${
-                  index % 3 === 0 
-                    ? 'w-full' 
-                    : index % 3 === 1 
-                      ? 'w-full md:w-2/3 md:ml-auto' 
-                      : 'w-full md:w-3/4'
-                }`}
-              >
-                <div className="bg-muted overflow-hidden">
-                  <img
-                    src={image}
-                    alt={`${project.title} - Image ${index + 2}`}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              </motion.div>
+            {mediaItems.slice(1).map((media, index) => (
+              <GalleryMediaItem 
+                key={index} 
+                media={media} 
+                index={index} 
+                title={project.title} 
+              />
             ))}
           </div>
         </section>
@@ -210,6 +192,103 @@ const ProjectDetail = () => {
       
       <Footer />
     </div>
+  );
+};
+
+// Simple media item for hero
+const MediaItem = ({ media, title }: { media: ProjectMedia; title: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false });
+
+  useEffect(() => {
+    if (media.type === 'video' && videoRef.current) {
+      if (isInView) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isInView, media.type]);
+
+  if (media.type === 'video') {
+    return (
+      <div ref={containerRef} className="w-full h-full">
+        <video
+          ref={videoRef}
+          src={media.url}
+          poster={media.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={media.url}
+      alt={title}
+      className="w-full h-full object-cover"
+    />
+  );
+};
+
+// Gallery media item with animation
+const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index: number; title: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false, margin: '-100px' });
+
+  useEffect(() => {
+    if (media.type === 'video' && videoRef.current) {
+      if (isInView) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isInView, media.type]);
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6 }}
+      className={`${
+        index % 3 === 0 
+          ? 'w-full' 
+          : index % 3 === 1 
+            ? 'w-full md:w-2/3 md:ml-auto' 
+            : 'w-full md:w-3/4'
+      }`}
+    >
+      <div className="bg-muted overflow-hidden">
+        {media.type === 'video' ? (
+          <video
+            ref={videoRef}
+            src={media.url}
+            poster={media.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-auto object-cover"
+          />
+        ) : (
+          <img
+            src={media.url}
+            alt={`${title} - Image ${index + 2}`}
+            className="w-full h-auto object-cover"
+          />
+        )}
+      </div>
+    </motion.div>
   );
 };
 

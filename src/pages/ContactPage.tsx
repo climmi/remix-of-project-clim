@@ -42,13 +42,28 @@ const ContactPage = () => {
               </h1>
             </motion.div>
             
-            {/* Content Grid */}
-            <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-              {/* Form */}
+            {/* Content Grid - 3 columns */}
+            <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+              {/* Studio Image */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <div className="aspect-[3/4] bg-muted overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=800&fit=crop"
+                    alt="Studio"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </motion.div>
+              
+              {/* Form */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -103,7 +118,7 @@ const ContactPage = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-8"
               >
                 <div>
@@ -120,6 +135,18 @@ const ContactPage = () => {
                 
                 <div>
                   <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
+                    Address
+                  </p>
+                  <p className="text-foreground">
+                    Clim Michel<br />
+                    Hottelner Weg 52<br />
+                    31137 Hildesheim<br />
+                    Germany
+                  </p>
+                </div>
+                
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
                     Social
                   </p>
                   <a 
@@ -130,15 +157,6 @@ const ContactPage = () => {
                   >
                     Instagram
                   </a>
-                </div>
-                
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
-                    Based in
-                  </p>
-                  <p className="text-foreground">
-                    Hildesheim, Germany
-                  </p>
                 </div>
               </motion.div>
             </div>

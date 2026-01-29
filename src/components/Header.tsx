@@ -24,21 +24,27 @@ const Header = () => {
       >
         <Link 
           to="/projects" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
         >
-          Projects
+          PROJECTS
+        </Link>
+        <Link 
+          to="/exhibitions" 
+          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+        >
+          EXHIBITIONS
         </Link>
         <Link 
           to="/about" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
         >
-          About
+          ABOUT
         </Link>
         <Link 
           to="/contact" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
         >
-          Contact
+          CONTACT
         </Link>
       </motion.nav>
     </header>

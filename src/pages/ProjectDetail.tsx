@@ -1,4 +1,5 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '@/data/projects';
 import Header from '@/components/Header';
@@ -6,10 +7,16 @@ import Footer from '@/components/Footer';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const project = projects.find(p => p.id === id);
   
   // Get other projects for "More Projects" section
   const otherProjects = projects.filter(p => p.id !== id).slice(0, 4);
+  
+  // Scroll to top when project changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!project) {
     return (

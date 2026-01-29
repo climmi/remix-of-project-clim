@@ -5,8 +5,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Show first 4 projects as teaser
-  const featuredProjects = projects.slice(0, 4);
+  // Show all projects on homepage
+  const allProjects = projects;
 
   return (
     <div className="min-h-screen bg-background">
@@ -28,8 +28,8 @@ const Index = () => {
             </motion.div>
             
             {/* Project Grid - 4 items */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
-              {featuredProjects.map((project, index) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+              {allProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -55,18 +55,6 @@ const Index = () => {
               ))}
             </div>
             
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Link 
-                to="/projects" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                View all projects →
-              </Link>
-            </motion.div>
           </div>
         </section>
         

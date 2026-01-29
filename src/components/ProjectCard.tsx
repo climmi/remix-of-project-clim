@@ -1,26 +1,54 @@
-import { useState, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Project } from '@/data/projects';
+import { Project, ProjectMedia } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  className?: string;
 }
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
+const aspectRatioClasses = {
+  portrait: 'aspect-[3/4]',
+  square: 'aspect-square',
+  landscape: 'aspect-[16/9]',
+  wide: 'aspect-[21/9]',
+};
+
+const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
   const navigate = useNavigate();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const startXRef = useRef(0);
   const lastIndexChangeX = useRef(0);
   const hasMovedRef = useRef(false);
+  
+  const isInView = useInView(containerRef, { once: false, margin: '-100px' });
 
-  const imageCount = project.images.length;
+  // Build media array from either media prop or images
+  const mediaItems: ProjectMedia[] = project.media || project.images.map(url => ({ type: 'image' as const, url }));
+  const mediaCount = mediaItems.length;
+  
   const DRAG_THRESHOLD = 5;
   const IMAGE_SWITCH_DISTANCE = 50;
+
+  const currentMedia = mediaItems[currentMediaIndex];
+  const aspectClass = aspectRatioClasses[project.displayFormat || 'portrait'];
+
+  // Handle video autoplay based on viewport visibility
+  useEffect(() => {
+    if (currentMedia?.type === 'video' && videoRef.current) {
+      if (isInView) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isInView, currentMedia]);
 
   const handleClick = useCallback(() => {
     navigate(`/project/${project.id}`);
@@ -34,7 +62,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || imageCount <= 1) return;
+    if (!isDragging || mediaCount <= 1) return;
 
     const deltaFromStart = Math.abs(e.clientX - startXRef.current);
     if (deltaFromStart > DRAG_THRESHOLD) {
@@ -45,15 +73,15 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
     
     if (Math.abs(deltaFromLastChange) >= IMAGE_SWITCH_DISTANCE) {
       const direction = deltaFromLastChange > 0 ? 1 : -1;
-      setCurrentImageIndex(prev => {
+      setCurrentMediaIndex(prev => {
         const newIndex = prev + direction;
-        if (newIndex < 0) return imageCount - 1;
-        if (newIndex >= imageCount) return 0;
+        if (newIndex < 0) return mediaCount - 1;
+        if (newIndex >= mediaCount) return 0;
         return newIndex;
       });
       lastIndexChangeX.current = e.clientX;
     }
-  }, [isDragging, imageCount]);
+  }, [isDragging, mediaCount]);
 
   const handleMouseUp = useCallback(() => {
     if (!hasMovedRef.current) {
@@ -75,7 +103,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   }, []);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!isDragging || imageCount <= 1) return;
+    if (!isDragging || mediaCount <= 1) return;
 
     const touch = e.touches[0];
     const deltaFromStart = Math.abs(touch.clientX - startXRef.current);
@@ -87,15 +115,15 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
     
     if (Math.abs(deltaFromLastChange) >= IMAGE_SWITCH_DISTANCE) {
       const direction = deltaFromLastChange > 0 ? 1 : -1;
-      setCurrentImageIndex(prev => {
+      setCurrentMediaIndex(prev => {
         const newIndex = prev + direction;
-        if (newIndex < 0) return imageCount - 1;
-        if (newIndex >= imageCount) return 0;
+        if (newIndex < 0) return mediaCount - 1;
+        if (newIndex >= mediaCount) return 0;
         return newIndex;
       });
       lastIndexChangeX.current = touch.clientX;
     }
-  }, [isDragging, imageCount]);
+  }, [isDragging, mediaCount]);
 
   const handleTouchEnd = useCallback(() => {
     if (!hasMovedRef.current) {
@@ -118,16 +146,30 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="cursor-pointer select-none"
+      className={`cursor-pointer select-none ${className}`}
     >
-      {/* Project image - larger aspect ratio */}
-      <div className="aspect-[4/5] bg-muted overflow-hidden mb-4">
-        <img
-          src={project.images[currentImageIndex]}
-          alt={project.title}
-          className="w-full h-full object-cover"
-          draggable={false}
-        />
+      {/* Project media - dynamic aspect ratio */}
+      <div className={`${aspectClass} bg-muted overflow-hidden mb-4`}>
+        {currentMedia.type === 'video' ? (
+          <video
+            ref={videoRef}
+            src={currentMedia.url}
+            poster={currentMedia.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        ) : (
+          <img
+            src={currentMedia.url}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        )}
       </div>
       
       {/* Date and category - Leibal style */}
@@ -146,13 +188,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       </h3>
 
       {/* Drag indicator dots */}
-      {imageCount > 1 && (
+      {mediaCount > 1 && (
         <div className="flex gap-1 mt-3">
-          {project.images.map((_, idx) => (
+          {mediaItems.map((_, idx) => (
             <div
               key={idx}
               className={`w-1 h-1 rounded-full transition-colors duration-200 ${
-                idx === currentImageIndex ? 'bg-foreground' : 'bg-foreground/30'
+                idx === currentMediaIndex ? 'bg-foreground' : 'bg-foreground/30'
               }`}
             />
           ))}

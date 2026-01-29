@@ -1,3 +1,9 @@
+export interface ProjectMedia {
+  type: 'image' | 'video';
+  url: string;
+  poster?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -6,8 +12,11 @@ export interface Project {
   materials: string[];
   techniques: string[];
   images: string[];
+  media?: ProjectMedia[];
   year: string;
   month: string;
+  displayFormat?: 'portrait' | 'square' | 'landscape' | 'wide';
+  gridSpan?: 1 | 2;
   externalLink?: string;
 }
 
@@ -26,6 +35,8 @@ export const projects: Project[] = [
     ],
     year: '2024',
     month: 'JAN',
+    displayFormat: 'portrait',
+    gridSpan: 1,
   },
   {
     id: 'project-2',
@@ -42,6 +53,8 @@ export const projects: Project[] = [
     ],
     year: '2024',
     month: 'MAR',
+    displayFormat: 'landscape',
+    gridSpan: 2,
   },
   {
     id: 'project-3',
@@ -57,6 +70,8 @@ export const projects: Project[] = [
     ],
     year: '2023',
     month: 'SEP',
+    displayFormat: 'square',
+    gridSpan: 1,
   },
   {
     id: 'project-4',
@@ -71,8 +86,19 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80',
       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     ],
+    media: [
+      {
+        type: 'video',
+        url: 'https://videos.pexels.com/video-files/856640/856640-hd_1920_1080_30fps.mp4',
+        poster: 'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&q=80',
+      },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80' },
+    ],
     year: '2023',
     month: 'JUN',
+    displayFormat: 'wide',
+    gridSpan: 2,
   },
   {
     id: 'project-5',
@@ -88,6 +114,8 @@ export const projects: Project[] = [
     ],
     year: '2023',
     month: 'APR',
+    displayFormat: 'portrait',
+    gridSpan: 1,
   },
   {
     id: 'project-6',
@@ -104,6 +132,8 @@ export const projects: Project[] = [
     ],
     year: '2022',
     month: 'NOV',
+    displayFormat: 'square',
+    gridSpan: 1,
   },
   {
     id: 'project-7',
@@ -117,8 +147,18 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
       'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80',
     ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1594620302200-9a762244a156?w=800&q=80' },
+      {
+        type: 'video',
+        url: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4',
+        poster: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+      },
+    ],
     year: '2022',
     month: 'AUG',
+    displayFormat: 'landscape',
+    gridSpan: 1,
   },
   {
     id: 'project-8',
@@ -134,6 +174,8 @@ export const projects: Project[] = [
     ],
     year: '2022',
     month: 'MAY',
+    displayFormat: 'portrait',
+    gridSpan: 1,
   },
   {
     id: 'project-9',
@@ -149,5 +191,7 @@ export const projects: Project[] = [
     ],
     year: '2021',
     month: 'DEC',
+    displayFormat: 'square',
+    gridSpan: 1,
   },
 ];

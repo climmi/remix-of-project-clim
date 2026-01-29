@@ -10,28 +10,31 @@ const Projects = () => {
       <Header />
       
       <main className="pt-24 md:pt-32 pb-24">
-        <section className="px-6 md:px-12 lg:px-24">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-12 md:mb-16"
-            >
-              <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                Projects
-              </h1>
-              <p className="text-lg text-foreground max-w-2xl">
-                Selected work from Project Clim
-              </p>
-            </motion.div>
-            
-            {/* Project Grid - 2 columns for larger images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-              {projects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
-              ))}
-            </div>
+        <section className="px-6 md:px-12 lg:px-16 xl:px-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 md:mb-16"
+          >
+            <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+              Projects
+            </h1>
+            <p className="text-lg text-foreground max-w-2xl">
+              Selected work from Project Clim
+            </p>
+          </motion.div>
+          
+          {/* Masonry-style Grid - full width, dynamic columns */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
+            {projects.map((project, index) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                index={index}
+                className={project.gridSpan === 2 ? 'col-span-2' : ''}
+              />
+            ))}
           </div>
         </section>
       </main>

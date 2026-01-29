@@ -19,16 +19,6 @@ const ProjectGallery = () => {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
-  // Assign sizes for masonry effect - creates visual variety
-  const getSizeForIndex = (index: number): 'small' | 'medium' | 'large' => {
-    const pattern = [
-      'large', 'medium', 'small',
-      'medium', 'small', 'large',
-      'small', 'large', 'medium',
-    ];
-    return pattern[index % pattern.length] as 'small' | 'medium' | 'large';
-  };
-
   return (
     <section id="projects" className="section-container pt-24 md:pt-32">
       <motion.div
@@ -42,14 +32,13 @@ const ProjectGallery = () => {
         </p>
       </motion.div>
       
-      {/* Masonry-style grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[280px]">
+      {/* Simple flexible grid - no overlapping */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {projects.map((project, index) => (
           <ProjectCard
             key={project.id}
             project={project}
             index={index}
-            size={getSizeForIndex(index)}
             onClick={() => handleProjectClick(project)}
           />
         ))}

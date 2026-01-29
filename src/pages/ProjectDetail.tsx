@@ -12,11 +12,6 @@ const ProjectDetail = () => {
   // Get other projects for "More Projects" section
   const otherProjects = projects.filter(p => p.id !== id).slice(0, 4);
   
-  // Scroll to top when project changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
-
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">

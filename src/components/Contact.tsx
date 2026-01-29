@@ -65,14 +65,11 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12"
         >
-          <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-display">
+          <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-display">
             Contact
           </h2>
-          <p className="text-3xl md:text-4xl font-display font-semibold text-foreground">
-            Let's create something extraordinary together
-          </p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-16">

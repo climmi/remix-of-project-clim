@@ -22,24 +22,24 @@ const Header = () => {
         transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
         className="flex items-center gap-4 md:gap-6"
       >
-        <a 
-          href="/#about" 
+        <Link 
+          to="/projects" 
+          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Projects
+        </Link>
+        <Link 
+          to="/about" 
           className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           About
-        </a>
-        <Link 
-          to="/exhibitions" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Exhibitions
         </Link>
-        <a 
-          href="/#contact" 
+        <Link 
+          to="/contact" 
           className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           Contact
-        </a>
+        </Link>
       </motion.nav>
     </header>
   );

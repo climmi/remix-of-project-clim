@@ -120,8 +120,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       onTouchEnd={handleTouchEnd}
       className="cursor-pointer select-none"
     >
-      {/* Project image */}
-      <div className="aspect-[4/5] bg-muted overflow-hidden mb-3">
+      {/* Project image - larger aspect ratio */}
+      <div className="aspect-[4/5] bg-muted overflow-hidden mb-4">
         <img
           src={project.images[currentImageIndex]}
           alt={project.title}
@@ -130,19 +130,24 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         />
       </div>
       
-      {/* Title and category always visible below image */}
-      <div className="space-y-1">
-        <h3 className="text-sm font-display font-medium text-foreground">
-          {project.title}
-        </h3>
-        <span className="text-xs text-muted-foreground">
+      {/* Date and category - Leibal style */}
+      <div className="space-y-1 mb-2">
+        <p className="text-xs uppercase tracking-widest text-muted-foreground">
+          {project.month} {project.year}
+        </p>
+        <p className="text-xs uppercase tracking-widest text-muted-foreground/60">
           {project.category}
-        </span>
+        </p>
       </div>
+      
+      {/* Title */}
+      <h3 className="text-sm text-foreground">
+        {project.title}
+      </h3>
 
       {/* Drag indicator dots */}
       {imageCount > 1 && (
-        <div className="flex gap-1 mt-2">
+        <div className="flex gap-1 mt-3">
           {project.images.map((_, idx) => (
             <div
               key={idx}

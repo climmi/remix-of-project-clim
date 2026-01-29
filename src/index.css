@@ -4,7 +4,7 @@
 
 /* PROJECT CLIM - Light Portfolio Design System */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
 @layer base {
   :root {
@@ -45,8 +45,8 @@
     --light-tertiary: 30 90% 75%;
 
     /* Font families */
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Courier Prime', monospace;
+    --font-body: 'Courier Prime', monospace;
   }
 
   .dark {

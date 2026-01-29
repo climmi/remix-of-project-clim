@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { exhibitions, pressItems } from '@/data/exhibitions';
 
 const services = [
   'Product Design',
@@ -11,6 +12,17 @@ const services = [
 ];
 
 const About = () => {
+  // Group exhibitions by year
+  const exhibitionsByYear = exhibitions.reduce((acc, exhibition) => {
+    if (!acc[exhibition.year]) {
+      acc[exhibition.year] = [];
+    }
+    acc[exhibition.year].push(exhibition);
+    return acc;
+  }, {} as Record<string, typeof exhibitions>);
+
+  const years = Object.keys(exhibitionsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -23,12 +35,37 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-16 md:mb-24"
+              className="mb-12 md:mb-16"
             >
-              <h1 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-display">
+              <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
                 About
               </h1>
-              <p className="text-3xl md:text-4xl font-display font-semibold text-foreground">
+            </motion.div>
+            
+            {/* Portrait/Studio Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-12 md:mb-16"
+            >
+              <div className="aspect-[3/2] md:aspect-[16/9] bg-muted overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=675&fit=crop"
+                  alt="Studio"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+            
+            {/* Tagline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="mb-12 md:mb-16"
+            >
+              <p className="text-lg md:text-xl text-foreground">
                 Bridging traditional craftsmanship with modern technology
               </p>
             </motion.div>
@@ -37,7 +74,7 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-16 md:mb-24"
             >
               <div className="border-t border-border pt-8 md:pt-12">
@@ -76,10 +113,10 @@ const About = () => {
               className="mb-16 md:mb-24"
             >
               <div className="border-t border-border pt-8 md:pt-12">
-                <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-display">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
                   Material Expertise
                 </h2>
-                <p className="text-foreground text-lg">
+                <p className="text-foreground">
                   Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements
                 </p>
               </div>
@@ -91,14 +128,85 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
             >
               <div className="border-t border-border pt-8 md:pt-12">
-                <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-display">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
                   Services
                 </h2>
-                <p className="text-foreground text-lg">
+                <p className="text-foreground">
                   {services.join(', ')}
                 </p>
+              </div>
+            </motion.div>
+            
+            {/* Exhibitions & Press */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
+                  Exhibitions & Press
+                </h2>
+                
+                {/* Exhibitions by Year */}
+                <div className="space-y-12">
+                  {years.map(year => (
+                    <div key={year}>
+                      <h3 className="text-sm text-foreground mb-4">{year}</h3>
+                      <div className="border-t border-border/50">
+                        {exhibitionsByYear[year].map((exhibition) => (
+                          <div 
+                            key={exhibition.id}
+                            className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                          >
+                            <span className="text-foreground">
+                              {exhibition.title} — {exhibition.venue}, {exhibition.location}
+                            </span>
+                            <span className="text-muted-foreground text-sm">
+                              {exhibition.date}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Press */}
+                <div className="mt-12">
+                  <h3 className="text-sm text-foreground mb-4">Press</h3>
+                  <div className="border-t border-border/50">
+                    {pressItems.map((item) => (
+                      <div 
+                        key={item.id}
+                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                      >
+                        {item.url ? (
+                          <a 
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-foreground hover:text-muted-foreground transition-colors"
+                          >
+                            {item.title} — {item.publication}
+                          </a>
+                        ) : (
+                          <span className="text-foreground">
+                            {item.title} — {item.publication}
+                          </span>
+                        )}
+                        <span className="text-muted-foreground text-sm">
+                          {item.date}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

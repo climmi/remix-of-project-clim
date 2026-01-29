@@ -29,7 +29,7 @@ const ContactPage = () => {
       
       <main className="pt-24 md:pt-32 pb-24">
         <section className="px-6 md:px-12 lg:px-24">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -37,33 +37,18 @@ const ContactPage = () => {
               transition={{ duration: 0.6 }}
               className="mb-12 md:mb-16"
             >
-              <h1 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-display">
+              <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
                 Contact
               </h1>
             </motion.div>
             
-            {/* Content Grid - 3 columns */}
-            <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-              {/* Studio Image */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <div className="aspect-[3/4] bg-muted overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=800&fit=crop"
-                    alt="Studio"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
-              
+            {/* Content Grid - 2 columns */}
+            <div className="grid md:grid-cols-2 gap-12 md:gap-24">
               {/* Form */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -118,11 +103,11 @@ const ContactPage = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="space-y-8"
               >
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
                     Email
                   </p>
                   <a 
@@ -134,7 +119,7 @@ const ContactPage = () => {
                 </div>
                 
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
                     Address
                   </p>
                   <p className="text-foreground">
@@ -146,7 +131,7 @@ const ContactPage = () => {
                 </div>
                 
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-display">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
                     Social
                   </p>
                   <a 

@@ -1,47 +1,77 @@
 
-# Fixes und Unsplash Bilder hinzufuegen
+# Services und Contact Vereinfachung
 
-## Problembehebung
+## Ueberblick
 
-### 1. Projekt-Grid Ueberlappung beheben
-Das Problem liegt bei `auto-rows-[200px]` und `md:row-span-2` bei grossen Cards.
-
-**Loesung:**
-- `auto-rows-[...]` entfernen - stattdessen flexible Hoehen nutzen
-- `row-span-2` bei "large" entfernen (verursacht Ueberlappungen)
-- `max-w-7xl` hinzufuegen fuer breite Bildschirme
-- Groessere Gaps zwischen Projekten
-
-### 2. About-Bereich vereinfachen
-- Material Expertise: Boxen mit Hover-Effekten entfernen
-- Stattdessen: Einfacher Fliesstext mit Kommas getrennt
-- Keine Animationen auf einzelnen Materialien
-
-### 3. Services-Bereich kuenstlerischer gestalten
-- Icons komplett entfernen
-- Keine Karten/Boxen
-- Schlichte nummerierte Liste (01, 02, 03...)
-- Minimaler Textstil ohne Hover-Effekte
-
-### 4. Kontakt-Bereich vereinfachen
-- Icons bei Email/Social entfernen
-- Weniger gestylte Inputs (schlichter, ohne Border-Focus-Effekte)
-- Button schlichter
-- Mehr Weissraum
+Der Services-Bereich wird kompakter und weniger prominent gestaltet. Der Contact-Bereich bekommt eine direktere, weniger generische Ansprache.
 
 ---
 
-## Unsplash Bilder hinzufuegen
+## 1. Services-Bereich: Kompakter und weniger im Fokus
 
-Jedes Projekt bekommt 3-4 hochwertige Bilder von Unsplash damit die Drag-to-Browse Funktion sichtbar wird.
+### Aktuelles Problem
+- Jeder Service hat eine eigene Zeile mit Nummer, Titel und Beschreibung
+- Nimmt viel Platz ein (5 Services mit je ~3 Zeilen)
+- Die Nummerierung (01, 02...) und der grosse Header wirken zu formal
 
-**Bildthemen passend zu den Projekten:**
-- Prismatic Lens Table: Holz, Glas, Lichtbrechung
-- Spectrum Wall Light: Licht, Prismen, Wandinstallationen
-- Reflection Console: Minimalistisches Moebel, Spiegel, Marmor
-- Kinetic Light Sculpture: Skulpturen, Schatten, Bewegung
-- Chromatic Vessel: Glaskunst, Vasen, Farben
-- Shadow Clock: Uhren, Bronze, abstrakte Objekte
+### Neue Struktur
+
+**Option A: Horizontale Auflistung**
+```
+Services
+
+Product Design · Space Planning · Construction · Visualization · Realization
+```
+
+**Option B: Kompakte Liste mit kurzer Beschreibung**
+```
+Services
+
+Product Design, Space Planning, Construction,
+Visualization, Realization
+
+From concept to finished product.
+```
+
+**Option C: Einzeilig im Footer-Stil**
+Die Services koennten auch ganz aus der Hauptseite verschwinden und nur auf einer separaten About/Services-Seite erscheinen oder im Footer erwaehnt werden.
+
+### Empfehlung: Option B
+- Services als Komma-getrennte Liste (wie Material Expertise im About)
+- Ein kurzer Satz darunter der alles zusammenfasst
+- Kein grosser Header-Satz wie "End-to-end design and fabrication services"
+- Weniger vertikaler Platz
+
+---
+
+## 2. Contact-Bereich: Weniger generisch
+
+### Aktuelles Problem
+- "Let's create something extraordinary together" ist ein typischer Marketing-Satz
+- Wirkt unpersoenlich und austauschbar
+
+### Neue Ansprache
+
+**Optionen fuer Header:**
+- Komplett entfernen (nur "Contact" als Titel)
+- Direkter/persoenlicher: "Get in touch" oder "Say hello"
+- Oder ganz ohne Untertitel - einfach das Formular
+
+### Empfehlung: Minimalistisch ohne Slogan
+```
+Contact
+
+[Formular links]          Email
+                          mail@projectclim.com
+                          
+                          Instagram
+                          @projectclim
+                          
+                          Based in
+                          Hildesheim, Germany
+```
+
+Der grosse generische Satz faellt komplett weg. Der Bereich ist direkter und schlichter.
 
 ---
 
@@ -49,41 +79,53 @@ Jedes Projekt bekommt 3-4 hochwertige Bilder von Unsplash damit die Drag-to-Brow
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/projects.ts` | Unsplash URLs fuer alle Projekte (3-4 pro Projekt) |
-| `src/components/ProjectGallery.tsx` | Grid-Fix: max-w-7xl, flexible Hoehen, groessere Gaps |
-| `src/components/ProjectCard.tsx` | row-span entfernen, einfachere Aspect-Ratios |
-| `src/components/About.tsx` | Material-Liste als Komma-getrennter Text |
-| `src/components/Services.tsx` | Nummerierte Liste ohne Icons/Karten |
-| `src/components/Contact.tsx` | Weniger Styling, keine Icons |
+| `src/components/Services.tsx` | Kompaktere Liste ohne Nummern und Einzelbeschreibungen |
+| `src/components/Contact.tsx` | Generischen Header-Satz entfernen |
 
 ---
 
 ## Vorher/Nachher
 
-**About - Material Expertise:**
-```
-Vorher: [Wood] [Metal] [Glass] (Boxen mit Hover)
-Nachher: Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements
-```
+### Services
 
-**Services:**
+**Vorher:**
 ```
-Vorher: 
-┌─────────────┐ ┌─────────────┐
-│ 🧭 Product  │ │ 📦 Space    │
-│   Design    │ │   Planning  │
-└─────────────┘ └─────────────┘
+Services
 
-Nachher:
+End-to-end design and fabrication services
+
 01  Product Design
     From concept to detailed design...
 
 02  Space Planning
     Thoughtful spatial solutions...
+
+[... 5 Eintraege]
 ```
 
-**Contact:**
+**Nachher:**
 ```
-Vorher: 📧 mail@projectclim.com
-Nachher: mail@projectclim.com (nur Text-Link)
+Services
+
+Product Design, Space Planning, Construction,
+Visualization, Realization
 ```
+
+### Contact
+
+**Vorher:**
+```
+Contact
+
+Let's create something extraordinary together
+
+[Formular]                [Kontaktdaten]
+```
+
+**Nachher:**
+```
+Contact
+
+[Formular]                [Kontaktdaten]
+```
+

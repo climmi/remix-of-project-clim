@@ -19,29 +19,37 @@ const ProjectGallery = () => {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
+  // Assign sizes for masonry effect - creates visual variety
+  const getSizeForIndex = (index: number): 'small' | 'medium' | 'large' => {
+    const pattern = [
+      'large', 'medium', 'small',
+      'medium', 'small', 'large',
+      'small', 'large', 'medium',
+    ];
+    return pattern[index % pattern.length] as 'small' | 'medium' | 'large';
+  };
+
   return (
-    <section id="projects" className="section-container">
+    <section id="projects" className="section-container pt-24 md:pt-32">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="mb-12"
       >
-        <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-display">
+        <p className="text-xs uppercase tracking-widest text-muted-foreground font-display">
           Selected Work
-        </h2>
-        <p className="text-3xl md:text-4xl font-display font-semibold text-foreground max-w-2xl">
-          Objects and installations exploring light, material, and form
         </p>
       </motion.div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Masonry-style grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[280px]">
         {projects.map((project, index) => (
           <ProjectCard
             key={project.id}
             project={project}
             index={index}
+            size={getSizeForIndex(index)}
             onClick={() => handleProjectClick(project)}
           />
         ))}

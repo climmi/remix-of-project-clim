@@ -2,71 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PROJECT CLIM - Dark Portfolio Design System */
+/* PROJECT CLIM - Light Portfolio Design System */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
-    /* Dark theme by default */
-    --background: 240 10% 4%;
-    --foreground: 0 0% 95%;
+    /* Light theme - creamy white */
+    --background: 40 20% 98%;
+    --foreground: 0 0% 10%;
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 95%;
+    --card: 40 15% 96%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 40 15% 96%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 0 0% 95%;
-    --primary-foreground: 240 10% 4%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 40 20% 98%;
 
-    --secondary: 240 8% 12%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 240 8% 15%;
-    --muted-foreground: 240 5% 55%;
+    --muted: 40 10% 90%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 45 100% 60%;
-    --accent-foreground: 240 10% 4%;
+    --accent: 35 100% 55%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 18%;
-    --input: 240 6% 18%;
-    --ring: 45 100% 60%;
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 35 100% 55%;
 
     --radius: 0.5rem;
 
-    /* Caustics effect colors */
-    --caustics-primary: 200 80% 60%;
-    --caustics-secondary: 180 70% 50%;
-    --caustics-tertiary: 220 75% 55%;
+    /* Warm light effect colors */
+    --light-primary: 45 100% 95%;
+    --light-secondary: 35 100% 85%;
+    --light-tertiary: 30 90% 75%;
 
     /* Font families */
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
 
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
-    --primary: 240 10% 4%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 10% 4%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 5% 45%;
-    --accent: 45 100% 50%;
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 8% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 240 8% 15%;
+    --muted-foreground: 240 5% 55%;
+    --accent: 45 100% 60%;
     --accent-foreground: 240 10% 4%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 45 100% 50%;
+    --border: 240 6% 18%;
+    --input: 240 6% 18%;
+    --ring: 45 100% 60%;
   }
 }
 
@@ -100,20 +100,20 @@
     );
   }
 
-  .caustics-bg {
+  .warm-glow {
     position: relative;
     overflow: hidden;
   }
 
-  .caustics-bg::before {
+  .warm-glow::before {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(
       ellipse at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      hsl(var(--caustics-primary) / 0.15) 0%,
-      hsl(var(--caustics-secondary) / 0.08) 25%,
-      hsl(var(--caustics-tertiary) / 0.05) 50%,
+      hsl(var(--light-primary) / 0.4) 0%,
+      hsl(var(--light-secondary) / 0.2) 30%,
+      hsl(var(--light-tertiary) / 0.1) 50%,
       transparent 70%
     );
     pointer-events: none;
@@ -121,7 +121,7 @@
   }
 
   .project-card {
-    @apply relative overflow-hidden rounded-lg bg-card transition-all duration-500;
+    @apply relative overflow-hidden transition-all duration-500;
   }
 
   .project-card::after {
@@ -131,7 +131,7 @@
     background: linear-gradient(
       135deg,
       transparent 0%,
-      hsl(var(--foreground) / 0.03) 50%,
+      hsl(var(--light-secondary) / 0.15) 50%,
       transparent 100%
     );
     transform: translateX(-100%);
@@ -143,7 +143,7 @@
   }
 
   .section-container {
-    @apply container mx-auto px-6 py-24 md:py-32;
+    @apply container mx-auto px-6 py-16 md:py-24;
   }
 }
 
@@ -157,16 +157,16 @@
     50% { transform: translateY(-10px); }
   }
 
-  .animate-caustics {
-    animation: caustics 8s ease-in-out infinite;
+  .animate-warm-pulse {
+    animation: warm-pulse 4s ease-in-out infinite;
   }
 
-  @keyframes caustics {
+  @keyframes warm-pulse {
     0%, 100% { 
-      filter: hue-rotate(0deg) brightness(1);
+      opacity: 0.6;
     }
     50% { 
-      filter: hue-rotate(30deg) brightness(1.1);
+      opacity: 1;
     }
   }
 }

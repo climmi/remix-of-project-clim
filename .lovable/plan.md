@@ -1,169 +1,107 @@
 
-# Umfassende Ueberarbeitung: Groessere Bilder, Wisch-Effekt, Schriftart und Seitenstruktur
+# Dynamisches Grid-Layout und Video-Unterstuetzung
 
 ## Ueberblick
 
-Diese Aenderungen betreffen mehrere Bereiche: Projektbilder, Navigation, Schriftart, und die Umstrukturierung von About/Contact/Exhibitions.
+Die Startseite erhaelt ein dynamisches Masonry-artiges Layout mit unterschiedlichen Bildgroessen und voller Bildschirmbreite. Zusaetzlich wird Video-Unterstuetzung fuer Projekte hinzugefuegt.
 
 ---
 
-## 1. Schriftart aendern (margreiterchoy.net Stil)
+## 1. Breiteres Layout auf grossen Bildschirmen
 
-Die Referenzwebsite verwendet eine monospace/serifenlose Schrift mit technischem Charakter. Basierend auf dem Screenshot wird "Courier New" oder aehnliche Monospace-Schrift verwendet.
+### Problem:
+- `max-w-7xl` (1280px) begrenzt den Inhalt
+- Auf 4K-Bildschirmen bleibt viel Platz ungenutzt
 
-### Aenderungen:
-- Neue Schriftart: **Courier Prime** (Google Fonts) oder System-Monospace
-- Alle Texte und Beschreibungen in dieser Schrift
+### Loesung:
+- Startseite: Kein `max-w-7xl` - volle Breite nutzen
+- Projects-Seite: Behalt konsistentes Grid (optional auch erweitern)
 
 ```
-Aktuell: Space Grotesk (Display) + Inter (Body)
-Neu:     Courier Prime fuer alles
+Aktuell:  max-w-7xl mx-auto (zentriert, max 1280px)
+Neu:      Volle Breite mit mehr Padding auf grossen Screens
 ```
 
 ---
 
-## 2. Projekt-Bilder VIEL groesser machen
+## 2. Unterschiedliche Bildformate auf der Startseite
 
 ### Aktuell:
-- 3-Spalten-Grid auf Desktop
-- `aspect-[4/5]` (hoch-format)
+Alle Projekte haben `aspect-[4/5]` (Hochformat)
 
 ### Neu:
-- 2-Spalten-Grid auf Desktop (groessere Bilder)
-- Mehr Platz zwischen den Bildern
-- Auf Mobile: 1-Spalte volle Breite
+Jedes Projekt kann ein eigenes Format haben:
 
 ```
-Aktuell:  3 Spalten, kleine Bilder
-Neu:      2 Spalten, grosse Bilder (wie Leibal)
+┌───────────────────────────────────────────────────────────────┐
+│                                                               │
+│  ┌─────────────────┐  ┌───────────────────────────────────┐  │
+│  │                 │  │                                   │  │
+│  │   HOCHFORMAT    │  │          QUERFORMAT               │  │
+│  │    aspect-[3/4] │  │          aspect-[16/9]            │  │
+│  │                 │  │                                   │  │
+│  │                 │  └───────────────────────────────────┘  │
+│  └─────────────────┘                                          │
+│                                                               │
+│  ┌────────────┐  ┌────────────┐  ┌────────────────────────┐  │
+│  │            │  │            │  │                        │  │
+│  │  QUADRAT   │  │  QUADRAT   │  │     GROSS/BREIT        │  │
+│  │ aspect-[1] │  │ aspect-[1] │  │     colspan-2          │  │
+│  │            │  │            │  │                        │  │
+│  └────────────┘  └────────────┘  └────────────────────────┘  │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
 ```
+
+### Formate:
+- `portrait` = aspect-[3/4] (Hochformat)
+- `square` = aspect-[1/1] (Quadratisch)
+- `landscape` = aspect-[16/9] (Querformat)
+- `wide` = aspect-[21/9] (Extra breit)
 
 ---
 
-## 3. Datum unter Projekten (Leibal-Stil)
+## 3. Video-Unterstuetzung
 
-Unter jedem Projekt soll das Datum erscheinen (wie "JAN 2024"):
+### Datenmodell erweitern:
 
-```
-┌─────────────────┐
-│                 │
-│     BILD        │
-│                 │
-└─────────────────┘
-JAN 2024
-FURNITURE
-Prismatic Lens Table
-```
+```typescript
+interface ProjectMedia {
+  type: 'image' | 'video';
+  url: string;
+  poster?: string;  // Vorschaubild fuer Videos
+}
 
-### Aenderung an Project-Daten:
-- `year: '2024'` erweitern zu `month` und `year`
-- Format: "MMM YYYY" (z.B. "JAN 2024")
-
----
-
-## 4. Drag/Wisch-Effekt fuer Bilder
-
-Der `ProjectCard.tsx` hat bereits einen Wisch-Effekt implementiert. Dieser wird auf der Startseite und Projects-Seite verwendet.
-
-### Aenderung:
-- Startseite (`Index.tsx`) und Projects-Seite (`Projects.tsx`) sollen die `ProjectCard`-Komponente verwenden anstatt eigener Link-Komponenten
-- Dots-Indikator bleibt
-
----
-
-## 5. Navigation anpassen
-
-### Aktuell:
-```
-PROJECTS | EXHIBITIONS | ABOUT | CONTACT
+interface Project {
+  id: string;
+  title: string;
+  // ...
+  media: ProjectMedia[];  // NEU: ersetzt/ergaenzt images
+  images: string[];       // Bleibt fuer Rueckwaertskompatibilitaet
+  displayFormat?: 'portrait' | 'square' | 'landscape' | 'wide';
+  gridSpan?: 1 | 2;  // Wie viele Spalten das Projekt einnimmt
+}
 ```
 
-### Neu:
+### Video-Anzeige in ProjectCard:
+
 ```
-PROJECTS | ABOUT | CONTACT
-```
-
-Exhibitions wird von der Navigation entfernt und auf der About-Seite integriert.
-
----
-
-## 6. About-Seite: Bild + Exhibitions hinzufuegen
-
-### Neue Struktur:
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                        PROJECTS  ABOUT  CONTACT│
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  About                                                       │
-│                                                              │
-│  ┌─────────────────────────────┐                             │
-│  │                             │                             │
-│  │    BILD (Portrait/Studio)   │                             │
-│  │                             │                             │
-│  └─────────────────────────────┘                             │
-│                                                              │
-│  [Beschreibungstext...]                                      │
-│                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  Material Expertise                                         │
-│  Wood, Metal, Glass...                                      │
-│                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  Services                                                   │
-│  Product Design, Space Planning...                          │
-│                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  Exhibitions & Press                                        │
-│                                                              │
-│  2024                                                       │
-│  ───                                                        │
-│  Title - Venue, Location               Date                 │
-│                                                              │
-│  2023                                                       │
-│  ───                                                        │
-│  Title - Venue, Location               Date                 │
-│  ...                                                        │
-│                                                              │
-│  FOOTER                                                     │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│  ▶ VIDEO (autoplay, muted, loop)   │
+│                                     │
+│   oder bei Hover/Swipe:            │
+│   Video wird abgespielt            │
+│                                     │
+└─────────────────────────────────────┘
+MAR 2024
+ART INSTALLATION
+Kinetic Light Sculpture
 ```
 
----
-
-## 7. Contact-Seite: Bild entfernen
-
-Das Bild wird von der Contact-Seite entfernt (es gehoert zur About-Seite).
-
-### Neue Struktur:
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                        PROJECTS  ABOUT  CONTACT│
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Contact                                                     │
-│                                                              │
-│  ┌──────────────────────┐          Email                    │
-│  │ Name                 │          mail@projectclim.com      │
-│  │────────────────────│                                     │
-│  │ Email                │          Address                   │
-│  │────────────────────│          Clim Michel               │
-│  │                      │          Hottelner Weg 52          │
-│  │ Message              │          31137 Hildesheim          │
-│  │                      │          Germany                   │
-│  │                      │                                    │
-│  │────────────────────│          Social                     │
-│  │ Send Message →       │          Instagram                 │
-│  └──────────────────────┘                                   │
-│                                                              │
-│  FOOTER                                                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-Nur 2 Spalten: Formular links, Kontaktdaten rechts.
+Videos werden:
+- Autoplay (stumm, loop) beim Hover oder beim Scrollen in den Viewport
+- Mit Poster-Bild als Vorschau
+- Im selben Wisch-Karussell wie Bilder
 
 ---
 
@@ -171,102 +109,171 @@ Nur 2 Spalten: Formular links, Kontaktdaten rechts.
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/index.css` | Schriftart auf Courier Prime aendern |
-| `index.html` | Google Fonts Link anpassen |
-| `src/data/projects.ts` | Monat hinzufuegen zu Projektdaten |
-| `src/pages/Index.tsx` | 2-Spalten-Grid, ProjectCard verwenden, Datum anzeigen |
-| `src/pages/Projects.tsx` | 2-Spalten-Grid, ProjectCard verwenden, Datum anzeigen |
-| `src/components/ProjectCard.tsx` | Datum-Anzeige hinzufuegen (MMM YYYY) |
-| `src/components/Header.tsx` | EXHIBITIONS aus Navigation entfernen |
-| `src/pages/About.tsx` | Bild hinzufuegen, Exhibitions-Inhalt integrieren |
-| `src/pages/ContactPage.tsx` | Bild entfernen, auf 2-Spalten reduzieren |
-| `src/App.tsx` | /exhibitions Route kann bleiben (direkter Zugang) |
+| `src/data/projects.ts` | `displayFormat`, `gridSpan`, `media` Array hinzufuegen |
+| `src/pages/Index.tsx` | Masonry-Grid ohne max-width, dynamische Spalten |
+| `src/components/ProjectCard.tsx` | Format-Prop, Video-Unterstuetzung |
+| `src/pages/Projects.tsx` | Optional: auch breiteres Layout |
+| `src/pages/ProjectDetail.tsx` | Video-Anzeige in der Galerie |
+
+---
+
+## Index.tsx - Neues Layout
+
+```
+Aktuell:
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+Neu:
+  <div> <!-- Kein max-w -->
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {projects.map(project => (
+        <ProjectCard 
+          className={project.gridSpan === 2 ? 'col-span-2' : ''}
+          ...
+        />
+      ))}
+```
+
+Projekte koennen 1 oder 2 Spalten einnehmen, mit unterschiedlichen Formaten.
+
+---
+
+## Projekt-Daten Beispiel
+
+```typescript
+{
+  id: 'project-4',
+  title: 'Kinetic Light Sculpture',
+  displayFormat: 'landscape',  // Querformat
+  gridSpan: 2,                 // Nimmt 2 Spalten ein
+  media: [
+    { 
+      type: 'video', 
+      url: 'https://example.com/video.mp4',
+      poster: 'https://example.com/poster.jpg'
+    },
+    { type: 'image', url: 'https://...' },
+  ],
+  images: [...],  // Fallback
+  // ...
+}
+```
+
+---
+
+## Grid-Verhalten
+
+### Desktop (4 Spalten):
+```
+┌──────┬──────┬──────┬──────┐
+│  1   │  2   │   3 (wide)  │
+│ port │ sqr  │   span-2    │
+├──────┼──────┼──────┬──────┤
+│  4 (landscape)    │  5   │
+│     span-2        │ port │
+└───────────────────┴──────┘
+```
+
+### Tablet (3 Spalten):
+```
+┌──────┬──────┬──────┐
+│  1   │  2   │  3   │
+├──────┼──────┴──────┤
+│  4   │   5 (wide)  │
+└──────┴─────────────┘
+```
+
+### Mobile (2 Spalten):
+```
+┌──────┬──────┐
+│  1   │  2   │
+├──────┴──────┤
+│  3 (wide)   │
+└─────────────┘
+```
+
+---
+
+## Video-Komponente
+
+```tsx
+// In ProjectCard.tsx
+const currentMedia = project.media?.[currentIndex] || { 
+  type: 'image', 
+  url: project.images[currentIndex] 
+};
+
+{currentMedia.type === 'video' ? (
+  <video
+    src={currentMedia.url}
+    poster={currentMedia.poster}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  />
+) : (
+  <img
+    src={currentMedia.url}
+    alt={project.title}
+    className="w-full h-full object-cover"
+  />
+)}
+```
+
+---
+
+## Aspect-Ratio Mapping
+
+```typescript
+const aspectRatioClasses = {
+  portrait: 'aspect-[3/4]',
+  square: 'aspect-square',
+  landscape: 'aspect-[16/9]',
+  wide: 'aspect-[21/9]',
+};
+```
 
 ---
 
 ## Vorher/Nachher
 
-### Schriftart
+### Layout-Breite
 
 ```
-Vorher:  Space Grotesk + Inter (modern, tech)
-Nachher: Courier Prime (monospace, editorial/artistic)
+Vorher:  max-w-7xl (1280px), zentriert
+Nachher: Volle Breite, nur Padding an den Seiten
 ```
 
-### Projekt-Grid
+### Bildformate
 
 ```
-Vorher:  3 Spalten, kleine Bilder
-Nachher: 2 Spalten, grosse Bilder
+Vorher:  Alle aspect-[4/5]
+Nachher: portrait, square, landscape, wide (pro Projekt konfigurierbar)
 ```
 
-### Projekt-Info
+### Grid
 
 ```
-Vorher:
-  [Bild]
-  Titel
-  Kategorie
-
-Nachher:
-  [Bild]
-  JAN 2024
-  FURNITURE
-  Prismatic Lens Table
+Vorher:  Immer 2 Spalten, gleiche Groesse
+Nachher: 2-4 Spalten, Projekte koennen 1-2 Spalten einnehmen
 ```
 
-### Navigation
+### Medien
 
 ```
-Vorher:  PROJECTS | EXHIBITIONS | ABOUT | CONTACT
-Nachher: PROJECTS | ABOUT | CONTACT
-```
-
-### About-Seite
-
-```
-Vorher:  Nur Text + Services
-Nachher: Bild + Text + Services + Exhibitions/Press
-```
-
-### Contact-Seite
-
-```
-Vorher:  3 Spalten (Bild + Form + Info)
-Nachher: 2 Spalten (Form + Info)
+Vorher:  Nur Bilder
+Nachher: Bilder + Videos (autoplay, muted, loop)
 ```
 
 ---
 
-## Projektdaten-Format (erweitert)
+## Zu aendernde Dateien
 
-```typescript
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  materials: string[];
-  techniques: string[];
-  images: string[];
-  year: string;
-  month: string;  // NEU: "JAN", "FEB", etc.
-  externalLink?: string;
-}
-```
-
----
-
-## Schriftart-Konfiguration
-
-```css
-/* Neu in index.css */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
-
-:root {
-  --font-display: 'Courier Prime', monospace;
-  --font-body: 'Courier Prime', monospace;
-}
-```
-
-Die monospace Schrift gibt der Website den redaktionellen/kuenstlerischen Charakter wie bei margreiterchoy.net.
+1. `src/data/projects.ts` - Datenmodell erweitern
+2. `src/pages/Index.tsx` - Masonry-Grid, volle Breite
+3. `src/components/ProjectCard.tsx` - Format + Video
+4. `src/pages/ProjectDetail.tsx` - Video in Galerie
+5. `src/pages/Projects.tsx` - Optional anpassen

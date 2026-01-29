@@ -1,206 +1,169 @@
 
-# Seitenstruktur Umbauen: Teaser-Startseite + Separate Unterseiten
+# Umfassende Ueberarbeitung: Groessere Bilder, Wisch-Effekt, Schriftart und Seitenstruktur
 
 ## Ueberblick
 
-Die Website wird umstrukturiert: Die Startseite zeigt nur kurze Teaser/Uebersichten, die zu separaten Seiten verlinken. Dies entspricht dem Leibal-Ansatz und typischen Magazin-Layouts.
+Diese Aenderungen betreffen mehrere Bereiche: Projektbilder, Navigation, Schriftart, und die Umstrukturierung von About/Contact/Exhibitions.
 
 ---
 
-## Neue Seitenstruktur
+## 1. Schriftart aendern (margreiterchoy.net Stil)
+
+Die Referenzwebsite verwendet eine monospace/serifenlose Schrift mit technischem Charakter. Basierend auf dem Screenshot wird "Courier New" oder aehnliche Monospace-Schrift verwendet.
+
+### Aenderungen:
+- Neue Schriftart: **Courier Prime** (Google Fonts) oder System-Monospace
+- Alle Texte und Beschreibungen in dieser Schrift
 
 ```
-/                  → Startseite (Teaser fuer Projects, About, Contact)
-/projects          → Alle Projekte (vollstaendige Galerie)
-/project/:id       → Projekt-Detailseite (existiert bereits)
-/about             → About-Seite (ausfuehrlich)
-/contact           → Kontakt-Seite (mit Formular)
-/exhibitions       → Ausstellungen & Presse (existiert bereits)
-/legal-notice      → Impressum (existiert bereits)
-/store-policy      → (existiert bereits)
-/terms             → (existiert bereits)
-/privacy           → (existiert bereits)
+Aktuell: Space Grotesk (Display) + Inter (Body)
+Neu:     Courier Prime fuer alles
 ```
 
 ---
 
-## 1. Startseite (Index) - Nur Teaser
+## 2. Projekt-Bilder VIEL groesser machen
 
-Die Startseite wird radikal vereinfacht zu einer Uebersicht mit drei Sektionen:
+### Aktuell:
+- 3-Spalten-Grid auf Desktop
+- `aspect-[4/5]` (hoch-format)
 
+### Neu:
+- 2-Spalten-Grid auf Desktop (groessere Bilder)
+- Mehr Platz zwischen den Bildern
+- Auf Mobile: 1-Spalte volle Breite
+
+```
+Aktuell:  3 Spalten, kleine Bilder
+Neu:      2 Spalten, grosse Bilder (wie Leibal)
+```
+
+---
+
+## 3. Datum unter Projekten (Leibal-Stil)
+
+Unter jedem Projekt soll das Datum erscheinen (wie "JAN 2024"):
+
+```
+┌─────────────────┐
+│                 │
+│     BILD        │
+│                 │
+└─────────────────┘
+JAN 2024
+FURNITURE
+Prismatic Lens Table
+```
+
+### Aenderung an Project-Daten:
+- `year: '2024'` erweitern zu `month` und `year`
+- Format: "MMM YYYY" (z.B. "JAN 2024")
+
+---
+
+## 4. Drag/Wisch-Effekt fuer Bilder
+
+Der `ProjectCard.tsx` hat bereits einen Wisch-Effekt implementiert. Dieser wird auf der Startseite und Projects-Seite verwendet.
+
+### Aenderung:
+- Startseite (`Index.tsx`) und Projects-Seite (`Projects.tsx`) sollen die `ProjectCard`-Komponente verwenden anstatt eigener Link-Komponenten
+- Dots-Indikator bleibt
+
+---
+
+## 5. Navigation anpassen
+
+### Aktuell:
+```
+PROJECTS | EXHIBITIONS | ABOUT | CONTACT
+```
+
+### Neu:
+```
+PROJECTS | ABOUT | CONTACT
+```
+
+Exhibitions wird von der Navigation entfernt und auf der About-Seite integriert.
+
+---
+
+## 6. About-Seite: Bild + Exhibitions hinzufuegen
+
+### Neue Struktur:
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                      Projects  About  Contact │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Projects                                                    │
-│                                                              │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
-│  │ Bild 1  │  │ Bild 2  │  │ Bild 3  │  │ Bild 4  │         │
-│  │         │  │         │  │         │  │         │         │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘         │
-│  Projekt 1    Projekt 2    Projekt 3    Projekt 4           │
-│                                                              │
-│  View all projects →                                        │
-│                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  About                                                       │
-│                                                              │
-│  Bridging traditional craftsmanship with modern technology  │
-│                                                              │
-│  Learn more →                                               │
-│                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  Contact                                                     │
-│                                                              │
-│  mail@projectclim.com                                       │
-│  Hildesheim, Germany                                        │
-│                                                              │
-│  Get in touch →                                             │
-│                                                              │
-│  FOOTER                                                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Inhalt der Teaser:
-- **Projects**: 4-6 Projekte im Grid, Link zu "/projects"
-- **About**: Headline + kurzer Satz, Link zu "/about"
-- **Contact**: Email + Standort, Link zu "/contact"
-
----
-
-## 2. Neue Seite: Projects (/projects)
-
-Zeigt alle Projekte in der vollstaendigen Galerie (wie aktuell auf der Startseite).
-
-### Layout:
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                      Projects  About  Contact │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Projects                                                    │
-│  Selected work from Project Clim                            │
-│                                                              │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐                      │
-│  │ Bild    │  │ Bild    │  │ Bild    │                      │
-│  │         │  │         │  │         │                      │
-│  └─────────┘  └─────────┘  └─────────┘                      │
-│  Projekt 1    Projekt 2    Projekt 3                        │
-│                                                              │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐                      │
-│  │ Bild    │  │ Bild    │  │ Bild    │                      │
-│  │         │  │         │  │         │                      │
-│  └─────────┘  └─────────┘  └─────────┘                      │
-│  Projekt 4    Projekt 5    Projekt 6                        │
-│                                                              │
-│  FOOTER                                                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 3. Neue Seite: About (/about)
-
-Ausfuehrliche About-Seite im Stil der Exhibitions-Seite.
-
-### Layout:
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                      Projects  About  Contact │
+│  PROJECT CLIM                        PROJECTS  ABOUT  CONTACT│
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
 │  About                                                       │
 │                                                              │
-│  Bridging traditional craftsmanship with modern technology  │
+│  ┌─────────────────────────────┐                             │
+│  │                             │                             │
+│  │    BILD (Portrait/Studio)   │                             │
+│  │                             │                             │
+│  └─────────────────────────────┘                             │
 │                                                              │
-│  ─────────────────────────────────────────────────────────  │
-│                                                              │
-│  I create objects and installations that explore the        │
-│  interplay between light, material, and form...             │
-│                                                              │
-│  [Weitere Absaetze]                                         │
+│  [Beschreibungstext...]                                      │
 │                                                              │
 │  ─────────────────────────────────────────────────────────  │
 │                                                              │
 │  Material Expertise                                         │
-│                                                              │
-│  Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements│
+│  Wood, Metal, Glass...                                      │
 │                                                              │
 │  ─────────────────────────────────────────────────────────  │
 │                                                              │
 │  Services                                                   │
+│  Product Design, Space Planning...                          │
 │                                                              │
-│  Product Design, Space Planning, Construction,              │
-│  Visualization, Realization                                 │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  Exhibitions & Press                                        │
+│                                                              │
+│  2024                                                       │
+│  ───                                                        │
+│  Title - Venue, Location               Date                 │
+│                                                              │
+│  2023                                                       │
+│  ───                                                        │
+│  Title - Venue, Location               Date                 │
+│  ...                                                        │
 │                                                              │
 │  FOOTER                                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-Services wird Teil der About-Seite (statt separate Komponente).
-
 ---
 
-## 4. Neue Seite: Contact (/contact)
+## 7. Contact-Seite: Bild entfernen
 
-Vollstaendige Kontakt-Seite mit Formular.
+Das Bild wird von der Contact-Seite entfernt (es gehoert zur About-Seite).
 
-### Layout:
+### Neue Struktur:
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                      Projects  About  Contact │
+│  PROJECT CLIM                        PROJECTS  ABOUT  CONTACT│
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
 │  Contact                                                     │
 │                                                              │
-│  ┌──────────────────────┐     Email                         │
-│  │ Name                 │     mail@projectclim.com          │
-│  │────────────────────│                                    │
-│  │ Email                │     Social                        │
-│  │────────────────────│     Instagram                      │
-│  │                      │                                   │
-│  │ Message              │     Based in                      │
-│  │                      │     Hildesheim, Germany           │
-│  │                      │                                   │
-│  │────────────────────│                                    │
-│  │ Send Message →       │                                   │
+│  ┌──────────────────────┐          Email                    │
+│  │ Name                 │          mail@projectclim.com      │
+│  │────────────────────│                                     │
+│  │ Email                │          Address                   │
+│  │────────────────────│          Clim Michel               │
+│  │                      │          Hottelner Weg 52          │
+│  │ Message              │          31137 Hildesheim          │
+│  │                      │          Germany                   │
+│  │                      │                                    │
+│  │────────────────────│          Social                     │
+│  │ Send Message →       │          Instagram                 │
 │  └──────────────────────┘                                   │
 │                                                              │
 │  FOOTER                                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
----
-
-## 5. ProjectDetail - Zurueck-Link hinzufuegen
-
-Auf der Projekt-Detailseite wird ein "← All Projects" Link hinzugefuegt.
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROJECT CLIM                      Projects  About  Contact │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  ← All Projects                                             │
-│                                                              │
-│  [Rest der Projektseite...]                                 │
-```
-
----
-
-## 6. Navigation (Header) aktualisieren
-
-Die Navigation wird angepasst:
-
-```
-Aktuell:   About (Anker)  |  Exhibitions  |  Contact (Anker)
-Neu:       Projects       |  About        |  Contact
-```
-
-Exhibitions bleibt als separater Link im Footer oder wird optional in der Navigation behalten.
+Nur 2 Spalten: Formular links, Kontaktdaten rechts.
 
 ---
 
@@ -208,81 +171,102 @@ Exhibitions bleibt als separater Link im Footer oder wird optional in der Naviga
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/pages/Index.tsx` | Komplett neu: Nur Teaser-Sektionen mit Links |
-| `src/pages/Projects.tsx` | NEU: Vollstaendige Projekt-Galerie |
-| `src/pages/About.tsx` | NEU: About + Services kombiniert |
-| `src/pages/Contact.tsx` | NEU: Kontaktformular + Infos |
-| `src/pages/ProjectDetail.tsx` | "← All Projects" Link hinzufuegen |
-| `src/components/Header.tsx` | Navigation: Projects, About, Contact als Links |
-| `src/App.tsx` | Neue Routen: /projects, /about, /contact |
-| `src/components/About.tsx` | Kann geloescht oder wiederverwendet werden |
-| `src/components/Contact.tsx` | Kann geloescht oder wiederverwendet werden |
-| `src/components/ProjectGallery.tsx` | Kann geloescht oder wiederverwendet werden |
-| `src/components/Services.tsx` | Wird in About-Seite integriert, dann loeschen |
+| `src/index.css` | Schriftart auf Courier Prime aendern |
+| `index.html` | Google Fonts Link anpassen |
+| `src/data/projects.ts` | Monat hinzufuegen zu Projektdaten |
+| `src/pages/Index.tsx` | 2-Spalten-Grid, ProjectCard verwenden, Datum anzeigen |
+| `src/pages/Projects.tsx` | 2-Spalten-Grid, ProjectCard verwenden, Datum anzeigen |
+| `src/components/ProjectCard.tsx` | Datum-Anzeige hinzufuegen (MMM YYYY) |
+| `src/components/Header.tsx` | EXHIBITIONS aus Navigation entfernen |
+| `src/pages/About.tsx` | Bild hinzufuegen, Exhibitions-Inhalt integrieren |
+| `src/pages/ContactPage.tsx` | Bild entfernen, auf 2-Spalten reduzieren |
+| `src/App.tsx` | /exhibitions Route kann bleiben (direkter Zugang) |
 
 ---
 
 ## Vorher/Nachher
 
+### Schriftart
+
+```
+Vorher:  Space Grotesk + Inter (modern, tech)
+Nachher: Courier Prime (monospace, editorial/artistic)
+```
+
+### Projekt-Grid
+
+```
+Vorher:  3 Spalten, kleine Bilder
+Nachher: 2 Spalten, grosse Bilder
+```
+
+### Projekt-Info
+
+```
+Vorher:
+  [Bild]
+  Titel
+  Kategorie
+
+Nachher:
+  [Bild]
+  JAN 2024
+  FURNITURE
+  Prismatic Lens Table
+```
+
 ### Navigation
 
-**Vorher:**
 ```
-About (Anker zu #about)  |  Exhibitions  |  Contact (Anker zu #contact)
-```
-
-**Nachher:**
-```
-Projects (/projects)  |  About (/about)  |  Contact (/contact)
+Vorher:  PROJECTS | EXHIBITIONS | ABOUT | CONTACT
+Nachher: PROJECTS | ABOUT | CONTACT
 ```
 
-### Startseite
+### About-Seite
 
-**Vorher:**
-- Vollstaendige Projekt-Galerie
-- Vollstaendiger About-Bereich
-- Vollstaendiger Services-Bereich
-- Vollstaendiger Contact-Bereich
+```
+Vorher:  Nur Text + Services
+Nachher: Bild + Text + Services + Exhibitions/Press
+```
 
-**Nachher:**
-- 4-6 Projekte als Teaser + "View all projects →"
-- 1 Satz About + "Learn more →"
-- Email + Standort + "Get in touch →"
+### Contact-Seite
 
-### Projekt-Detailseite
-
-**Vorher:**
-- Kein Zurueck-Link
-
-**Nachher:**
-- "← All Projects" Link oben links
+```
+Vorher:  3 Spalten (Bild + Form + Info)
+Nachher: 2 Spalten (Form + Info)
+```
 
 ---
 
-## Dateistruktur nach Umbau
+## Projektdaten-Format (erweitert)
 
-```
-src/
-├── pages/
-│   ├── Index.tsx          (Teaser-Startseite)
-│   ├── Projects.tsx       (NEU - Alle Projekte)
-│   ├── ProjectDetail.tsx  (Existiert - mit Zurueck-Link)
-│   ├── About.tsx          (NEU - Ausfuehrlich + Services)
-│   ├── Contact.tsx        (NEU - Formular + Infos)
-│   ├── Exhibitions.tsx    (Existiert)
-│   ├── LegalNotice.tsx    (Existiert)
-│   ├── StorePolicy.tsx    (Existiert)
-│   ├── Terms.tsx          (Existiert)
-│   ├── Privacy.tsx        (Existiert)
-│   └── NotFound.tsx       (Existiert)
-├── components/
-│   ├── Header.tsx         (Aktualisiert)
-│   ├── Footer.tsx         (Existiert)
-│   ├── ProjectCard.tsx    (Wiederverwendet)
-│   └── ui/                (Existiert)
-└── data/
-    ├── projects.ts        (Existiert)
-    └── exhibitions.ts     (Existiert)
+```typescript
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  materials: string[];
+  techniques: string[];
+  images: string[];
+  year: string;
+  month: string;  // NEU: "JAN", "FEB", etc.
+  externalLink?: string;
+}
 ```
 
-Alte Komponenten (About.tsx, Contact.tsx, ProjectGallery.tsx, Services.tsx) werden geloescht nachdem der Code in die neuen Seiten uebernommen wurde.
+---
+
+## Schriftart-Konfiguration
+
+```css
+/* Neu in index.css */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --font-display: 'Courier Prime', monospace;
+  --font-body: 'Courier Prime', monospace;
+}
+```
+
+Die monospace Schrift gibt der Website den redaktionellen/kuenstlerischen Charakter wie bei margreiterchoy.net.

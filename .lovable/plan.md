@@ -1,77 +1,206 @@
 
-# Services und Contact Vereinfachung
+# Seitenstruktur Umbauen: Teaser-Startseite + Separate Unterseiten
 
 ## Ueberblick
 
-Der Services-Bereich wird kompakter und weniger prominent gestaltet. Der Contact-Bereich bekommt eine direktere, weniger generische Ansprache.
+Die Website wird umstrukturiert: Die Startseite zeigt nur kurze Teaser/Uebersichten, die zu separaten Seiten verlinken. Dies entspricht dem Leibal-Ansatz und typischen Magazin-Layouts.
 
 ---
 
-## 1. Services-Bereich: Kompakter und weniger im Fokus
+## Neue Seitenstruktur
 
-### Aktuelles Problem
-- Jeder Service hat eine eigene Zeile mit Nummer, Titel und Beschreibung
-- Nimmt viel Platz ein (5 Services mit je ~3 Zeilen)
-- Die Nummerierung (01, 02...) und der grosse Header wirken zu formal
-
-### Neue Struktur
-
-**Option A: Horizontale Auflistung**
 ```
-Services
-
-Product Design · Space Planning · Construction · Visualization · Realization
+/                  → Startseite (Teaser fuer Projects, About, Contact)
+/projects          → Alle Projekte (vollstaendige Galerie)
+/project/:id       → Projekt-Detailseite (existiert bereits)
+/about             → About-Seite (ausfuehrlich)
+/contact           → Kontakt-Seite (mit Formular)
+/exhibitions       → Ausstellungen & Presse (existiert bereits)
+/legal-notice      → Impressum (existiert bereits)
+/store-policy      → (existiert bereits)
+/terms             → (existiert bereits)
+/privacy           → (existiert bereits)
 ```
-
-**Option B: Kompakte Liste mit kurzer Beschreibung**
-```
-Services
-
-Product Design, Space Planning, Construction,
-Visualization, Realization
-
-From concept to finished product.
-```
-
-**Option C: Einzeilig im Footer-Stil**
-Die Services koennten auch ganz aus der Hauptseite verschwinden und nur auf einer separaten About/Services-Seite erscheinen oder im Footer erwaehnt werden.
-
-### Empfehlung: Option B
-- Services als Komma-getrennte Liste (wie Material Expertise im About)
-- Ein kurzer Satz darunter der alles zusammenfasst
-- Kein grosser Header-Satz wie "End-to-end design and fabrication services"
-- Weniger vertikaler Platz
 
 ---
 
-## 2. Contact-Bereich: Weniger generisch
+## 1. Startseite (Index) - Nur Teaser
 
-### Aktuelles Problem
-- "Let's create something extraordinary together" ist ein typischer Marketing-Satz
-- Wirkt unpersoenlich und austauschbar
+Die Startseite wird radikal vereinfacht zu einer Uebersicht mit drei Sektionen:
 
-### Neue Ansprache
-
-**Optionen fuer Header:**
-- Komplett entfernen (nur "Contact" als Titel)
-- Direkter/persoenlicher: "Get in touch" oder "Say hello"
-- Oder ganz ohne Untertitel - einfach das Formular
-
-### Empfehlung: Minimalistisch ohne Slogan
 ```
-Contact
-
-[Formular links]          Email
-                          mail@projectclim.com
-                          
-                          Instagram
-                          @projectclim
-                          
-                          Based in
-                          Hildesheim, Germany
+┌─────────────────────────────────────────────────────────────┐
+│  PROJECT CLIM                      Projects  About  Contact │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Projects                                                    │
+│                                                              │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
+│  │ Bild 1  │  │ Bild 2  │  │ Bild 3  │  │ Bild 4  │         │
+│  │         │  │         │  │         │  │         │         │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘         │
+│  Projekt 1    Projekt 2    Projekt 3    Projekt 4           │
+│                                                              │
+│  View all projects →                                        │
+│                                                              │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  About                                                       │
+│                                                              │
+│  Bridging traditional craftsmanship with modern technology  │
+│                                                              │
+│  Learn more →                                               │
+│                                                              │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  Contact                                                     │
+│                                                              │
+│  mail@projectclim.com                                       │
+│  Hildesheim, Germany                                        │
+│                                                              │
+│  Get in touch →                                             │
+│                                                              │
+│  FOOTER                                                     │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-Der grosse generische Satz faellt komplett weg. Der Bereich ist direkter und schlichter.
+### Inhalt der Teaser:
+- **Projects**: 4-6 Projekte im Grid, Link zu "/projects"
+- **About**: Headline + kurzer Satz, Link zu "/about"
+- **Contact**: Email + Standort, Link zu "/contact"
+
+---
+
+## 2. Neue Seite: Projects (/projects)
+
+Zeigt alle Projekte in der vollstaendigen Galerie (wie aktuell auf der Startseite).
+
+### Layout:
+```
+┌─────────────────────────────────────────────────────────────┐
+│  PROJECT CLIM                      Projects  About  Contact │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Projects                                                    │
+│  Selected work from Project Clim                            │
+│                                                              │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐                      │
+│  │ Bild    │  │ Bild    │  │ Bild    │                      │
+│  │         │  │         │  │         │                      │
+│  └─────────┘  └─────────┘  └─────────┘                      │
+│  Projekt 1    Projekt 2    Projekt 3                        │
+│                                                              │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐                      │
+│  │ Bild    │  │ Bild    │  │ Bild    │                      │
+│  │         │  │         │  │         │                      │
+│  └─────────┘  └─────────┘  └─────────┘                      │
+│  Projekt 4    Projekt 5    Projekt 6                        │
+│                                                              │
+│  FOOTER                                                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. Neue Seite: About (/about)
+
+Ausfuehrliche About-Seite im Stil der Exhibitions-Seite.
+
+### Layout:
+```
+┌─────────────────────────────────────────────────────────────┐
+│  PROJECT CLIM                      Projects  About  Contact │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  About                                                       │
+│                                                              │
+│  Bridging traditional craftsmanship with modern technology  │
+│                                                              │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  I create objects and installations that explore the        │
+│  interplay between light, material, and form...             │
+│                                                              │
+│  [Weitere Absaetze]                                         │
+│                                                              │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  Material Expertise                                         │
+│                                                              │
+│  Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements│
+│                                                              │
+│  ─────────────────────────────────────────────────────────  │
+│                                                              │
+│  Services                                                   │
+│                                                              │
+│  Product Design, Space Planning, Construction,              │
+│  Visualization, Realization                                 │
+│                                                              │
+│  FOOTER                                                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+Services wird Teil der About-Seite (statt separate Komponente).
+
+---
+
+## 4. Neue Seite: Contact (/contact)
+
+Vollstaendige Kontakt-Seite mit Formular.
+
+### Layout:
+```
+┌─────────────────────────────────────────────────────────────┐
+│  PROJECT CLIM                      Projects  About  Contact │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Contact                                                     │
+│                                                              │
+│  ┌──────────────────────┐     Email                         │
+│  │ Name                 │     mail@projectclim.com          │
+│  │────────────────────│                                    │
+│  │ Email                │     Social                        │
+│  │────────────────────│     Instagram                      │
+│  │                      │                                   │
+│  │ Message              │     Based in                      │
+│  │                      │     Hildesheim, Germany           │
+│  │                      │                                   │
+│  │────────────────────│                                    │
+│  │ Send Message →       │                                   │
+│  └──────────────────────┘                                   │
+│                                                              │
+│  FOOTER                                                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 5. ProjectDetail - Zurueck-Link hinzufuegen
+
+Auf der Projekt-Detailseite wird ein "← All Projects" Link hinzugefuegt.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  PROJECT CLIM                      Projects  About  Contact │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ← All Projects                                             │
+│                                                              │
+│  [Rest der Projektseite...]                                 │
+```
+
+---
+
+## 6. Navigation (Header) aktualisieren
+
+Die Navigation wird angepasst:
+
+```
+Aktuell:   About (Anker)  |  Exhibitions  |  Contact (Anker)
+Neu:       Projects       |  About        |  Contact
+```
+
+Exhibitions bleibt als separater Link im Footer oder wird optional in der Navigation behalten.
 
 ---
 
@@ -79,53 +208,81 @@ Der grosse generische Satz faellt komplett weg. Der Bereich ist direkter und sch
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/components/Services.tsx` | Kompaktere Liste ohne Nummern und Einzelbeschreibungen |
-| `src/components/Contact.tsx` | Generischen Header-Satz entfernen |
+| `src/pages/Index.tsx` | Komplett neu: Nur Teaser-Sektionen mit Links |
+| `src/pages/Projects.tsx` | NEU: Vollstaendige Projekt-Galerie |
+| `src/pages/About.tsx` | NEU: About + Services kombiniert |
+| `src/pages/Contact.tsx` | NEU: Kontaktformular + Infos |
+| `src/pages/ProjectDetail.tsx` | "← All Projects" Link hinzufuegen |
+| `src/components/Header.tsx` | Navigation: Projects, About, Contact als Links |
+| `src/App.tsx` | Neue Routen: /projects, /about, /contact |
+| `src/components/About.tsx` | Kann geloescht oder wiederverwendet werden |
+| `src/components/Contact.tsx` | Kann geloescht oder wiederverwendet werden |
+| `src/components/ProjectGallery.tsx` | Kann geloescht oder wiederverwendet werden |
+| `src/components/Services.tsx` | Wird in About-Seite integriert, dann loeschen |
 
 ---
 
 ## Vorher/Nachher
 
-### Services
+### Navigation
 
 **Vorher:**
 ```
-Services
-
-End-to-end design and fabrication services
-
-01  Product Design
-    From concept to detailed design...
-
-02  Space Planning
-    Thoughtful spatial solutions...
-
-[... 5 Eintraege]
+About (Anker zu #about)  |  Exhibitions  |  Contact (Anker zu #contact)
 ```
 
 **Nachher:**
 ```
-Services
-
-Product Design, Space Planning, Construction,
-Visualization, Realization
+Projects (/projects)  |  About (/about)  |  Contact (/contact)
 ```
 
-### Contact
+### Startseite
 
 **Vorher:**
-```
-Contact
-
-Let's create something extraordinary together
-
-[Formular]                [Kontaktdaten]
-```
+- Vollstaendige Projekt-Galerie
+- Vollstaendiger About-Bereich
+- Vollstaendiger Services-Bereich
+- Vollstaendiger Contact-Bereich
 
 **Nachher:**
-```
-Contact
+- 4-6 Projekte als Teaser + "View all projects →"
+- 1 Satz About + "Learn more →"
+- Email + Standort + "Get in touch →"
 
-[Formular]                [Kontaktdaten]
+### Projekt-Detailseite
+
+**Vorher:**
+- Kein Zurueck-Link
+
+**Nachher:**
+- "← All Projects" Link oben links
+
+---
+
+## Dateistruktur nach Umbau
+
+```
+src/
+├── pages/
+│   ├── Index.tsx          (Teaser-Startseite)
+│   ├── Projects.tsx       (NEU - Alle Projekte)
+│   ├── ProjectDetail.tsx  (Existiert - mit Zurueck-Link)
+│   ├── About.tsx          (NEU - Ausfuehrlich + Services)
+│   ├── Contact.tsx        (NEU - Formular + Infos)
+│   ├── Exhibitions.tsx    (Existiert)
+│   ├── LegalNotice.tsx    (Existiert)
+│   ├── StorePolicy.tsx    (Existiert)
+│   ├── Terms.tsx          (Existiert)
+│   ├── Privacy.tsx        (Existiert)
+│   └── NotFound.tsx       (Existiert)
+├── components/
+│   ├── Header.tsx         (Aktualisiert)
+│   ├── Footer.tsx         (Existiert)
+│   ├── ProjectCard.tsx    (Wiederverwendet)
+│   └── ui/                (Existiert)
+└── data/
+    ├── projects.ts        (Existiert)
+    └── exhibitions.ts     (Existiert)
 ```
 
+Alte Komponenten (About.tsx, Contact.tsx, ProjectGallery.tsx, Services.tsx) werden geloescht nachdem der Code in die neuen Seiten uebernommen wurde.

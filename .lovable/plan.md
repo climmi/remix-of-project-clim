@@ -1,86 +1,89 @@
 
+# Fixes und Unsplash Bilder hinzufuegen
 
-# Drag-to-Browse Bildergalerie + Redesign
+## Problembehebung
 
-Das Redesign umfasst zwei Hauptbereiche: Die visuelle Überarbeitung (heller, organischer) und die neue Drag-Interaktion für Projektbilder.
+### 1. Projekt-Grid Ueberlappung beheben
+Das Problem liegt bei `auto-rows-[200px]` und `md:row-span-2` bei grossen Cards.
 
----
+**Loesung:**
+- `auto-rows-[...]` entfernen - stattdessen flexible Hoehen nutzen
+- `row-span-2` bei "large" entfernen (verursacht Ueberlappungen)
+- `max-w-7xl` hinzufuegen fuer breite Bildschirme
+- Groessere Gaps zwischen Projekten
 
-## Drag-to-Browse Interaktion
+### 2. About-Bereich vereinfachen
+- Material Expertise: Boxen mit Hover-Effekten entfernen
+- Stattdessen: Einfacher Fliesstext mit Kommas getrennt
+- Keine Animationen auf einzelnen Materialien
 
-**Wie es funktioniert:**
-- Maus gedrückt halten auf einem Projekt-Bild
-- Nach links/rechts ziehen wechselt durch die Projektbilder
-- Loslassen bleibt auf dem aktuellen Bild
-- Klick (ohne Ziehen) öffnet das Projekt-Modal
+### 3. Services-Bereich kuenstlerischer gestalten
+- Icons komplett entfernen
+- Keine Karten/Boxen
+- Schlichte nummerierte Liste (01, 02, 03...)
+- Minimaler Textstil ohne Hover-Effekte
 
-**Technische Umsetzung:**
-- `onMouseDown` startet den Drag-Modus und speichert die Start-X-Position
-- `onMouseMove` berechnet die Distanz und wechselt Bilder bei Schwellenwert (z.B. 50px)
-- `onMouseUp` beendet den Drag-Modus
-- Unterscheidung zwischen Klick und Drag durch Bewegungsdistanz
-- Touch-Support für Mobile (`onTouchStart`, `onTouchMove`, `onTouchEnd`)
-
-**Visuelles Feedback:**
-- Kleiner Bildindex-Indikator (z.B. "2/5") erscheint beim Draggen
-- Cursor ändert sich zu `grab`/`grabbing`
-- Sanfte Bild-Überblendung beim Wechsel
-
----
-
-## Visuelles Redesign (wie besprochen)
-
-**Farbpalette:**
-- Hintergrund: Cremeweiß (#FAFAFA)
-- Text: Fast-Schwarz (#1A1A1A)
-- Lichteffekt: Warmes Weiß/Gelblich-Orange
-
-**Layout:**
-- Header minimal: "PROJECT CLIM" links oben
-- Projekte sofort sichtbar
-- Asymmetrisches Masonry-Grid
-- Unterschiedliche Bildgrößen
-
-**Lichteffekt:**
-- Nur warme Farben (weiß bis orange)
-- Sehr dezent und subtil
+### 4. Kontakt-Bereich vereinfachen
+- Icons bei Email/Social entfernen
+- Weniger gestylte Inputs (schlichter, ohne Border-Focus-Effekte)
+- Button schlichter
+- Mehr Weissraum
 
 ---
 
-## Dateien die geändert werden
+## Unsplash Bilder hinzufuegen
 
-| Datei | Änderung |
+Jedes Projekt bekommt 3-4 hochwertige Bilder von Unsplash damit die Drag-to-Browse Funktion sichtbar wird.
+
+**Bildthemen passend zu den Projekten:**
+- Prismatic Lens Table: Holz, Glas, Lichtbrechung
+- Spectrum Wall Light: Licht, Prismen, Wandinstallationen
+- Reflection Console: Minimalistisches Moebel, Spiegel, Marmor
+- Kinetic Light Sculpture: Skulpturen, Schatten, Bewegung
+- Chromatic Vessel: Glaskunst, Vasen, Farben
+- Shadow Clock: Uhren, Bronze, abstrakte Objekte
+
+---
+
+## Technische Aenderungen
+
+| Datei | Aenderung |
 |-------|----------|
-| `src/index.css` | Neue helle Farbvariablen, warme Akzentfarben |
-| `src/components/CausticsBackground.tsx` | Warme Farben, dezenterer Effekt |
-| `src/components/ProjectCard.tsx` | Drag-to-Browse Logik, neues visuelles Design |
-| `src/components/ProjectGallery.tsx` | Masonry-Layout, Header integrieren |
-| `src/components/Header.tsx` | Neu: Minimaler Header |
-| `src/components/Hero.tsx` | Entfernen oder stark reduzieren |
-| `src/pages/Index.tsx` | Neue Struktur ohne Hero |
+| `src/data/projects.ts` | Unsplash URLs fuer alle Projekte (3-4 pro Projekt) |
+| `src/components/ProjectGallery.tsx` | Grid-Fix: max-w-7xl, flexible Hoehen, groessere Gaps |
+| `src/components/ProjectCard.tsx` | row-span entfernen, einfachere Aspect-Ratios |
+| `src/components/About.tsx` | Material-Liste als Komma-getrennter Text |
+| `src/components/Services.tsx` | Nummerierte Liste ohne Icons/Karten |
+| `src/components/Contact.tsx` | Weniger Styling, keine Icons |
 
 ---
 
-## Technische Details: Drag-to-Browse
+## Vorher/Nachher
 
-```text
-┌─────────────────────────────────────────┐
-│  ProjectCard                             │
-│                                          │
-│  State:                                  │
-│  - currentImageIndex: number             │
-│  - isDragging: boolean                   │
-│  - startX: number                        │
-│  - hasMoved: boolean                     │
-│                                          │
-│  Events:                                 │
-│  - onMouseDown → Start drag tracking     │
-│  - onMouseMove → Calculate delta,        │
-│                  switch image if > 50px  │
-│  - onMouseUp   → If hasMoved: prevent    │
-│                  click, else: open modal │
-└─────────────────────────────────────────┘
+**About - Material Expertise:**
+```
+Vorher: [Wood] [Metal] [Glass] (Boxen mit Hover)
+Nachher: Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements
 ```
 
-**Wichtig:** Die Unterscheidung zwischen Klick und Drag erfolgt durch `hasMoved`. Nur wenn die Maus mehr als 5px bewegt wurde, gilt es als Drag und das Modal öffnet sich nicht.
+**Services:**
+```
+Vorher: 
+┌─────────────┐ ┌─────────────┐
+│ 🧭 Product  │ │ 📦 Space    │
+│   Design    │ │   Planning  │
+└─────────────┘ └─────────────┘
 
+Nachher:
+01  Product Design
+    From concept to detailed design...
+
+02  Space Planning
+    Thoughtful spatial solutions...
+```
+
+**Contact:**
+```
+Vorher: 📧 mail@projectclim.com
+Nachher: mail@projectclim.com (nur Text-Link)
+```

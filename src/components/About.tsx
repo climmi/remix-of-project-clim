@@ -1,14 +1,5 @@
 import { motion } from 'framer-motion';
 
-const expertise = [
-  'Wood',
-  'Metal',
-  'Glass',
-  'Plastics',
-  '3D Printing',
-  'Optical Elements',
-];
-
 const About = () => {
   return (
     <section id="about" className="section-container bg-secondary/30">
@@ -54,23 +45,12 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-display">
+            <h3 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-display">
               Material Expertise
             </h3>
-            <div className="flex flex-wrap gap-3">
-              {expertise.map((material, index) => (
-                <motion.span
-                  key={material}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                  className="px-4 py-2 bg-card border border-border text-foreground text-sm font-display hover:border-accent hover:text-accent transition-colors duration-300"
-                >
-                  {material}
-                </motion.span>
-              ))}
-            </div>
+            <p className="text-foreground leading-relaxed">
+              Wood, Metal, Glass, Plastics, 3D Printing, Optical Elements
+            </p>
           </motion.div>
         </div>
       </div>

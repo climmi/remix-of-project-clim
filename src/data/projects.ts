@@ -18,7 +18,11 @@ export const projects: Project[] = [
     category: 'Furniture',
     materials: ['Oak wood', 'Optical glass', 'Brass'],
     techniques: ['CNC milling', 'Hand finishing', 'Glass cutting'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80',
+      'https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=800&q=80',
+    ],
     year: '2024',
   },
   {
@@ -28,7 +32,12 @@ export const projects: Project[] = [
     category: 'Lighting',
     materials: ['Aluminum', 'Prism glass', 'LED'],
     techniques: ['3D printing', 'Anodizing', 'Optical alignment'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80',
+      'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
+      'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80',
+      'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800&q=80',
+    ],
     year: '2024',
   },
   {
@@ -38,7 +47,11 @@ export const projects: Project[] = [
     category: 'Furniture',
     materials: ['Stainless steel', 'Black marble'],
     techniques: ['Laser cutting', 'Mirror polishing', 'Stone work'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80',
+      'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&q=80',
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80',
+    ],
     year: '2023',
   },
   {
@@ -48,7 +61,12 @@ export const projects: Project[] = [
     category: 'Art Installation',
     materials: ['Titanium', 'Carbon fiber'],
     techniques: ['Precision machining', 'Balance engineering'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&q=80',
+      'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=800&q=80',
+      'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    ],
     year: '2023',
   },
   {
@@ -58,7 +76,11 @@ export const projects: Project[] = [
     category: 'Objects',
     materials: ['Borosilicate glass', 'Dichroic coating'],
     techniques: ['Glass blowing', 'Kiln forming', 'Coating application'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=800&q=80',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80',
+      'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=800&q=80',
+    ],
     year: '2023',
   },
   {
@@ -68,7 +90,12 @@ export const projects: Project[] = [
     category: 'Objects',
     materials: ['Bronze', 'Frosted acrylic'],
     techniques: ['Lost wax casting', 'CNC routing'],
-    images: ['/placeholder.svg'],
+    images: [
+      'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=800&q=80',
+      'https://images.unsplash.com/photo-1415604934674-561df9abf539?w=800&q=80',
+      'https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&q=80',
+      'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=800&q=80',
+    ],
     year: '2022',
   },
 ];

@@ -5,11 +5,10 @@ import { Project } from '@/data/projects';
 interface ProjectCardProps {
   project: Project;
   index: number;
-  size?: 'small' | 'medium' | 'large';
   onClick: () => void;
 }
 
-const ProjectCard = ({ project, index, size = 'medium', onClick }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [showIndicator, setShowIndicator] = useState(false);
@@ -20,8 +19,8 @@ const ProjectCard = ({ project, index, size = 'medium', onClick }: ProjectCardPr
   const hasMovedRef = useRef(false);
 
   const imageCount = project.images.length;
-  const DRAG_THRESHOLD = 5; // pixels to distinguish click from drag
-  const IMAGE_SWITCH_DISTANCE = 50; // pixels to switch image
+  const DRAG_THRESHOLD = 5;
+  const IMAGE_SWITCH_DISTANCE = 50;
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     setIsDragging(true);
@@ -106,13 +105,6 @@ const ProjectCard = ({ project, index, size = 'medium', onClick }: ProjectCardPr
     setShowIndicator(false);
   }, [onClick]);
 
-  // Size classes for masonry effect
-  const sizeClasses = {
-    small: 'aspect-square',
-    medium: 'aspect-[4/5]',
-    large: 'aspect-[3/4] md:row-span-2',
-  };
-
   return (
     <motion.article
       ref={containerRef}
@@ -127,7 +119,7 @@ const ProjectCard = ({ project, index, size = 'medium', onClick }: ProjectCardPr
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className={`project-card group ${sizeClasses[size]} bg-muted cursor-grab active:cursor-grabbing select-none`}
+      className="project-card group aspect-[4/5] bg-muted cursor-grab active:cursor-grabbing select-none"
     >
       <div className="relative h-full w-full overflow-hidden">
         {/* Project image */}
@@ -161,7 +153,7 @@ const ProjectCard = ({ project, index, size = 'medium', onClick }: ProjectCardPr
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="absolute top-3 right-3 px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs font-display text-foreground"
+            className="absolute top-3 right-3 px-2 py-1 bg-background/80 backdrop-blur-sm text-xs font-display text-foreground"
           >
             {currentImageIndex + 1}/{imageCount}
           </motion.div>

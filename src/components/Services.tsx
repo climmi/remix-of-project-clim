@@ -1,29 +1,28 @@
 import { motion } from 'framer-motion';
-import { Compass, Box, Eye, Wrench, Lightbulb } from 'lucide-react';
 
 const services = [
   {
-    icon: Compass,
+    number: '01',
     title: 'Product Design',
     description: 'From concept to detailed design, creating unique objects that merge aesthetics with functionality.',
   },
   {
-    icon: Box,
+    number: '02',
     title: 'Space Planning',
     description: 'Thoughtful spatial solutions that enhance how light and materials interact within environments.',
   },
   {
-    icon: Lightbulb,
+    number: '03',
     title: 'Construction',
     description: 'Technical drawings and specifications ready for manufacturing and implementation.',
   },
   {
-    icon: Eye,
+    number: '04',
     title: 'Visualization',
     description: 'Photorealistic 3D renderings and animations that bring concepts to life before production.',
   },
   {
-    icon: Wrench,
+    number: '05',
     title: 'Realization',
     description: 'Complete project execution from prototype development to final production and installation.',
   },
@@ -47,23 +46,27 @@ const Services = () => {
         </p>
       </motion.div>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-3xl space-y-12">
         {services.map((service, index) => (
           <motion.div
-            key={service.title}
+            key={service.number}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group p-8 bg-card border border-border hover:border-muted-foreground/30 transition-all duration-300"
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="grid grid-cols-[auto_1fr] gap-6 md:gap-8"
           >
-            <service.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors duration-300 mb-6" />
-            <h3 className="text-xl font-display font-semibold text-foreground mb-3">
-              {service.title}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {service.description}
-            </p>
+            <span className="text-sm text-muted-foreground font-display pt-1">
+              {service.number}
+            </span>
+            <div>
+              <h3 className="text-lg md:text-xl font-display font-medium text-foreground mb-2">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>

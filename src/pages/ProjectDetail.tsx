@@ -24,6 +24,24 @@ const ProjectDetail = () => {
       <Header />
       
       <main className="pt-24 md:pt-32 pb-24">
+        {/* Back Link */}
+        <div className="px-6 md:px-12 lg:px-24 mb-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Link 
+                to="/projects" 
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                ← All Projects
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+        
         {/* Hero Section - Leibal Style */}
         <section className="px-6 md:px-12 lg:px-24 mb-16 md:mb-24">
           <div className="max-w-7xl mx-auto">

@@ -7,6 +7,7 @@ export interface Project {
   techniques: string[];
   images: string[];
   year: string;
+  month: string;
   externalLink?: string;
 }
 
@@ -24,6 +25,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=800&q=80',
     ],
     year: '2024',
+    month: 'JAN',
   },
   {
     id: 'project-2',
@@ -33,12 +35,13 @@ export const projects: Project[] = [
     materials: ['Aluminum', 'Prism glass', 'LED'],
     techniques: ['3D printing', 'Anodizing', 'Optical alignment'],
     images: [
-      'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80',
+      'https://images.unsplash.com/photo-507473885765-e6ed057f782c?w=800&q=80',
       'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
       'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80',
       'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800&q=80',
     ],
     year: '2024',
+    month: 'MAR',
   },
   {
     id: 'project-3',
@@ -53,6 +56,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80',
     ],
     year: '2023',
+    month: 'SEP',
   },
   {
     id: 'project-4',
@@ -68,6 +72,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     ],
     year: '2023',
+    month: 'JUN',
   },
   {
     id: 'project-5',
@@ -82,6 +87,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=800&q=80',
     ],
     year: '2023',
+    month: 'APR',
   },
   {
     id: 'project-6',
@@ -97,6 +103,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=800&q=80',
     ],
     year: '2022',
+    month: 'NOV',
   },
   {
     id: 'project-7',
@@ -111,6 +118,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80',
     ],
     year: '2022',
+    month: 'AUG',
   },
   {
     id: 'project-8',
@@ -125,6 +133,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800&q=80',
     ],
     year: '2022',
+    month: 'MAY',
   },
   {
     id: 'project-9',
@@ -139,5 +148,6 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&q=80',
     ],
     year: '2021',
+    month: 'DEC',
   },
 ];

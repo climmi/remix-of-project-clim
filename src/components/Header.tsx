@@ -24,25 +24,19 @@ const Header = () => {
       >
         <Link 
           to="/projects" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+          className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
         >
           PROJECTS
         </Link>
         <Link 
-          to="/exhibitions" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
-        >
-          EXHIBITIONS
-        </Link>
-        <Link 
           to="/about" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+          className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
         >
           ABOUT
         </Link>
         <Link 
           to="/contact" 
-          className="font-body text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+          className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
         >
           CONTACT
         </Link>

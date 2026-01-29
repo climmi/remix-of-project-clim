@@ -1,121 +1,86 @@
 
 
-# Portfolio Website für Produktdesigner & Künstler
+# Drag-to-Browse Bildergalerie + Redesign
 
-Eine elegante, dunkle Portfolio-Seite mit interaktiven Lichteffekten, die deine einzigartige Arbeit mit Materialien und optischen Lichtbrechungen widerspiegelt.
-
----
-
-## 🎨 Visuelles Konzept
-
-**Dark Mode Design** mit dramatischem Kontrast – dunkler Hintergrund lässt Projektbilder und Lichteffekte brillant hervorstechen
-
-**Interaktive Caustics-Effekte** – Subtile, auf Mausbewegung reagierende Lichtbrechungen im Hintergrund, die an deine Arbeit mit optischen Linsen erinnern
-
-**Typografie** – Modern, clean, mit viel Weißraum für ein hochwertiges Erscheinungsbild
+Das Redesign umfasst zwei Hauptbereiche: Die visuelle Überarbeitung (heller, organischer) und die neue Drag-Interaktion für Projektbilder.
 
 ---
 
-## 📄 Seitenstruktur
+## Drag-to-Browse Interaktion
 
-### Hero-Bereich
-- Tagline: **PROJECT CLIM** (Großbuchstaben, prominent)
-- Untertitel als Produktdesigner & Künstler
-- Animierter Caustics-Lichteffekt im Hintergrund der auf Mausbewegung reagiert
-- Smooth Scroll-Hinweis nach unten
+**Wie es funktioniert:**
+- Maus gedrückt halten auf einem Projekt-Bild
+- Nach links/rechts ziehen wechselt durch die Projektbilder
+- Loslassen bleibt auf dem aktuellen Bild
+- Klick (ohne Ziehen) öffnet das Projekt-Modal
 
-### Projekt-Galerie (Hauptbereich)
-- **Grid-Layout** mit 5-10 Projekten (Platzhalter zum späteren Befüllen)
-- Hover-Effekt: Subtiler Lichtreflex der über die Projektbilder wandert
-- **Klick → Modal-Popup** mit:
-  - Größere Bildergalerie
-  - Projektbeschreibung
-  - Verwendete Materialien/Techniken
-  - Optionale externe Links
+**Technische Umsetzung:**
+- `onMouseDown` startet den Drag-Modus und speichert die Start-X-Position
+- `onMouseMove` berechnet die Distanz und wechselt Bilder bei Schwellenwert (z.B. 50px)
+- `onMouseUp` beendet den Drag-Modus
+- Unterscheidung zwischen Klick und Drag durch Bewegungsdistanz
+- Touch-Support für Mobile (`onTouchStart`, `onTouchMove`, `onTouchEnd`)
 
-### Über mich
-- Kurzporträt deiner Arbeitsweise
-- Philosophie: Moderne Techniken × traditionelles Handwerk
-- Auflistung deiner Materialexpertise (Holz, Metall, Glas, Kunststoff, 3D-Druck)
-
-### Services
-- Übersicht deiner Leistungen (Produktdesign, Raumplanung, Konstruktion, Visualisierung, Umsetzung)
-- Klar strukturiert mit Icons
-
-### Kontakt
-- Kontaktformular (Name, E-Mail, Nachricht)
-- E-Mail: mail@projectclim.com
-- Social Media Links
+**Visuelles Feedback:**
+- Kleiner Bildindex-Indikator (z.B. "2/5") erscheint beim Draggen
+- Cursor ändert sich zu `grab`/`grabbing`
+- Sanfte Bild-Überblendung beim Wechsel
 
 ---
 
-## ⚖️ Rechtliche Seiten (DSGVO-konform)
+## Visuelles Redesign (wie besprochen)
 
-### Impressum (§5 TMG)
+**Farbpalette:**
+- Hintergrund: Cremeweiß (#FAFAFA)
+- Text: Fast-Schwarz (#1A1A1A)
+- Lichteffekt: Warmes Weiß/Gelblich-Orange
+
+**Layout:**
+- Header minimal: "PROJECT CLIM" links oben
+- Projekte sofort sichtbar
+- Asymmetrisches Masonry-Grid
+- Unterschiedliche Bildgrößen
+
+**Lichteffekt:**
+- Nur warme Farben (weiß bis orange)
+- Sehr dezent und subtil
+
+---
+
+## Dateien die geändert werden
+
+| Datei | Änderung |
+|-------|----------|
+| `src/index.css` | Neue helle Farbvariablen, warme Akzentfarben |
+| `src/components/CausticsBackground.tsx` | Warme Farben, dezenterer Effekt |
+| `src/components/ProjectCard.tsx` | Drag-to-Browse Logik, neues visuelles Design |
+| `src/components/ProjectGallery.tsx` | Masonry-Layout, Header integrieren |
+| `src/components/Header.tsx` | Neu: Minimaler Header |
+| `src/components/Hero.tsx` | Entfernen oder stark reduzieren |
+| `src/pages/Index.tsx` | Neue Struktur ohne Hero |
+
+---
+
+## Technische Details: Drag-to-Browse
+
+```text
+┌─────────────────────────────────────────┐
+│  ProjectCard                             │
+│                                          │
+│  State:                                  │
+│  - currentImageIndex: number             │
+│  - isDragging: boolean                   │
+│  - startX: number                        │
+│  - hasMoved: boolean                     │
+│                                          │
+│  Events:                                 │
+│  - onMouseDown → Start drag tracking     │
+│  - onMouseMove → Calculate delta,        │
+│                  switch image if > 50px  │
+│  - onMouseUp   → If hasMoved: prevent    │
+│                  click, else: open modal │
+└─────────────────────────────────────────┘
 ```
-Clim Michel
-Hottelner Weg 52
-31137 Hildesheim
-Germany
 
-E-Mail: mail@projectclim.com
-```
-
-### Store Policy / Shop-Richtlinien
-Angepasst für Unikate/Made-to-Order Produkte UND Dienstleistungen:
-
-**Produkte (Made-to-Order)**
-- **Produktionszeit** – Hinweis auf individuelle Fertigungszeiten (da Unikate)
-- **Farbabweichungen** – Hinweis dass digitale Darstellungen vom Original abweichen können
-- **Versand** – Aktuell Deutschland, später EU/International erweiterbar
-- **Versicherung** – Empfehlung zur Schadenskontrolle bei Lieferung
-- **Rückgabe/Widerruf** – Bei Unikaten eingeschränkt (50% Erstattung abzgl. Material/Arbeitskosten)
-- **Reklamation** – Meldung von Schäden innerhalb von 3 Tagen
-
-**Dienstleistungen**
-- **Leistungsumfang** – Planung, Konstruktion, Visualisierung werden individuell vereinbart
-- **Angebote & Aufträge** – Leistungen basieren auf schriftlichen Angeboten
-- **Zahlungsbedingungen** – Banküberweisung, Zahlungsfristen
-
-**Allgemein**
-- **Zahlungsmethoden** – Banküberweisung
-- **Stornierung** – Regelung für Auftragsabbrüche
-- **Wholesale/Architekt-Anfragen** – Hinweis für Geschäftskunden
-
-### AGB (Terms & Conditions)
-- Allgemeine Nutzungsbedingungen der Website
-- Urheberrecht an Bildern und Inhalten
-- Haftungsausschluss für Informationsgenauigkeit
-- Nutzungsrechte und Einschränkungen
-
-### Datenschutzerklärung
-- Verantwortliche Stelle: Clim Michel mit Kontaktdaten
-- Kontaktformular: Erfasste Daten, Zweck, Rechtsgrundlage (Art. 6 Abs. 1 lit. b DSGVO)
-- Bestellungen/Aufträge: Datenverarbeitung für Vertragserfüllung
-- Social Media Links: Hinweis dass nur externe Verlinkung, kein Tracking
-- Betroffenenrechte: Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch
-- Hosting-Hinweis
-
-### Footer
-- Links zu Impressum, Store Policy, AGB & Datenschutz auf jeder Seite
-- © 2025 Clim Michel
-
----
-
-## ✨ Besondere Interaktionen
-
-1. **Caustics-Hintergrund** – Subtile, fließende Lichtmuster die der Maus folgen
-2. **Projekt-Hover** – Eleganter Lichtreflex-Effekt über den Bildern
-3. **Smooth Scroll** – Elegante Übergänge zwischen Sektionen
-4. **Modal-Animationen** – Projekte öffnen sich mit schöner Scale/Fade-Animation
-
----
-
-## 🌐 Technische Details
-
-- Hauptseite auf **Englisch**
-- Rechtliche Seiten auf **Englisch** (mit korrekten deutschen Rechtsbegriffen wo nötig)
-- **Statische Inhalte** – Projekte und rechtliche Texte direkt im Code
-- **Responsive Design** – Desktop, Tablet und Mobile optimiert
-- **Kein Tracking/Analytics** – daher kein Cookie-Banner nötig
+**Wichtig:** Die Unterscheidung zwischen Klick und Drag erfolgt durch `hasMoved`. Nur wenn die Maus mehr als 5px bewegt wurde, gilt es als Drag und das Modal öffnet sich nicht.
 

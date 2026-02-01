@@ -23,7 +23,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/remix-of-project-clim">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />

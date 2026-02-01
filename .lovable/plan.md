@@ -1,178 +1,120 @@
 
-# Vollstaendige Portfolio-Aktualisierung
+# Bild-Korrektur und Projekt-Reorganisation
 
-## Uebersicht der Aufgaben
+## Das Problem verstanden
 
-Vier Hauptbereiche werden bearbeitet:
+Die Bilder wurden falsch zugeordnet. Basierend auf deiner Beschreibung:
 
-1. Glasbaustein erstes Bild reparieren
-2. Glug Bilder 2-4 durch echte Projektbilder ersetzen
-3. About-Seite Layout fuer Jahreszahlen fixen
-4. Alle zusaetzlichen Projekte/Experimente aus dem Portfolio hinzufuegen
+### Aktuelle falsche Situation in "Custom Creations" (sonderanfertigungen-1 bis -5):
+| Bild | Zeigt aktuell | Soll zugeordnet werden zu |
+|------|---------------|---------------------------|
+| sonderanfertigungen-1.jpg | Glas-Metall Experiment | Glass-Metal Tile |
+| sonderanfertigungen-2.jpg | Grow Mushroom | Vogel Studio Collaborations |
+| sonderanfertigungen-3.jpg | Blender Workshop | NEUES Projekt: Blender Workshop |
+| sonderanfertigungen-4.jpg | FAST GOOD CHEAP | FAST GOOD CHEAP |
+| sonderanfertigungen-5.jpg | 3D Print Textil | 3D Print on Materials |
 
----
+### Die aktuellen Bilder bei den Experimenten sollen zu Vogel Studio:
+- grow-mushrooms-1.jpg
+- glas-metall-fliese-1.jpg
+- fast-good-cheap-1.jpg
+- ki-experiment-1.jpg
+- 3d-print-materials-1.jpg
 
-## 1. Glasbaustein erstes Bild reparieren
-
-Das Problem: `public/images/glasbaustein/glasbaustein-1.jpg` existiert zwar, zeigt aber nicht richtig an.
-
-Loesung: Neues Bild aus dem PDF extrahieren und ersetzen.
-
-Quelldatei aus PDF:
-```text
-parsed-documents://...Clim_Michel_Portfolio.../images/img_p36_1.jpg
-```
-(Seite 37 - Hauptbild Leuchte an der Wand)
-
-Dieses Bild wird als neues `glasbaustein-1.jpg` kopiert.
+Diese 5 + sonderanfertigungen-2.jpg = 6 Bilder fuer Vogel Studio Collaborations
 
 ---
 
-## 2. Glug Bilder ersetzen
+## Loesung
 
-Aktuelle Bilder die ersetzt werden muessen:
-- glug-2.jpg (Bild 2)
-- glug-3.png (Bild 3)  
-- glug-4.jpg (Bild 4)
+### Schritt 1: Vogel Studio Collaborations neu befuellen
 
-Neue Bilder aus dem PDF (Seiten 48-50):
-| Alt | Neu (aus PDF) | Beschreibung |
-|-----|---------------|--------------|
-| glug-2.jpg | img_p47_1.jpg (Seite 48) | Pop-Up Station Lastenrad |
-| glug-3.png | img_p49_1.jpg (Seite 50) | Marktsituation/Refill |
-| glug-4.jpg | img_p49_2.jpg (Seite 50) | Kampagne Detail |
-
----
-
-## 3. About-Seite Layout fixen
-
-### Problem
-Bei langen Firmennamen wie "Cluster Projekte GmbH & Freie Werkstatt Hildesheim gGmbH" bricht die Jahreszahl in eine neue Zeile um.
-
-### Loesung
-Das Layout der Work Experience Eintraege anpassen:
+Die Bilder fuer Vogel Studio werden aus den aktuellen Experiment-Ordnern zusammengestellt:
 
 ```text
-VORHER:
-┌─────────────────────────────────────────────────────────────────────┐
-│ Workshop Manager — Cluster Projekte GmbH & Freie Werkstatt...       │
-│                                                        2023–2025    │
-└─────────────────────────────────────────────────────────────────────┘
-
-NACHHER:
-┌─────────────────────────────────────────────────────────────────────┐
-│ Workshop Manager, Construction & Visual Artist         2023–2025    │
-│ Cluster Projekte GmbH & Freie Werkstatt Hildesheim gGmbH            │
-└─────────────────────────────────────────────────────────────────────┘
+vogel-studio-1.jpg <- grow-mushrooms-1.jpg (aktuell)
+vogel-studio-2.jpg <- glas-metall-fliese-1.jpg (aktuell)
+vogel-studio-3.jpg <- fast-good-cheap-1.jpg (aktuell)
+vogel-studio-4.jpg <- ki-experiment-1.jpg (aktuell)
+vogel-studio-5.jpg <- 3d-print-materials-1.jpg (aktuell)
+vogel-studio-6.jpg <- sonderanfertigungen-2.jpg
 ```
 
-Aenderungen in About.tsx:
-- Titel und Jahr in einer Zeile (flex mit justify-between)
-- Firmenname als separate Zeile darunter (kleinere Schrift, gedaempfte Farbe)
-- Gleiche Anpassung fuer alle Experience-Sektionen
+### Schritt 2: Experiment-Bilder mit richtigen Bildern ersetzen
+
+| Projekt | Neues Bild (aus sonderanfertigungen) |
+|---------|-------------------------------------|
+| Glass-Metal Tile | sonderanfertigungen-1.jpg |
+| FAST GOOD CHEAP | sonderanfertigungen-4.jpg |
+| 3D Print on Materials | sonderanfertigungen-5.jpg |
+
+### Schritt 3: Neues Projekt "Blender Workshop" erstellen
+
+Mit dem Bild sonderanfertigungen-3.jpg (Workshop-Rendering)
+
+### Schritt 4: Custom Creations (Sonderanfertigungen) loeschen
+
+Da alle Bilder aus diesem Ordner anderen Projekten zugeordnet werden, wird dieses Projekt entfernt. Falls es echte "Custom Creations" Bilder im Portfolio gibt, muessen diese separat extrahiert werden.
+
+### Schritt 5: Einzelne Experimente entfernen
+
+Da Grow Mushrooms, Glass-Metal Tile, FAST GOOD CHEAP, AI & AI und 3D Print on Materials jetzt unter Vogel Studio Collaborations zusammengefasst sind, werden diese als eigenstaendige Projekte entfernt.
 
 ---
 
-## 4. Zusaetzliche Projekte/Experimente hinzufuegen
+## Finale Projektstruktur
 
-Aus dem PDF wurden folgende weitere Projekte/Experimente identifiziert die noch nicht auf der Website sind:
+Nach der Umsetzung:
 
-### Neue Projekte aus Seite 9-10 (Selbstaendigkeit/Experimente)
-
-| ID | Titel | Kategorie | Beschreibung |
-|----|-------|-----------|--------------|
-| sonderanfertigungen | Sonderanfertigungen | Custom Design | Messing, Glas, Aluminium - individuelle Designobjekte |
-| grow-mushrooms | Grow Mushrooms | Experiment | Bio-Algorithmen und Keramik-3D-Druck |
-| glas-metall-fliese | Glass-Metal Tile | Experiment | Glas und Metall verschmolzen zu einer Fliese |
-| fast-good-cheap | Fast Good Cheap | Interactive Object | Interaktives Objekt - Spielerisches Design |
-| ki-experiment | KI & KI | Experiment | Bild und Code von KI - AI-generierte Kunst |
-| 3d-print-materials | 3D Print on Materials | Experiment | 3D-Druck auf verschiedenen Materialien |
-
-### Bilder fuer neue Projekte
-
-Die Bilder kommen aus Seite 9-10 des PDFs:
-- `img_p8_1.jpg` bis `img_p8_6.jpg` (Seite 9 - Experimente)
-- `img_p9_1.jpg` bis `img_p9_5.jpg` (Seite 10 - Sonderanfertigungen)
+| Projekt | Bilder | Kategorie |
+|---------|--------|-----------|
+| Glug | 4 | Social Design |
+| Glasbaustein | 5 | Lighting |
+| AtoBe | 4 | Mobility Concept |
+| ORU | 5 | Lighting |
+| L-Ement | 5 | Furniture |
+| Infrared Thermometer | 5 | Product Design |
+| Vogel Studio Collaborations | 6 | Collaboration |
+| Blender Workshop | 1+ | Workshop |
 
 ---
 
-## Technische Umsetzung
+## Technische Aenderungen
 
-### Dateiaenderungen
+### Dateien die geaendert werden
 
 | Datei | Aenderung |
 |-------|----------|
-| `public/images/glasbaustein/glasbaustein-1.jpg` | Ersetzen durch img_p36_1.jpg |
-| `public/images/glug/glug-2.jpg` | Ersetzen durch echtes Projektbild |
-| `public/images/glug/glug-3.png` | Ersetzen durch echtes Projektbild |
-| `public/images/glug/glug-4.jpg` | Ersetzen durch echtes Projektbild |
-| `public/images/sonderanfertigungen/` | NEU: 5 Bilder |
-| `public/images/grow-mushrooms/` | NEU: 1-2 Bilder |
-| `public/images/glas-metall-fliese/` | NEU: 1-2 Bilder |
-| `public/images/fast-good-cheap/` | NEU: 1-2 Bilder |
-| `public/images/ki-experiment/` | NEU: 1-2 Bilder |
-| `public/images/3d-print-materials/` | NEU: 1-2 Bilder |
-| `src/data/projects.ts` | 6 neue Projekte hinzufuegen |
-| `src/pages/About.tsx` | Layout fuer Experience-Items anpassen |
+| `public/images/vogel-studio/` | Bilder neu zuordnen mit den 6 Collaboration-Bildern |
+| `public/images/blender-workshop/` | NEU erstellen mit Workshop-Bild |
+| `src/data/projects.ts` | Projekte reorganisieren: Experimente entfernen, Vogel Studio behalten, Blender Workshop hinzufuegen, Custom Creations entfernen |
 
-### Neues Layout fuer Experience-Eintraege
+### Projekt-Aenderungen in projects.ts
 
-```tsx
-// About.tsx - Work Experience Sektion
-{workExperience.map((exp) => (
-  <div 
-    key={exp.id}
-    className="py-3 border-b border-border/50"
-  >
-    <div className="flex justify-between items-baseline gap-4">
-      <span className="text-foreground">{exp.title}</span>
-      <span className="text-muted-foreground text-sm whitespace-nowrap">
-        {exp.year}
-      </span>
-    </div>
-    <span className="text-muted-foreground text-sm">
-      {exp.company}
-    </span>
-  </div>
-))}
-```
+1. **Entfernen**: grow-mushrooms, glas-metall-fliese, fast-good-cheap, ki-experiment, 3d-print-materials, sonderanfertigungen
+2. **Behalten**: vogel-studio (mit neuen Bildern)
+3. **Hinzufuegen**: blender-workshop
 
-### Neue Projekt-Eintraege in projects.ts
+### Neues Blender Workshop Projekt
 
 ```typescript
-// Beispiel fuer Sonderanfertigungen
 {
-  id: 'sonderanfertigungen',
-  title: 'Custom Creations',
-  description: 'Individual design objects made from brass, glass, and aluminum. 
-    Custom pieces created during self-employment period.',
-  category: 'Custom Design',
-  materials: ['Brass', 'Glass', 'Aluminum'],
-  techniques: ['Metalworking', 'Glassblowing', 'Prototyping'],
-  images: [
-    '/images/sonderanfertigungen/sonderanfertigungen-1.jpg',
-    '/images/sonderanfertigungen/sonderanfertigungen-2.jpg',
-    '/images/sonderanfertigungen/sonderanfertigungen-3.jpg',
-    '/images/sonderanfertigungen/sonderanfertigungen-4.jpg',
-    '/images/sonderanfertigungen/sonderanfertigungen-5.jpg',
-  ],
-  year: '2020',
-  month: 'JAN',
+  id: 'blender-workshop',
+  title: 'Blender Quick & Easy',
+  description: 'Workshop introducing 3D modeling with Blender. Participants learn the basics of 3D visualization and rendering in a hands-on environment.',
+  category: 'Workshop',
+  materials: ['Digital', 'Software'],
+  techniques: ['3D Modeling', 'Rendering', 'Teaching'],
+  images: ['/images/blender-workshop/blender-workshop-1.jpg'],
+  year: '2022',
+  month: 'OCT',
   displayFormat: 'landscape',
-  gridSpan: 2,
+  gridSpan: 1,
 }
 ```
 
 ---
 
-## Zusammenfassung der Aenderungen
+## Hinweis zum Durchscrollen
 
-1. **Glasbaustein Bild 1**: Kopiere `img_p36_1.jpg` als neues `glasbaustein-1.jpg`
-2. **Glug Bilder 2-4**: Ersetze durch `img_p47_1.jpg`, `img_p49_1.jpg`, `img_p49_2.jpg`
-3. **About.tsx Layout**: Titel + Jahr in einer Zeile, Firma darunter
-4. **6 neue Projekte**: Sonderanfertigungen, Grow Mushrooms, Glas-Metall-Fliese, Fast Good Cheap, KI & KI, 3D Print on Materials
-
-Nach der Umsetzung:
-- Alle Projektbilder werden korrekt angezeigt
-- 12 Projekte insgesamt auf der Website (vorher 6)
-- About-Seite zeigt sauberes Layout ohne Zeilenumbrueche bei den Jahren
+Das Durchscrollen in der Vorschau funktioniert technisch - aber nur wenn ein Projekt mehr als 1 Bild hat. Die Experiment-Projekte hatten jeweils nur 1 Bild, daher keine Navigation moeglich. Mit der Zusammenfassung zu Vogel Studio (6 Bilder) wird das Durchscrollen dort funktionieren.

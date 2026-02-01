@@ -1,60 +1,108 @@
 
-Ziel
-- Das Scroll-to-Top Verhalten soll bei jeder Navigation zuverlässig und immer sofort funktionieren (auch beim Wechsel zwischen Projekten innerhalb /project/:id), unabhängig davon, ob man vorher weit nach unten gescrollt hat.
 
-Warum es aktuell “zufällig” wirkt (wahrscheinliche Ursachen)
-- Der aktuelle ScrollToTop nutzt useEffect + window.scrollTo(0,0). Das läuft erst nach dem Rendern; in Kombination mit:
-  - globalem CSS: html { scroll-behavior: smooth; } (weiches Scrollen kann “überlagert” wirken, wenn direkt danach Layout/Medien nachladen)
-  - möglicher Browser-Scroll-Restoration (history.scrollRestoration) bei SPA-Navigation
-  - “gleiche Route, anderer Param” (/project/:id nutzt dieselbe Komponente) → Timing/Restoration kann sichtbare Inkonsistenzen erzeugen
-kann es passieren, dass man nicht am echten Seitenanfang landet.
+# Glasbaustein-Projekt auf die Website uebertragen
 
-Umsetzung (konkret)
-1) ScrollToTop robuster machen (src/components/ScrollToTop.tsx)
-   - Von useEffect auf useLayoutEffect wechseln, damit der Scroll vor dem Paint ausgeführt wird (reduziert “ich bleibe unten”-Effekte).
-   - Nicht nur auf pathname hören, sondern auf location.key (triggert bei jeder Navigation zuverlässig).
-   - Beim Scrollen kurz smooth scrolling deaktivieren, damit es immer “instant” ist, ohne die globale UI zu verändern.
-   - Auf das tatsächliche Scrolling-Element scrollen (document.scrollingElement) plus window als Fallback.
-   - Zusätzlich einen “double-tap” mit requestAnimationFrame machen, um Fälle abzufangen, wo nach dem ersten Render noch Layout-Änderungen passieren.
+## Ueberblick
 
-   Geplante Logik (Beispiel, kein finaler Code im Plan nötig):
-   - const location = useLocation()
-   - useEffect(() => { if ('scrollRestoration' in history) history.scrollRestoration = 'manual' }, [])
-   - useLayoutEffect(() => {
-       const el = document.scrollingElement ?? document.documentElement
-       const prev = document.documentElement.style.scrollBehavior
-       document.documentElement.style.scrollBehavior = 'auto'
-       el.scrollTop = 0
-       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-       requestAnimationFrame(() => {
-         el.scrollTop = 0
-         window.scrollTo(0, 0)
-         document.documentElement.style.scrollBehavior = prev
-       })
-     }, [location.key])
+Das "Glasbaustein" Projekt aus dem Portfolio wird als neues Projekt auf der Website hinzugefuegt. Die extrahierten Bilder und Texte aus dem PDF werden verwendet.
 
-2) Sicherstellen, dass nichts anderes wieder nach unten scrollt
-   - Projekt-Detailseite: dort wurde der lokale scrollTo bereits entfernt (gut).
-   - Prüfen, ob irgendwo (z.B. in Komponenten/Hooks) scrollIntoView / focus-Scroll o.ä. genutzt wird. Falls ja, diese Logik so anpassen, dass sie nicht bei Navigation feuert.
+---
 
-3) Optional (nur falls weiterhin Probleme auftreten): globales smooth scrolling entfernen
-   - In src/index.css steht html { scroll-behavior: smooth; }.
-   - Falls die gewünschte UX ohnehin “editorial/instant” sein soll, können wir das komplett entfernen, damit es keinerlei Seiteneffekte mehr gibt.
-   - Ich würde das erst machen, wenn Schritt 1 alleine nicht reicht.
+## Extrahierte Projektdaten
 
-Testplan (End-to-End)
-- Desktop:
-  1) About: weit nach unten scrollen → Klick “PROJECTS” → muss immer oben starten.
-  2) Projects: weit nach unten scrollen → Klick auf ein Projekt → ProjectDetail muss oben starten.
-  3) ProjectDetail: ganz nach unten zu “More Projects” scrollen → 4–5x nacheinander verschiedene “More Projects” anklicken → jedes Mal muss die neue Projektseite oben starten.
-- Mobile:
-  - Gleiche Tests, zusätzlich mit Wischen/Scrollen + schnellem Antippen.
-- Browser Back/Forward:
-  - Da wir “immer oben” erzwingen, wird auch bei Zurück/Vorwärts oben gestartet. Wenn du stattdessen beim “Zurück”-Button die alte Scrollposition wiederhaben willst, sag Bescheid; dann passen wir es so an, dass nur bei “normalen Klick-Navigationen” nach oben gescrollt wird.
+### Titel
+**Glasbaustein** (Studiendesign)
 
-Betroffene Dateien
-- src/components/ScrollToTop.tsx (Hauptfix)
-- Optional: src/index.css (nur wenn smooth scrolling komplett entfernt werden soll)
+### Beschreibung (aus dem PDF)
+> Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensaetze und Gefuehle.
 
-Ergebnis
-- Scroll-to-Top ist nicht mehr “zufällig”, sondern deterministisch: jede Navigation (inkl. Projekt-zu-Projekt) führt sofort zum Seitenanfang.
+### Kategorie
+Lighting (Wandleuchte / Glaslichtkunst)
+
+### Materialien
+- Glas (Glasbaustein)
+- 3D-Druck Halterung
+
+### Techniken
+- Glaserstellung (Stahlform, Glasblasen)
+- 3D-Druck
+- Prototypen
+- Konstruktion
+
+### Jahr
+Basierend auf dem Studienkontext: ca. 2019-2021 (Bachelor/Selbststaendigkeit)
+
+---
+
+## Verfuegbare Bilder aus dem PDF
+
+Folgende Bilder werden aus dem PDF extrahiert und ins Projekt kopiert:
+
+| Bild | Beschreibung |
+|------|--------------|
+| `img_p36_1.jpg` | Hauptbild - Leuchte an der Wand mit Pflanze (warmfarben) |
+| `img_p37_1.jpg` | Mood-Bild (Landschaft - weniger relevant) |
+| `img_p38_1.jpg` | Glasform in der Herstellung |
+| `img_p38_2.jpg` | Mehrere Glasbausteine (klar + farbig) |
+| `img_p38_3.jpg` | Glasblaeser bei der Arbeit |
+| `img_p40_1.jpg` | Detailaufnahme Glasecke |
+| `img_p40_2.jpg` | Leuchte leuchtend (warm) |
+| `img_p40_3.jpg` | Detail Lichtbrechung |
+| `img_p41_1.jpg` | Leuchte an weisser Wand (Produktfoto) |
+
+---
+
+## Umsetzung
+
+### 1. Bilder in das Projekt kopieren
+
+Ausgewaehlte Bilder werden nach `public/images/glasbaustein/` kopiert:
+
+- `glasbaustein-1.jpg` (img_p36_1.jpg - Hauptbild, warmfarben)
+- `glasbaustein-2.jpg` (img_p41_1.jpg - Produktfoto weisse Wand)
+- `glasbaustein-3.jpg` (img_p40_2.jpg - Detail leuchtend)
+- `glasbaustein-4.jpg` (img_p38_2.jpg - Glasbausteine Sammlung)
+- `glasbaustein-5.jpg` (img_p40_1.jpg - Glasecke Detail)
+
+### 2. Projekt in projects.ts hinzufuegen
+
+Neuer Eintrag am Anfang des Arrays (als neuestes Projekt):
+
+```
+id: 'glasbaustein'
+title: 'Glasbaustein'
+category: 'Lighting'
+description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird 
+              eine einzigartige Leuchte, die traditionsreiches Handwerk 
+              mit neuster Technologie kombiniert. Der dabei entstehende 
+              Kontrast erzeugt ein lebendiges Spiel der Gegensaetze 
+              und Gefuehle.'
+materials: ['Glas', '3D-Druck']
+techniques: ['Glasblasen', '3D-Druck', 'Prototyping', 'Konstruktion']
+year: '2020'
+month: 'MAR'
+displayFormat: 'portrait' (Hochformat passt gut zu den Bildern)
+gridSpan: 1
+```
+
+---
+
+## Ergebnis
+
+Nach der Umsetzung erscheint das Glasbaustein-Projekt:
+
+- Auf der Startseite im Grid
+- Auf der Projects-Seite
+- Mit eigener Detailseite unter `/project/glasbaustein`
+
+Die originalen Bilder aus dem Portfolio werden verwendet anstelle der Placeholder-Bilder.
+
+---
+
+## Dateiaenderungen
+
+| Datei | Aenderung |
+|-------|----------|
+| `public/images/glasbaustein/` | NEU: 5 Bilder aus dem PDF |
+| `src/data/projects.ts` | Neuer Projekteintrag hinzufuegen |
+

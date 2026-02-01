@@ -1,196 +1,178 @@
 
-# Vollstaendige Portfolio-Uebertragung auf die Website
+# Vollstaendige Portfolio-Aktualisierung
 
-## Problem 1: Bilder werden nicht angezeigt
+## Uebersicht der Aufgaben
 
-Das erste Bild bei "Spectrum Wall Light" hat eine ungueltige Unsplash-URL:
-```
-https://images.unsplash.com/photo-507473885765-e6ed057f782c
-```
-Diese ID existiert nicht - daher wird kein Bild angezeigt.
+Es gibt vier Hauptbereiche, die bearbeitet werden muessen:
 
-Loesung: Alle Placeholder-Projekte werden durch echte Projekte aus dem Portfolio ersetzt. Die alten Beispielprojekte werden entfernt.
-
----
-
-## Projekte aus dem Portfolio
-
-Basierend auf dem PDF werden folgende **6 Hauptprojekte** uebertragen:
-
-| Nr | Projekt | Kategorie | Jahr | PDF-Seiten |
-|----|---------|-----------|------|------------|
-| 1 | Glasbaustein | Lighting | 2020 | 37-42 (bereits vorhanden) |
-| 2 | Infrarotthermometer | Product Design | 2019 | 11-17 |
-| 3 | L-Ement | Furniture | 2019 | 18-24 |
-| 4 | ORU | Lighting | 2019 | 25-36 |
-| 5 | AtoBe (Bachelor-Thesis) | Mobility / Concept | 2019 | 43-47 |
-| 6 | Glug | Social Design | 2023 | 48-50 |
+1. **Projekte hinzufuegen** - Alle Projekte, Experimente und Workshops aus dem Portfolio mit 5-9 Bildern pro Projekt
+2. **About-Seite erweitern** - Arbeitserfahrung, Lehrerfahrung, Workshops und Kooperationen hinzufuegen
+3. **Bildfehler beheben** - Glasbaustein erstes Bild fixen und Formate anpassen (ORU Querformat, Glug Bilder ersetzen)
+4. **Beschreibung aktualisieren** - Neue "Ueber mich" Beschreibung basierend auf dem Businessplan
 
 ---
 
-## Bilder pro Projekt (aus PDF extrahiert)
+## 1. Projekte mit mehr Bildern (5-9 pro Projekt)
 
-### Infrarotthermometer (5 Bilder)
-- img_p10_1.jpg - Hauptbild Rendering
-- img_p14_1.jpg - Produktfoto
-- img_p13_1.png - Technische Zeichnung
-- img_p12_1.jpg - Entwurfsskizzen
-- img_p16_1.jpg - Lifestyle-Bild
+### Aktuelle Projekte - Bilder erweitern
 
-### L-Ement (5 Bilder)
-- img_p17_1.jpg - Hauptbild Stuhl
-- img_p23_1.jpg - Fertiger Prototyp
-- img_p20_1.jpg - CNC Fraesen
-- img_p21_1.jpg - Aufbau
-- img_p22_1.jpg - Detail Verbindung
+| Projekt | Aktuelle Bilder | Neue Bilder (aus PDF) |
+|---------|-----------------|----------------------|
+| **Glug** | 4 | 7 Bilder (p47-p49) |
+| **Glasbaustein** | 5 | 9 Bilder (p36-p41) |
+| **AtoBe** | 4 | 6 Bilder (p42-p46) |
+| **ORU** | 5 | 9 Bilder (p24-p35) |
+| **L-Ement** | 5 | 8 Bilder (p17-p23) |
+| **Infrarotthermometer** | 5 | 9 Bilder (p10-p16) |
 
-### ORU (5 Bilder)
-- img_p24_1.png - Rendering Hauptbild
-- img_p30_1.jpg - Prototyp Foto
-- img_p33_1.jpg - Detail LED
-- img_p34_1.jpg - Leuchte offen
-- img_p35_1.jpg - Leuchte geschlossen
+### Neue Bilder-Zuordnung
 
-### AtoBe (4 Bilder)
-- img_p42_1.jpg - Hauptbild Bus
-- img_p45_1.jpg - Technisches Konzept
-- img_p46_1.jpg - Detail Rendering
-- img_p43_1.jpg - Infografik
+**Glug** - Ersetze Stock-Bilder durch echte Projektbilder:
+- glug-1.jpg (img_p47_1.jpg - Pop-Up Station Hauptbild)
+- glug-2.jpg (img_p48_1.png - Infografik Kosten/CO2) // das nicht verwenden
+- glug-3.png (img_p48_2.png - Vergleichsgrafik) // das nicht verwenden
+- glug-4.jpg (img_p48_3.png - Infografik) // das nicht verwenden
+- glug-5.jpg (img_p49_1.jpg - Marktsituation) // das nicht verwenden
+- glug-6.jpg (img_p49_2.jpg - Kampagne Detail)
+- glug-7.jpg (page_48.jpg - Uebersichtsseite)
 
-### Glug (4 Bilder)
-- img_p47_1.jpg - Hauptbild Pop-Up Station
-- img_p49_1.jpg - Kampagne Poster
-- img_p48_1.png - Infografik
-- img_p49_2.jpg - Detail
+**Glasbaustein** - Neues erstes Bild und mehr:
+- glasbaustein-1.jpg (img_p36_1.jpg - Hauptbild Leuchte)
+- glasbaustein-2.jpg (img_p37_1.jpg bis img_p37_4.jpg - Moods)
+- glasbaustein-3.jpg (img_p38_1.jpg - Glaserstellung)
+- glasbaustein-4.jpg (img_p38_2.jpg - Glasblaesen)
+- glasbaustein-5.jpg (img_p38_4.jpg - Fertige Glasbausteine)
+- glasbaustein-6.jpg (img_p40_1.jpg - Detail)
+- glasbaustein-7.jpg (img_p40_2.jpg - Leuchte an)
+- glasbaustein-8.jpg (img_p40_3.jpg - Detail Lichtbrechung)
+- glasbaustein-9.jpg (img_p41_1.jpg - Produktfoto)
+
+**ORU** - Format aendern auf landscape:
+- oru-1.jpg (img_p24_1.png - Rendering Querformat)
+- oru-2.jpg (img_p25_1.jpg - Mood Schreibtisch)
+- oru-3.jpg (img_p27_1.jpg - Prototyp 1)
+- oru-4.jpg (img_p28_1.jpg - Konzept Verfeinerung)
+- oru-5.jpg (img_p30_1.jpg - Prototyp Foto)
+- oru-6.jpg (img_p33_1.jpg - Detail LED)
+- oru-7.jpg (img_p34_1.jpg - Leuchte geoeffnet)
+- oru-8.jpg (img_p35_1.jpg - Leuchte geschlossen)
+- oru-9.jpg (img_p26_1.png - Technische Zeichnung)
 
 ---
 
-## Workshops und Lehrerfahrung
+## 2. About-Seite: Arbeitserfahrung, Lehrerfahrung, Workshops, Kooperationen
 
-Aus dem Lebenslauf-Teil (Seite 4-6) werden folgende Daten extrahiert:
+### Neue Struktur fuer experience.ts
 
-### Neue Datenstruktur: `src/data/experience.ts`
-
+**Lehrerfahrung (teachingExperience)** - Erweitern um:
 ```text
-Workshops:
-- Blender Quick & Easy (InCollege, 2022)
-- Workshop Micasa Retail (design for human nature GmbH, 2023)
+- Dozent "Digital Environments" - HAWK Hildesheim - 2026
+- Blender Quick & Easy Workshop - InCollege HAWK - 2022
+- CAD I & CAD II Tutor - HAWK Hildesheim - 2017 (4 Semester)
+```
 
-Werkstattleitung (Freie Werkstatt):
+**Workshops (workshopPrograms)** - Bereits vorhanden, alle behalten:
+```text
+- Spot-Your-Job (2023, 2024, 2025)
+- Projekt Anstoss (2025)
 - Osterferienprogramm (2023, 2024)
 - Sommerferienprogramm (2023, 2024)
-- Spot-Your-Job (2023, 2024, 2025)
 - Zukunftstag (2023, 2024)
-- Projekt Anstoss (2025)
+```
 
-Tutorenerfahrung:
-- CAD I Tutor, HAWK (4 Semester, 2017)
+**Kooperationen (cooperations)** - Erweitern und aktualisieren:
+```text
+- Vogel Studio - Contemporary Art Design
+- Messebau EOA - Elements of Arts - Messestandvisualisierung
+- HAWK Hochschule fuer angewandte Wissenschaft und Kunst
+- Stadt Hildesheim - Partizipation & Stadtentwicklung
+- Britta Diers GmbH - Interieur & Eventarchitektur
+```
+
+**Arbeitserfahrung (workExperience)** - NEU hinzufuegen:
+```text
+- Werkstattleitung - Cluster Projekte GmbH & Freie Werkstatt - 2023-2025
+- Werkstudent - Bosch GmbH - 2021
+- Praktikum - design for human nature GmbH - 2022
+- Selbststaendigkeit - Design & Kunst - 2019-2021
+- Specialist - Apple Retail Hannover - 2015-2016
 ```
 
 ---
 
-## About-Seite Update
+## 3. Bildfehler beheben
 
-Die About-Seite wird mit echten Daten aus dem Portfolio gefuellt:
+### Glasbaustein erstes Bild
+Das aktuelle erste Bild wird nicht angezeigt. Loesung: Neues Bild img_p36_1.jpg aus dem PDF als glasbaustein-1.jpg kopieren.
 
-### Persoenliche Info
-- Name: Clim Michel
-- Kontakt: clim@gmx.net, 0173 53 18 627, IG: clims_krams
-- Standort: Hildesheim, Germany
+### ORU Format
+Aktuell: `displayFormat: 'portrait'`
+Aendern zu: `displayFormat: 'landscape'`
 
-### Tagline
-"So besonders wie mein Name ist auch meine Art zu arbeiten - Nicht immer gleich und auch manchmal alles umgekehrt."
+### Glug Bilder ersetzen
+Die aktuellen Bilder 2-4 sind Stock-Bilder. Diese werden durch echte Projektbilder aus dem PDF ersetzt (Seiten 47-50).
 
-### Philosophie (aus Seite 7)
+---
+
+## 4. Beschreibung aktualisieren (aus Businessplan)
+
+### Neue "Ueber mich" Beschreibung
+
+Basierend auf dem Businessplan (Name: PROJEKT CLIM statt STUDIO CLIM):
+
+**Tagline:**
+> "So besonders wie mein Name ist auch meine Art zu arbeiten - Nicht immer gleich und auch manchmal alles umgekehrt."
+
+**Neue Beschreibung:**
+> Ich bin Clim Michel, Gruender von PROJEKT CLIM, einem Designstudio fuer experimentelle Design-, Kunst- und Raumobjekte. PROJEKT CLIM steht fuer die Verbindung von aesthetischer Gestaltung, handwerklicher Praezision und innovativen Produktionsmethoden.
+>
+> Im Mittelpunkt steht die Uebersetzung oekologischer, kultureller und sozialer Themen in hochwertige, funktionale und sinnlich erfahrbare Produkte. Das Portfolio umfasst Moebel, Leuchten, dekorative Objekte, Accessoires und temporaere Raumkonzepte.
+>
+> Meine Leidenschaft ist es staendig etwas neues zu lernen, ob von Mensch zu Mensch, aus Buechern oder aus Anleitungen. Durch umfassende handwerkliche Expertise in Holz, Metall, Keramik und additiver Fertigung sowie langjaerige Erfahrung im Bereich generatives Design und Physical Computing entwickle ich innovative, interaktive und funktionale Gestaltungskonzepte.
+
+### Philosophie (bleibt wie im Portfolio)
 - **Design**: Das Schaffen von Produkten bringt einen Mehrwert an Aesthetik, kultureller Bildung und problemloesender Funktionalitaet.
-- **Handwerk**: Mit Sorgfalt Objekte und Prototypen erschaffen, begutachten und mit den eigenen Haenden veraendern.
-- **Zwischenmenschlich**: Die zwischenmenschlichen Beziehungen machen einen wichtigen Teil der Arbeit aus.
-
-### Kompetenzen
-- Konzept, Sketching, Ideation, Rapid Prototyping
-- 3D-Scanning/-Druck, Modellbau, Konstruktion
-- Technische Zeichnung, Metallverarbeitung, Holzverarbeitung
-- Keramikerstellung, Glasobjekte, Kupfer-/Aluminium-Guss
-
-### Software
-- Adobe Suite (InDesign, Photoshop, Illustrator)
-- Rhinoceros 3D, Grasshopper, Vray
-- Keyshot, Fusion360, Blender
-- Bambu Studio, RhinoCAM, Lightburn, ESTLCAM
-
-### Auszeichnungen
-- Beste Bachelorarbeit Nominierung HAWK
-- Absolventenausstellung HAWK Hildesheim
-- Ideenwettbewerb "Hi2025" - 2. Platzierung
+- **Handwerk**: Mit Sorgfalt Objekte und Prototypen erschaffen, begutachten und mit den eigenen Haenden veraendern. Dabei wird jedes mal etwas Einzigartiges erschaffen.
+- **Zwischenmenschlich**: Die zwischenmenschlichen Beziehungen machen einen wichtigen Teil der Arbeit aus. Man arbeitet nie alleine sondern immer im Austausch innerhalb eines Netzwerks.
 
 ---
 
-## Exhibitions & Press Update
+## Technische Umsetzung
 
-Die bestehenden Placeholder-Daten werden durch echte Daten ersetzt:
-
-### Ausstellungen (aus dem CV)
-- Metall+Glasform Ausstellung, Schloss Landestrost
-- Absolventenausstellung HAWK Hildesheim
-
-### Kooperationen (statt Press)
-- Britta Diers GmbH (Interieur & Design)
-- design for human nature GmbH (Praktikum)
-- Cluster Projekte GmbH
-- Freie Werkstatt Hildesheim gGmbH
-- Stadt Hildesheim (Partizipation & Stadtentwicklung)
-
----
-
-## Datei-Aenderungen
+### Dateiaenderungen
 
 | Datei | Aenderung |
 |-------|----------|
-| `public/images/infrarotthermometer/` | NEU: 5 Bilder |
-| `public/images/l-ement/` | NEU: 5 Bilder |
-| `public/images/oru/` | NEU: 5 Bilder |
-| `public/images/atobe/` | NEU: 4 Bilder |
-| `public/images/glug/` | NEU: 4 Bilder |
-| `public/images/about/` | NEU: Portraitbild |
-| `src/data/projects.ts` | Kompletter Ersatz - 6 echte Projekte |
-| `src/data/exhibitions.ts` | Aktualisiert mit echten Daten |
-| `src/data/experience.ts` | NEU: Workshops und Lehrerfahrung |
-| `src/pages/About.tsx` | Aktualisiert mit echten Inhalten |
+| `public/images/glasbaustein/` | Neues erstes Bild + 4 weitere Bilder hinzufuegen (9 total) |
+| `public/images/glug/` | Alle Bilder durch echte Projektbilder ersetzen (7 total) |
+| `public/images/oru/` | 4 weitere Bilder hinzufuegen (9 total) |
+| `public/images/l-ement/` | 3 weitere Bilder hinzufuegen (8 total) |
+| `public/images/infrarotthermometer/` | 4 weitere Bilder hinzufuegen (9 total) |
+| `public/images/atobe/` | 2 weitere Bilder hinzufuegen (6 total) |
+| `src/data/projects.ts` | Bildpfade erweitern, ORU Format aendern |
+| `src/data/experience.ts` | Lehrerfahrung, Workshops, Arbeitserfahrung hinzufuegen |
+| `src/data/exhibitions.ts` | Kooperationen erweitern |
+| `src/pages/About.tsx` | Neue Beschreibung, Arbeitserfahrung-Sektion hinzufuegen |
+
+### Neue Bilder aus PDF extrahieren
+
+Insgesamt werden ca. 25 neue Bilder aus dem Portfolio-PDF kopiert:
+- 4 neue Bilder fuer Glasbaustein
+- 3 neue Bilder fuer Glug (ersetzen)
+- 4 neue Bilder fuer ORU
+- 3 neue Bilder fuer L-Ement
+- 4 neue Bilder fuer Infrarotthermometer
+- 2 neue Bilder fuer AtoBe
 
 ---
 
-## Reihenfolge der Projekte (chronologisch absteigend)
+## Ergebnis
 
-1. Glug (2023) - Social Design
-2. Glasbaustein (2020) - Lighting
-3. AtoBe (2019) - Mobility Concept (Thesis)
-4. ORU (2019) - Lighting
-5. L-Ement (2019) - Furniture
-6. Infrarotthermometer (2019) - Product Design
-
----
-
-## Technische Details
-
-### Bildpfade
-Alle lokalen Bilder werden im Format gespeichert:
-```
-/images/[projekt-id]/[projekt-id]-[nummer].jpg
-```
-
-### Projekt-Beschreibungen (aus PDF)
-
-**Infrarotthermometer**:
-"Das Fieberthermometer ist ein essenzielles Produkt jeden Haushalts. In Ausnahmesituationen, wie Krankheit, muss das Fieberthermometer bereit sein. Die Interaktion zwischen Mensch und Objekt ist dabei besonders wichtig, da es sich um eine intime Situation handelt."
-
-**L-Ement**:
-"Die Exploration eines neuen Stuhls aus nur einem Formteil. Aus der zweiten Dimension wird zusammengebaut die dritte Dimension. Dabei spielten besonders die Packmasze eine grosse Rolle. Werkzeugloser Aufbau durch Holzmutterschrauben."
-
-**ORU**:
-"Ein sauberer geordneter Schreibtisch bildet haeufig die eigene Gedankenwelt ab. Mit der Idee ein moeglichst flaches, wenig aufdringliches Schreibtischbild zu kreieren wurde die Oru (jap. falten) Leuchte entworfen."
-
-**AtoBe**:
-"Ein holistischer Ansatz der Zukunftstechnologie mit Benutzer*innenbeduerfnissen verbindet. Teil-Individuelle Buslinienerstellung und sinnvoller Einsatz der E-Mobilitaet im OePNV."
-
-**Glug**:
-"Das Projekt setzt sich mit der Muellvermeidung, insbesondere von Plastikflaschen, auseinander. Eine mobile Pop-Up Station dient als interaktiver Informationsstand. Durch ein spielerisches Quiz werden Buerger*innen ueber die Vorteile von Leitungswasser aufgeklaert."
+Nach der Umsetzung:
+- Alle 6 Projekte haben 5-9 Bilder in der Detailansicht
+- Glasbaustein zeigt das korrekte erste Bild
+- ORU wird im Querformat angezeigt
+- Glug zeigt nur echte Projektbilder
+- About-Seite zeigt vollstaendige Arbeitserfahrung, Lehrerfahrung und Kooperationen
+- Neue "Ueber mich" Beschreibung mit PROJEKT CLIM statt STUDIO CLIM
+- Alle Texte auf Englisch übersetzen

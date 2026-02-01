@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Project, ProjectMedia } from '@/data/projects';
+import { withBase } from '@/lib/asset';
 
 interface ProjectCardProps {
   project: Project;
@@ -160,7 +161,7 @@ const ProjectCard = ({ project, index, className = '', linkTo }: ProjectCardProp
         ) : currentMedia?.type === 'video' ? (
           <video
             ref={videoRef}
-            src={currentMedia.url}
+            src={withBase(currentMedia.url)}
             poster={currentMedia.poster}
             autoPlay
             muted
@@ -171,7 +172,7 @@ const ProjectCard = ({ project, index, className = '', linkTo }: ProjectCardProp
           />
         ) : currentMedia ? (
           <img
-            src={currentMedia.url}
+            src={withBase(currentMedia.url)}
             alt={project.title}
             className="w-full h-full object-cover"
             draggable={false}

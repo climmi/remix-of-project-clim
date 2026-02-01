@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { exhibitions, cooperations, awards } from '@/data/exhibitions';
 import { workshops, teachingExperience, workshopPrograms, workExperience, skills } from '@/data/experience';
+import { withBase } from '@/lib/asset';
 
 const About = () => {
   // Group exhibitions by year
@@ -47,7 +48,7 @@ const About = () => {
               </h2>
               <div className="aspect-[3/2] md:aspect-[16/9] bg-muted overflow-hidden">
                 <img
-                  src="/images/about/portrait.jpg"
+                  src={withBase('/images/about/portrait.jpg')}
                   alt="Clim Michel"
                   className="w-full h-full object-cover"
                 />

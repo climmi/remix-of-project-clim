@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { projects, ProjectMedia } from '@/data/projects';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { withBase } from '@/lib/asset';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -159,7 +160,7 @@ const ProjectDetail = () => {
                   <Link to={`/project/${otherProject.id}`} className="block">
                     <div className="aspect-[4/5] bg-muted overflow-hidden mb-3">
                       <img
-                        src={otherProject.images[0]}
+                        src={withBase(otherProject.images[0])}
                         alt={otherProject.title}
                         className="w-full h-full object-cover"
                       />
@@ -204,7 +205,7 @@ const MediaItem = ({ media, title }: { media: ProjectMedia; title: string }) => 
       <div ref={containerRef} className="w-full h-full">
         <video
           ref={videoRef}
-          src={media.url}
+          src={withBase(media.url)}
           poster={media.poster}
           autoPlay
           muted
@@ -218,7 +219,7 @@ const MediaItem = ({ media, title }: { media: ProjectMedia; title: string }) => 
 
   return (
     <img
-      src={media.url}
+      src={withBase(media.url)}
       alt={title}
       className="w-full h-full object-cover"
     />
@@ -283,7 +284,7 @@ const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index:
         {media.type === 'video' ? (
           <video
             ref={videoRef}
-            src={media.url}
+            src={withBase(media.url)}
             poster={media.poster}
             autoPlay
             muted
@@ -293,7 +294,7 @@ const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index:
           />
         ) : (
           <img
-            src={media.url}
+            src={withBase(media.url)}
             alt={`${title} - Image ${index + 2}`}
             className={aspectClass ? 'w-full h-full object-cover' : 'w-full h-auto object-cover'}
           />

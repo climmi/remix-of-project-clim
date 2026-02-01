@@ -22,6 +22,25 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'glasbaustein',
+    title: 'Glasbaustein',
+    description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensätze und Gefühle.',
+    category: 'Lighting',
+    materials: ['Glas', '3D-Druck'],
+    techniques: ['Glasblasen', '3D-Druck', 'Prototyping', 'Konstruktion'],
+    images: [
+      '/images/glasbaustein/glasbaustein-1.jpg',
+      '/images/glasbaustein/glasbaustein-2.jpg',
+      '/images/glasbaustein/glasbaustein-3.jpg',
+      '/images/glasbaustein/glasbaustein-4.jpg',
+      '/images/glasbaustein/glasbaustein-5.jpg',
+    ],
+    year: '2020',
+    month: 'MAR',
+    displayFormat: 'portrait',
+    gridSpan: 1,
+  },
+  {
     id: 'project-1',
     title: 'Prismatic Lens Table',
     description: 'A sculptural coffee table that plays with light refraction. The embedded optical lenses create ever-changing caustic patterns on the surrounding surfaces as daylight moves through the space.',

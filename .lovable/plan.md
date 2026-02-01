@@ -1,157 +1,270 @@
 
+# Projekt-Reorganisation mit korrekten PDF-Bildern
 
-# Portfolio-Bilder Extraktion und Projekt-Reorganisation
+## Uebersicht
 
-## Uebersicht der extrahierten Bilder nach Projekt
-
-Nach der Analyse beider PDFs habe ich alle Bilder identifiziert und den richtigen Projekten zugeordnet.
-
----
-
-## Projekt-zu-Seiten-Zuordnung
-
-| Projekt | PDF-Seiten (Original) | PDF-Teil | Anzahl Bilder |
-|---------|----------------------|----------|---------------|
-| Infrarotthermometer | S.11-17 | Teil 1 | 10+ |
-| L-Ement | S.18-24 | Teil 1 | 8 |
-| ORU | S.25-36 | Teil 1 | 15+ |
-| Glasbaustein | S.37-42 | Teil 1 | 10+ |
-| AtoBe | S.43-47 | Teil 1 | 5 |
-| glug! | S.48-60 (ohne 49-50) | Teil 1 + Teil 2 | 15+ |
-| Glas-Metall-Fliese | S.61-66 | Teil 2 (S.11-16) | 8 |
-| GROW MUSHROOMS | S.67-76 | Teil 2 (S.17-26) | 12 |
-| FAST GOOD CHEAP | S.77-81 | Teil 2 (S.27-31) | 8 |
-| Blender: Quick & Easy | S.82-85 | Teil 2 (S.32-35) | 6 |
-| 3D Print Experiments | S.86-90 | Teil 2 (S.36-40) | 8 |
-| Workshops | S.91-93 | Teil 2 (S.41-43) | 10+ |
-| Sonderanfertigungen (Vogel Studio) | S.94-96 | Teil 2 (S.44-46) | 10+ |
+Die Projekte werden komplett neu erstellt, ausschliesslich mit Bildern aus den angegebenen PDF-Seiten. Das ki-experiment Projekt wird entfernt, da es nicht in der Liste ist.
 
 ---
 
-## Bildpfade aus den PDFs
+## PDF-Seiten zu Bild-Zuordnung
 
 ### PDF Teil 1 (S.1-50)
+- Seitennummer im PDF entspricht `img_pX_*.jpg` wobei X = Seitennummer - 1
+- Beispiel: S.11 = img_p10_*, S.12 = img_p11_*, etc.
 
-**Infrarotthermometer (S.11-17 = p10-p16):**
-- img_p10_1.jpg, img_p11_1-4.jpg, img_p12_1-6.jpg, img_p13_1-2, img_p14_1-2.jpg, img_p15_1.png, img_p16_1.jpg
+### PDF Teil 2 (S.51-98)  
+- S.51 = img_p0_*, S.61 = img_p10_*, S.67 = img_p16_*, etc.
 
-**L-Ement (S.18-24 = p17-p23):**
-- img_p17_1.jpg, img_p18_1.jpg, img_p19_1-4.jpg, img_p20_1-4.jpg, img_p21_1-3.jpg, img_p22_1.jpg, img_p23_1.jpg
+---
 
-**ORU (S.25-36 = p24-p35):**
-- img_p24_1.png, img_p25_1-9.jpg, img_p26_1.png, img_p27_1-5.jpg, img_p28_1-2.jpg, img_p29_1-2.png, img_p30_1.jpg, img_p31_1.jpg, img_p32_1.jpg, img_p33_1-2, img_p34_1.jpg, img_p35_1.jpg
+## Projekt-Zuordnung und Bilder
 
-**Glasbaustein (S.37-42 = p36-p41):**
-- img_p36_1.jpg, img_p37_1-4.jpg, img_p38_1-5.jpg, img_p39_1-6, img_p40_1-3.jpg, img_p41_1.jpg
+### 1. Infrarotthermometer (S.11-17)
+**PDF Teil 1:** img_p10 bis img_p16
 
-**AtoBe (S.43-47 = p42-p46):**
-- img_p42_1.jpg, img_p43_1-2.jpg, img_p44_1.jpg, img_p45_1.jpg, img_p46_1.jpg
+Bilder:
+- img_p10_1.jpg
+- img_p11_1.jpg, img_p11_2.jpg, img_p11_3.jpg, img_p11_4.jpg
+- img_p12_1.jpg bis img_p12_6.jpg
+- img_p13_1.png, img_p13_2.jpg
+- img_p14_1.jpg, img_p14_2.jpg
+- img_p15_1.png
+- img_p16_1.jpg
 
-**Glug (S.48-60, ohne 49-50):**
+**Gesamt: 17 Bilder** (max 20)
+
+---
+
+### 2. L-Ement (S.18-24)
+**PDF Teil 1:** img_p17 bis img_p23
+
+Bilder:
+- img_p17_1.jpg
+- img_p18_1.jpg
+- img_p19_1.jpg bis img_p19_4.jpg
+- img_p20_1.jpg bis img_p20_4.jpg
+- img_p21_1.jpg bis img_p21_3.jpg
+- img_p22_1.jpg
+- img_p23_1.jpg
+
+**Gesamt: 16 Bilder**
+
+---
+
+### 3. ORU (S.25-36)
+**PDF Teil 1:** img_p24 bis img_p35
+
+Bilder:
+- img_p24_1.png
+- img_p25_1.jpg bis img_p25_9.jpg
+- img_p26_1.png
+- img_p27_1.jpg bis img_p27_5.jpg
+- img_p28_1.jpg, img_p28_2.jpg
+- img_p29_1.png, img_p29_2.png
+- img_p30_1.jpg, img_p31_1.jpg, img_p32_1.jpg
+- img_p33_1.jpg, img_p33_2.png
+- img_p34_1.jpg, img_p35_1.jpg
+
+**Gesamt: 20+ Bilder** (limitiert auf 20)
+
+---
+
+### 4. Glasbaustein (S.37-42)
+**PDF Teil 1:** img_p36 bis img_p41
+
+Bilder:
+- img_p36_1.jpg
+- img_p37_1.jpg bis img_p37_4.jpg
+- img_p38_1.jpg bis img_p38_5.jpg
+- img_p39_1.jpg bis img_p39_6.png
+- img_p40_1.jpg bis img_p40_3.jpg
+- img_p41_1.jpg
+
+**Gesamt: 20 Bilder**
+
+---
+
+### 5. A to BE (S.43-47)
+**PDF Teil 1:** img_p42 bis img_p46
+
+Bilder:
+- img_p42_1.jpg
+- img_p43_1.jpg, img_p43_2.jpg
+- img_p44_1.jpg
+- img_p45_1.jpg
+- img_p46_1.jpg
+
+**Gesamt: 6 Bilder**
+
+---
+
+### 6. glug! (S.48-60, OHNE S.49-50)
+**PDF Teil 1:** img_p47 (S.48 nur)
+**PDF Teil 2:** img_p0 bis img_p9 (S.51-60)
+
+S.49-50 = img_p48, img_p49 werden NICHT verwendet!
+
+Bilder:
 - Teil 1: img_p47_1.jpg (S.48)
-- Teil 2: img_p0_1-4, img_p1_1-2.jpg, img_p2_1-3, img_p3_1-7, img_p4_1-4, img_p5_1-6.jpg, img_p6_1-3.jpg, img_p7_1-6.jpg, img_p8_1.jpg, img_p9_1.jpg
+- Teil 2: img_p0_1.jpg bis img_p0_4.jpg (S.51)
+- img_p1_1.jpg, img_p1_2.jpg (S.52)
+- img_p2_1.jpg, img_p2_2.png, img_p2_3.jpg (S.53)
+- img_p3_1.png bis img_p3_7.jpg (S.54)
+- img_p4_1.jpg bis img_p4_4.png (S.55)
+- img_p5_1.jpg bis img_p5_6.jpg (S.56)
+- img_p6_1.jpg bis img_p6_3.jpg (S.57)
+- img_p7_1.jpg bis img_p7_6.jpg (S.58)
+- img_p8_1.jpg (S.59)
+- img_p9_1.jpg (S.60)
 
-### PDF Teil 2 (S.51-98)
+**Gesamt: 20+ Bilder** (limitiert auf 20)
 
-**Glas-Metall-Fliese (p10-p15 im Teil 2):**
-- img_p10_1.jpg, img_p11_1-2.jpg, img_p12_1-3.jpg, img_p13_1.jpg, img_p14_1-6.jpg, img_p15_1.jpg
+---
 
-**GROW MUSHROOMS (p16-p25 im Teil 2):**
-- img_p16_1.jpg, img_p17_1-3.jpg, img_p18_1.jpg, img_p19_1-3.jpg, img_p20_1-3, img_p21_1.png, img_p22_1.jpg, img_p23_1.jpg, img_p24_1-4.jpg, img_p25_1.jpg
+### 7. Glas-Metall-Fliese (S.61-66)
+**PDF Teil 2:** img_p10 bis img_p15
 
-**FAST GOOD CHEAP (p26-p30 im Teil 2):**
-- img_p26_1.jpg, img_p27_1-2.jpg, img_p28_1-4.jpg, img_p29_1-3.jpg, img_p30_1.jpg
+Bilder:
+- img_p10_1.jpg (S.61)
+- img_p11_1.jpg, img_p11_2.jpg (S.62)
+- img_p12_1.jpg bis img_p12_3.jpg (S.63)
+- img_p13_1.jpg (S.64)
+- img_p14_1.jpg bis img_p14_6.jpg (S.65)
+- img_p15_1.jpg (S.66)
 
-**Blender: Quick & Easy (p31-p34 im Teil 2):**
-- img_p31_1.jpg, img_p32_1-4.jpg, img_p33_1-4.jpg, img_p34_1.jpg
+**Gesamt: 14 Bilder**
 
-**3D Print Experiments (p35-p39 im Teil 2):**
-- img_p35_1.jpg, img_p36_1.jpg, img_p37_1-3.jpg, img_p38_1.jpg, img_p39_1-4.jpg
+**Problem:** Das erste Bild (img_p10_1.jpg) muss entfernt werden gemaess Anforderung.
 
-**Workshops (p40-p42 im Teil 2):**
-- img_p40_1-5.jpg, img_p41_1-4.jpg, img_p42_1-6.jpg
+---
 
-**Sonderanfertigungen/Vogel Studio (p43-p45 im Teil 2):**
-- img_p43_1-4.jpg, img_p44_1-4.jpg, img_p45_1-4.jpg
+### 8. GROW MUSHROOMS (S.67-76)
+**PDF Teil 2:** img_p16 bis img_p25
+
+Bilder:
+- img_p16_1.jpg (S.67)
+- img_p17_1.jpg bis img_p17_3.jpg (S.68)
+- img_p18_1.jpg (S.69)
+- img_p19_1.jpg bis img_p19_3.jpg (S.70)
+- img_p20_1.png bis img_p20_3.jpg (S.71)
+- img_p21_1.png (S.72)
+- img_p22_1.jpg (S.73)
+- img_p23_1.jpg (S.74)
+- img_p24_1.jpg bis img_p24_4.jpg (S.75)
+- img_p25_1.jpg (S.76)
+
+**Gesamt: 18 Bilder**
+
+---
+
+### 9. FAST GOOD CHEAP (S.77-81)
+**PDF Teil 2:** img_p26 bis img_p30
+
+Bilder:
+- img_p26_1.jpg (S.77)
+- img_p27_1.jpg, img_p27_2.jpg (S.78)
+- img_p28_1.jpg bis img_p28_4.jpg (S.79)
+- img_p29_1.jpg bis img_p29_3.jpg (S.80)
+- img_p30_1.jpg (S.81)
+
+**Gesamt: 11 Bilder**
+
+---
+
+### 10. Blender: Quick & Easy (S.82-85)
+**PDF Teil 2:** img_p31 bis img_p34
+
+Bilder:
+- img_p31_1.jpg (S.82)
+- img_p32_1.jpg bis img_p32_4.jpg (S.83)
+- img_p33_1.jpg bis img_p33_4.jpg (S.84)
+- img_p34_1.jpg (S.85)
+
+**Gesamt: 10 Bilder**
+
+---
+
+### 11. 3D Print Experiments (S.86-90)
+**PDF Teil 2:** img_p35 bis img_p39
+
+Bilder:
+- img_p35_1.jpg (S.86)
+- img_p36_1.jpg (S.87)
+- img_p37_1.jpg bis img_p37_3.jpg (S.88)
+- img_p38_1.jpg (S.89)
+- img_p39_1.jpg bis img_p39_4.jpg (S.90)
+
+**Gesamt: 10 Bilder**
+
+---
+
+### 12. Workshops (S.91-93)
+**PDF Teil 2:** img_p40 bis img_p42
+
+Bilder:
+- img_p40_1.jpg bis img_p40_5.jpg (S.91)
+- img_p41_1.jpg bis img_p41_4.jpg (S.92)
+- img_p42_1.jpg bis img_p42_6.jpg (S.93)
+
+**Gesamt: 15 Bilder**
+
+---
+
+### 13. Sonderanfertigungen (S.94-96)
+**PDF Teil 2:** img_p43 bis img_p45
+
+Bilder:
+- img_p43_1.jpg bis img_p43_4.jpg (S.94)
+- img_p44_1.jpg bis img_p44_4.jpg (S.95)
+- img_p45_1.jpg bis img_p45_4.jpg (S.96)
+
+**Gesamt: 12 Bilder**
 
 ---
 
 ## Technische Umsetzung
 
-### Schritt 1: Bilder aus den PDFs kopieren
+### Schritt 1: Alte Bilder loeschen
+Alle bestehenden Bilder in den Projektordnern werden geloescht.
 
-Fuer jedes Projekt werden die Bilder aus dem `parsed-documents://` Namespace in das `public/images/` Verzeichnis kopiert.
+### Schritt 2: Neue Bilder kopieren
+Bilder werden aus den parsed-documents Verzeichnissen kopiert:
+- PDF Teil 1: `parsed-documents://20260201-131807-205016/Clim_Michel_Portfolio_2025_S1-50.pdf/images/`
+- PDF Teil 2: `parsed-documents://20260201-131811-364373/Clim_Michel_Portfolio_2025_S51-98.pdf/images/`
 
-### Schritt 2: Ordnerstruktur
+### Schritt 3: projects.ts komplett neu schreiben
+Alle 13 Projekte werden mit den korrekten Bildpfaden erstellt.
 
-```text
-public/images/
-  infrarotthermometer/
-    infrarotthermometer-1.jpg bis infrarotthermometer-10.jpg
-  l-ement/
-    l-ement-1.jpg bis l-ement-8.jpg
-  oru/
-    oru-1.jpg bis oru-15.jpg
-  glasbaustein/
-    glasbaustein-1.jpg bis glasbaustein-10.jpg
-  atobe/
-    atobe-1.jpg bis atobe-5.jpg
-  glug/
-    glug-1.jpg bis glug-15.jpg
-  glas-metall-fliese/
-    glas-metall-fliese-1.jpg bis glas-metall-fliese-8.jpg
-  grow-mushrooms/
-    grow-mushrooms-1.jpg bis grow-mushrooms-12.jpg
-  fast-good-cheap/
-    fast-good-cheap-1.jpg bis fast-good-cheap-8.jpg
-  blender-workshop/
-    blender-workshop-1.jpg bis blender-workshop-6.jpg
-  3d-print-experiments/
-    3d-print-experiments-1.jpg bis 3d-print-experiments-8.jpg
-  workshops/
-    workshops-1.jpg bis workshops-10.jpg
-  sonderanfertigungen/ (Vogel Studio Collaborations)
-    sonderanfertigungen-1.jpg bis sonderanfertigungen-10.jpg
-```
-
-### Schritt 3: projects.ts aktualisieren
-
-Alle Projekte werden mit den korrekten Bildpfaden aktualisiert:
-
-| Projekt | ID | Kategorie |
-|---------|-----|-----------|
-| Infrarotthermometer | infrarotthermometer | Product Design |
-| L-Ement | l-ement | Furniture |
-| ORU | oru | Lighting |
-| Glasbaustein | glasbaustein | Lighting |
-| A to BE | atobe | Mobility Concept |
-| glug! | glug | Social Design |
-| Glas-Metall-Fliese | glas-metall-fliese | Experiment |
-| GROW MUSHROOMS | grow-mushrooms | Experiment |
-| FAST GOOD CHEAP | fast-good-cheap | Interactive Object |
-| Blender: Quick & Easy | blender-workshop | Workshop |
-| 3D Print Experiments | 3d-print-experiments | Experiment |
-| Workshops (Freie Werkstatt) | workshops | Workshop |
-| Sonderanfertigungen (Vogel Studio) | sonderanfertigungen | Collaboration |
+### Schritt 4: Alte Ordner bereinigen
+- ki-experiment Ordner loeschen (nicht in der Liste)
+- vogel-studio Ordner loeschen (obsolet)
 
 ---
 
-## Wichtige Hinweise
+## Korrekturen fuer bestehende Probleme
 
-1. **Glug-Projekt**: Die Bilder von S.49-50 (img_p48_* und img_p49_*) werden NICHT verwendet, wie vom Benutzer gewuenscht.
-
-2. **Sonderanfertigungen = Vogel Studio Collaborations**: Die Seiten 94-96 zeigen die Zusammenarbeit mit Vogel Studio (Spiegel, Tuergriff, Griffe).
-
-3. **Maximale Bilderanzahl**: Pro Projekt werden bis zu 20 Bilder extrahiert, je nach Verfuegbarkeit.
-
-4. **Bildqualitaet**: Es werden die extrahierten Einzelbilder verwendet (img_p*), nicht die vollstaendigen Seiten-Screenshots (page_*.jpg).
+1. **Glasbaustein erstes Bild:** Wird korrekt aus img_p36_1.jpg kopiert
+2. **Glas-Metall-Fliese erstes Bild:** img_p10_1.jpg wird NICHT verwendet, Bilder beginnen mit img_p11_1.jpg
 
 ---
 
-## Zusammenfassung
+## Zusammenfassung der Aenderungen
 
-- **13 Projekte** werden mit korrekten Bildern aktualisiert
-- **Ueber 100 Bilder** werden aus den PDFs extrahiert
-- Alle Projekte haben nun mehrere Bilder fuer die Carousel-Funktion
-- Die Projektstruktur entspricht dem Original-Portfolio
+| Projekt | Anzahl Bilder | PDF-Quelle |
+|---------|---------------|------------|
+| Infrarotthermometer | 17 | Teil 1, S.11-17 |
+| L-Ement | 16 | Teil 1, S.18-24 |
+| ORU | 20 | Teil 1, S.25-36 |
+| Glasbaustein | 20 | Teil 1, S.37-42 |
+| A to BE | 6 | Teil 1, S.43-47 |
+| glug! | 20 | Teil 1+2, S.48+51-60 |
+| Glas-Metall-Fliese | 13 | Teil 2, S.62-66 (ohne S.61) |
+| GROW MUSHROOMS | 18 | Teil 2, S.67-76 |
+| FAST GOOD CHEAP | 11 | Teil 2, S.77-81 |
+| Blender: Quick & Easy | 10 | Teil 2, S.82-85 |
+| 3D Print Experiments | 10 | Teil 2, S.86-90 |
+| Workshops | 15 | Teil 2, S.91-93 |
+| Sonderanfertigungen | 12 | Teil 2, S.94-96 |
 
+**Gesamte Bilder: ca. 188 Bilder**

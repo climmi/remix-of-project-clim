@@ -133,13 +133,16 @@ const About = () => {
                   {workExperience.map((exp) => (
                     <div 
                       key={exp.id}
-                      className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                      className="py-3 border-b border-border/50"
                     >
-                      <span className="text-foreground">
-                        {exp.title} — {exp.company}
-                      </span>
-                      <span className="text-muted-foreground text-sm">
-                        {exp.year}
+                      <div className="flex justify-between items-baseline gap-4">
+                        <span className="text-foreground">{exp.title}</span>
+                        <span className="text-muted-foreground text-sm whitespace-nowrap">
+                          {exp.year}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground text-sm block">
+                        {exp.company}
                       </span>
                     </div>
                   ))}
@@ -203,13 +206,16 @@ const About = () => {
                     {teachingExperience.map((exp) => (
                       <div 
                         key={exp.id}
-                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                        className="py-3 border-b border-border/50"
                       >
-                        <span className="text-foreground">
-                          {exp.title} — {exp.organization} {exp.duration && `(${exp.duration})`}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {exp.year}
+                        <div className="flex justify-between items-baseline gap-4">
+                          <span className="text-foreground">{exp.title}</span>
+                          <span className="text-muted-foreground text-sm whitespace-nowrap">
+                            {exp.year}
+                          </span>
+                        </div>
+                        <span className="text-muted-foreground text-sm block">
+                          {exp.organization} {exp.duration && `(${exp.duration})`}
                         </span>
                       </div>
                     ))}
@@ -223,13 +229,16 @@ const About = () => {
                     {workshops.map((workshop) => (
                       <div 
                         key={workshop.id}
-                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                        className="py-3 border-b border-border/50"
                       >
-                        <span className="text-foreground">
-                          {workshop.title} — {workshop.organization}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {workshop.year}
+                        <div className="flex justify-between items-baseline gap-4">
+                          <span className="text-foreground">{workshop.title}</span>
+                          <span className="text-muted-foreground text-sm whitespace-nowrap">
+                            {workshop.year}
+                          </span>
+                        </div>
+                        <span className="text-muted-foreground text-sm block">
+                          {workshop.organization}
                         </span>
                       </div>
                     ))}
@@ -276,21 +285,24 @@ const About = () => {
                   {years.map(year => (
                     <div key={year}>
                       <h3 className="text-sm text-foreground mb-4">{year}</h3>
-                      <div className="border-t border-border/50">
-                        {exhibitionsByYear[year].map((exhibition) => (
-                          <div 
-                            key={exhibition.id}
-                            className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
-                          >
-                            <span className="text-foreground">
-                              {exhibition.title} — {exhibition.venue}, {exhibition.location}
-                            </span>
-                            <span className="text-muted-foreground text-sm">
-                              {exhibition.date}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
+                        <div className="border-t border-border/50">
+                          {exhibitionsByYear[year].map((exhibition) => (
+                            <div 
+                              key={exhibition.id}
+                              className="py-3 border-b border-border/50"
+                            >
+                              <div className="flex justify-between items-baseline gap-4">
+                                <span className="text-foreground">{exhibition.title}</span>
+                                <span className="text-muted-foreground text-sm whitespace-nowrap">
+                                  {exhibition.date}
+                                </span>
+                              </div>
+                              <span className="text-muted-foreground text-sm block">
+                                {exhibition.venue}, {exhibition.location}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
                     </div>
                   ))}
                 </div>
@@ -302,13 +314,16 @@ const About = () => {
                     {cooperations.map((item) => (
                       <div 
                         key={item.id}
-                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                        className="py-3 border-b border-border/50"
                       >
-                        <span className="text-foreground">
-                          {item.name} — {item.role}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {item.year}
+                        <div className="flex justify-between items-baseline gap-4">
+                          <span className="text-foreground">{item.name}</span>
+                          <span className="text-muted-foreground text-sm whitespace-nowrap">
+                            {item.year}
+                          </span>
+                        </div>
+                        <span className="text-muted-foreground text-sm block">
+                          {item.role}
                         </span>
                       </div>
                     ))}

@@ -30,14 +30,15 @@ const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
   const isInView = useInView(containerRef, { once: false, margin: '-100px' });
 
   // Build media array from previewImages (max 3) for card carousel
-  const previewSource = project.previewImages?.length > 0 ? project.previewImages : project.images.slice(0, 3);
+  const previewSource = project.previewImages?.length > 0 ? project.previewImages : (project.images?.slice(0, 3) || []);
   const mediaItems: ProjectMedia[] = project.media || previewSource.map(url => ({ type: 'image' as const, url }));
   const mediaCount = mediaItems.length;
+  const hasMedia = mediaCount > 0;
   
   const DRAG_THRESHOLD = 5;
   const IMAGE_SWITCH_DISTANCE = 50;
 
-  const currentMedia = mediaItems[currentMediaIndex];
+  const currentMedia = hasMedia ? mediaItems[currentMediaIndex] : null;
   const aspectClass = aspectRatioClasses[project.displayFormat || 'portrait'];
 
   // Handle video autoplay based on viewport visibility
@@ -151,7 +152,11 @@ const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
     >
       {/* Project media - dynamic aspect ratio */}
       <div className={`${aspectClass} bg-muted overflow-hidden mb-4`}>
-        {currentMedia.type === 'video' ? (
+        {!hasMedia ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-muted-foreground text-sm">No image</span>
+          </div>
+        ) : currentMedia?.type === 'video' ? (
           <video
             ref={videoRef}
             src={currentMedia.url}
@@ -163,14 +168,14 @@ const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
             className="w-full h-full object-cover"
             draggable={false}
           />
-        ) : (
+        ) : currentMedia ? (
           <img
             src={currentMedia.url}
             alt={project.title}
             className="w-full h-full object-cover"
             draggable={false}
           />
-        )}
+        ) : null}
       </div>
       
       {/* Date and category - Leibal style */}

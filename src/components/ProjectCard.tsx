@@ -7,6 +7,7 @@ interface ProjectCardProps {
   project: Project;
   index: number;
   className?: string;
+  linkTo?: string;
 }
 
 const aspectRatioClasses = {
@@ -16,7 +17,7 @@ const aspectRatioClasses = {
   wide: 'aspect-[21/9]',
 };
 
-const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, className = '', linkTo }: ProjectCardProps) => {
   const navigate = useNavigate();
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -53,8 +54,8 @@ const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
   }, [isInView, currentMedia]);
 
   const handleClick = useCallback(() => {
-    navigate(`/project/${project.id}`);
-  }, [navigate, project.id]);
+    navigate(linkTo || `/project/${project.id}`);
+  }, [navigate, linkTo, project.id]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     setIsDragging(true);

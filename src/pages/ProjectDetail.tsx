@@ -28,29 +28,25 @@ const ProjectDetail = () => {
       <Header />
       
       <main className="pt-24 md:pt-32 pb-24">
-        {/* Back Link */}
-        <div className="px-6 md:px-12 lg:px-24 mb-8">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Link 
-                to="/projects" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                ← All Projects
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-        
-        {/* Hero Section - Leibal Style */}
         <section className="px-6 md:px-12 lg:px-24 mb-16 md:mb-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-              {/* Left: Title and Meta */}
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-12 lg:gap-24">
+            {/* Left: All text content */}
+            <div className="space-y-12">
+              {/* Back Link */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Link 
+                  to="/projects" 
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ← All Projects
+                </Link>
+              </motion.div>
+
+              {/* Title and Meta */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -92,8 +88,25 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               </motion.div>
-              
-              {/* Right: Hero Media */}
+
+              {/* Description */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4 font-display">
+                  About
+                </h2>
+                <p className="text-base md:text-lg text-foreground leading-relaxed">
+                  {project.description}
+                </p>
+              </motion.div>
+            </div>
+            
+            {/* Right: All media */}
+            <div className="space-y-8 md:space-y-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -103,36 +116,16 @@ const ProjectDetail = () => {
                   <MediaItem media={mediaItems[0]} title={project.title} />
                 </div>
               </motion.div>
+
+              {mediaItems.slice(1).map((media, index) => (
+                <GalleryMediaItem 
+                  key={index} 
+                  media={media} 
+                  index={index} 
+                  title={project.title} 
+                />
+              ))}
             </div>
-          </div>
-        </section>
-        
-        {/* Description */}
-        <section className="px-6 md:px-12 lg:px-24 mb-16 md:mb-24">
-          <div className="max-w-7xl mx-auto">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-lg md:text-xl text-foreground leading-relaxed max-w-2xl"
-            >
-              {project.description}
-            </motion.p>
-          </div>
-        </section>
-        
-        {/* Media Gallery - Various Sizes */}
-        <section className="px-6 md:px-12 lg:px-24 mb-16 md:mb-24">
-          <div className="max-w-7xl mx-auto space-y-8 md:space-y-12">
-            {mediaItems.slice(1).map((media, index) => (
-              <GalleryMediaItem 
-                key={index} 
-                media={media} 
-                index={index} 
-                title={project.title} 
-              />
-            ))}
           </div>
         </section>
         

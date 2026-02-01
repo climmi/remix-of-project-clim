@@ -20,8 +20,8 @@ const Projects = () => {
             <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
               Projects
             </h1>
-            <p className="text-lg text-foreground max-w-2xl">
-              Selected work from Project Clim
+            <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
+              selected works
             </p>
           </motion.div>
           

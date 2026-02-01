@@ -58,7 +58,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mb-12 md:mb-16"
             >
-              <p className="text-lg md:text-xl text-foreground italic">
+              <p className="text-base md:text-lg text-foreground italic">
                 "As unique as my name is, so is my way of working - not always the same and sometimes everything upside down."
               </p>
             </motion.div>

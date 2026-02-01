@@ -23,39 +23,167 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'infrarotthermometer',
-    title: 'Infrarotthermometer',
-    description: 'Das Fieberthermometer ist ein essenzielles Produkt jeden Haushalts. In Ausnahmesituationen, wie Krankheit, muss das Fieberthermometer bereit sein. Die Interaktion zwischen Mensch und Objekt ist dabei besonders wichtig, da es sich um eine intime Situation handelt.',
-    category: 'Product Design',
-    materials: ['Bio Kunststoff', 'Li-Ion-Akku', 'SMD Elektronik'],
-    techniques: ['Clay-Modellierung', 'Ergonomie', '3D Scanning', 'Flächenrückführung', 'Rendering'],
+    id: 'glasbaustein',
+    title: 'Glasbaustein',
+    description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensätze und Gefühle.',
+    category: 'Lighting Design',
+    materials: ['Glas', 'Stahl', '3D-Druck Kunststoff'],
+    techniques: ['Glasblaserei', 'Schweißen', '3D Druck', 'Konstruktion'],
     previewImages: [
-      '/images/infrarotthermometer/img_p10_1.jpg',
-      '/images/infrarotthermometer/img_p14_1.jpg',
-      '/images/infrarotthermometer/img_p16_1.jpg'
+      '/images/glasbaustein/img_p36_1.jpg',
+      '/images/glasbaustein/img_p40_1.jpg',
+      '/images/glasbaustein/img_p41_1.jpg'
     ],
     images: [
-      '/images/infrarotthermometer/img_p10_1.jpg',
-      '/images/infrarotthermometer/img_p11_1.jpg',
-      '/images/infrarotthermometer/img_p11_2.jpg',
-      '/images/infrarotthermometer/img_p11_3.jpg',
-      '/images/infrarotthermometer/img_p11_4.jpg',
-      '/images/infrarotthermometer/img_p12_1.jpg',
-      '/images/infrarotthermometer/img_p12_2.jpg',
-      '/images/infrarotthermometer/img_p12_3.jpg',
-      '/images/infrarotthermometer/img_p12_4.jpg',
-      '/images/infrarotthermometer/img_p12_5.jpg',
-      '/images/infrarotthermometer/img_p12_6.jpg',
-      '/images/infrarotthermometer/img_p13_1.png',
-      '/images/infrarotthermometer/img_p13_2.jpg',
-      '/images/infrarotthermometer/img_p14_1.jpg',
-      '/images/infrarotthermometer/img_p14_2.jpg',
-      '/images/infrarotthermometer/img_p15_1.png',
-      '/images/infrarotthermometer/img_p16_1.jpg'
+      '/images/glasbaustein/img_p36_1.jpg',
+      '/images/glasbaustein/img_p37_1.jpg',
+      '/images/glasbaustein/img_p37_2.jpg',
+      '/images/glasbaustein/img_p37_3.jpg',
+      '/images/glasbaustein/img_p37_4.jpg',
+      '/images/glasbaustein/img_p38_1.jpg',
+      '/images/glasbaustein/img_p38_2.jpg',
+      '/images/glasbaustein/img_p38_3.jpg',
+      '/images/glasbaustein/img_p38_4.jpg',
+      '/images/glasbaustein/img_p38_5.jpg',
+      '/images/glasbaustein/img_p39_1.jpg',
+      '/images/glasbaustein/img_p39_2.jpg',
+      '/images/glasbaustein/img_p39_3.jpg',
+      '/images/glasbaustein/img_p39_4.jpg',
+      '/images/glasbaustein/img_p39_5.jpg',
+      '/images/glasbaustein/img_p39_6.png',
+      '/images/glasbaustein/img_p40_1.jpg',
+      '/images/glasbaustein/img_p40_2.jpg',
+      '/images/glasbaustein/img_p40_3.jpg',
+      '/images/glasbaustein/img_p41_1.jpg'
     ],
     year: '2019',
-    month: 'January',
+    month: 'May',
     displayFormat: 'portrait'
+  },
+  {
+    id: 'grow-mushrooms',
+    title: 'GROW MUSHROOMS',
+    description: 'Im Bereich des Keramik-3D-Drucks wurden algorithmisch generierte Strukturen mit den Materialeigenschaften von Keramik kombiniert. Durch parametrische Designprozesse entstanden Formen für Pilzzucht mit maximierter Oberfläche für die Feuchtigkeitsregulierung.',
+    category: 'Bio Design',
+    materials: ['Keramik', 'Substrat'],
+    techniques: ['Grasshopper', 'Keramik-3D-Druck', 'Parametrisches Design'],
+    previewImages: [
+      '/images/grow-mushrooms/img_p16_1.jpg',
+      '/images/grow-mushrooms/img_p19_1.jpg',
+      '/images/grow-mushrooms/img_p25_1.jpg'
+    ],
+    images: [
+      '/images/grow-mushrooms/img_p16_1.jpg',
+      '/images/grow-mushrooms/img_p17_1.jpg',
+      '/images/grow-mushrooms/img_p17_2.jpg',
+      '/images/grow-mushrooms/img_p17_3.jpg',
+      '/images/grow-mushrooms/img_p18_1.jpg',
+      '/images/grow-mushrooms/img_p19_1.jpg',
+      '/images/grow-mushrooms/img_p19_2.jpg',
+      '/images/grow-mushrooms/img_p19_3.jpg',
+      '/images/grow-mushrooms/img_p20_2.jpg',
+      '/images/grow-mushrooms/img_p20_3.jpg',
+      '/images/grow-mushrooms/img_p22_1.jpg',
+      '/images/grow-mushrooms/img_p23_1.jpg',
+      '/images/grow-mushrooms/img_p24_1.jpg',
+      '/images/grow-mushrooms/img_p24_2.jpg',
+      '/images/grow-mushrooms/img_p24_3.jpg',
+      '/images/grow-mushrooms/img_p24_4.jpg',
+      '/images/grow-mushrooms/img_p25_1.jpg'
+    ],
+    year: '2022',
+    month: 'April',
+    displayFormat: 'portrait'
+  },
+  {
+    id: 'glas-metall-fliese',
+    title: 'Glas-Metall-Fliese',
+    description: 'Glas und Metall finden in der Regel ihr Zusammenspiel darin, dass das Metall als begrenzende Form dient. Die Verbindung aus beiden erzeugt spannende Oberflächen, Texturen und Lichteffekte. Eine experimentelle Materialstudie.',
+    category: 'Material Experiment',
+    materials: ['Glas', 'Metall', 'Glasgranulate'],
+    techniques: ['Glasschmelzen', 'Formenbau', 'Metallverarbeitung'],
+    previewImages: [
+      '/images/glas-metall-fliese/img_p11_1.jpg',
+      '/images/glas-metall-fliese/img_p14_1.jpg',
+      '/images/glas-metall-fliese/img_p15_1.jpg'
+    ],
+    images: [
+      '/images/glas-metall-fliese/img_p11_1.jpg',
+      '/images/glas-metall-fliese/img_p11_2.jpg',
+      '/images/glas-metall-fliese/img_p12_1.jpg',
+      '/images/glas-metall-fliese/img_p12_2.jpg',
+      '/images/glas-metall-fliese/img_p12_3.jpg',
+      '/images/glas-metall-fliese/img_p13_1.jpg',
+      '/images/glas-metall-fliese/img_p14_1.jpg',
+      '/images/glas-metall-fliese/img_p14_2.jpg',
+      '/images/glas-metall-fliese/img_p14_3.jpg',
+      '/images/glas-metall-fliese/img_p14_4.jpg',
+      '/images/glas-metall-fliese/img_p14_5.jpg',
+      '/images/glas-metall-fliese/img_p14_6.jpg',
+      '/images/glas-metall-fliese/img_p15_1.jpg'
+    ],
+    year: '2019',
+    month: 'November',
+    displayFormat: 'portrait'
+  },
+  {
+    id: 'sonderanfertigungen',
+    title: 'Sonderanfertigungen',
+    description: 'Sonderanfertigungen in Zusammenarbeit mit Vogel Studio. Individuelle Spiegel, Türgriffe und Griffe aus Messing, Glas und Aluminium.',
+    category: 'Collaboration',
+    materials: ['Messing', 'Glas', 'Aluminium'],
+    techniques: ['Metallverarbeitung', 'Guss', 'Handwerk'],
+    previewImages: [
+      '/images/sonderanfertigungen/img_p43_1.jpg',
+      '/images/sonderanfertigungen/img_p44_1.jpg',
+      '/images/sonderanfertigungen/img_p45_1.jpg'
+    ],
+    images: [
+      '/images/sonderanfertigungen/img_p43_1.jpg',
+      '/images/sonderanfertigungen/img_p43_2.jpg',
+      '/images/sonderanfertigungen/img_p43_3.jpg',
+      '/images/sonderanfertigungen/img_p43_4.jpg',
+      '/images/sonderanfertigungen/img_p44_1.jpg',
+      '/images/sonderanfertigungen/img_p44_2.jpg',
+      '/images/sonderanfertigungen/img_p44_3.jpg',
+      '/images/sonderanfertigungen/img_p44_4.jpg',
+      '/images/sonderanfertigungen/img_p45_1.jpg',
+      '/images/sonderanfertigungen/img_p45_2.jpg',
+      '/images/sonderanfertigungen/img_p45_3.jpg',
+      '/images/sonderanfertigungen/img_p45_4.jpg'
+    ],
+    year: '2020',
+    month: 'December',
+    displayFormat: 'portrait'
+  },
+  {
+    id: 'fast-good-cheap',
+    title: 'FAST GOOD CHEAP',
+    description: 'Das Projekt beschäftigt sich mit den Herausforderungen in Designprozessen. Ein Produkt kann nur zwei der drei Eigenschaften - schnell, gut oder günstig - gleichzeitig erfüllen. Ein interaktives Objekt verdeutlicht diese Problematik spielerisch.',
+    category: 'Interactive Object',
+    materials: ['3D-Druck Kunststoff', 'Arduino', 'Elektronik'],
+    techniques: ['Physical Computing', '3D-Druck', 'Arduino'],
+    previewImages: [
+      '/images/fast-good-cheap/img_p26_1.jpg',
+      '/images/fast-good-cheap/img_p29_1.jpg',
+      '/images/fast-good-cheap/img_p30_1.jpg'
+    ],
+    images: [
+      '/images/fast-good-cheap/img_p26_1.jpg',
+      '/images/fast-good-cheap/img_p27_1.jpg',
+      '/images/fast-good-cheap/img_p27_2.jpg',
+      '/images/fast-good-cheap/img_p28_1.jpg',
+      '/images/fast-good-cheap/img_p28_2.jpg',
+      '/images/fast-good-cheap/img_p28_3.jpg',
+      '/images/fast-good-cheap/img_p28_4.jpg',
+      '/images/fast-good-cheap/img_p29_1.jpg',
+      '/images/fast-good-cheap/img_p29_2.jpg',
+      '/images/fast-good-cheap/img_p29_3.jpg',
+      '/images/fast-good-cheap/img_p30_1.jpg'
+    ],
+    year: '2022',
+    month: 'July',
+    displayFormat: 'square'
   },
   {
     id: 'l-ement',
@@ -104,7 +232,7 @@ export const projects: Project[] = [
     ],
     images: [
       '/images/oru/img_p24_1.png',
-      '/images/oru/img_p25_1.jpg',
+      /*'/images/oru/img_p25_1.jpg',
       '/images/oru/img_p25_2.jpg',
       '/images/oru/img_p25_3.jpg',
       '/images/oru/img_p25_4.png',
@@ -113,7 +241,7 @@ export const projects: Project[] = [
       '/images/oru/img_p25_7.jpg',
       '/images/oru/img_p25_8.jpg',
       '/images/oru/img_p25_9.jpg',
-      '/images/oru/img_p26_1.png',
+      '/images/oru/img_p26_1.png',*/
       '/images/oru/img_p27_1.jpg',
       '/images/oru/img_p27_2.jpg',
       '/images/oru/img_p27_3.jpg',
@@ -137,44 +265,69 @@ export const projects: Project[] = [
     gridSpan: 2
   },
   {
-    id: 'glasbaustein',
-    title: 'Glasbaustein',
-    description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensätze und Gefühle.',
-    category: 'Lighting Design',
-    materials: ['Glas', 'Stahl', '3D-Druck Kunststoff'],
-    techniques: ['Glasblaserei', 'Schweißen', '3D Druck', 'Konstruktion'],
+    id: '3d-print-experiments',
+    title: '3D Print Experiments',
+    description: 'Experimentelles Arbeiten mit 3D-Druck auf verschiedenen Materialien wie irisierender Folie und Textilien. Diese Kombination eröffnet neue Möglichkeiten in Design, Produktvisualisierung und interaktiven Objekten.',
+    category: 'Experiment',
+    materials: ['Irisierende Folie', 'Textilien', 'PLA'],
+    techniques: ['3D-Druck', 'Materialexperimente'],
     previewImages: [
-      '/images/glasbaustein/img_p36_1.jpg',
-      '/images/glasbaustein/img_p40_1.jpg',
-      '/images/glasbaustein/img_p41_1.jpg'
+      '/images/3d-print-experiments/img_p35_1.jpg',
+      '/images/3d-print-experiments/img_p37_1.jpg',
+      '/images/3d-print-experiments/img_p39_1.jpg'
     ],
     images: [
-      '/images/glasbaustein/img_p36_1.jpg',
-      '/images/glasbaustein/img_p37_1.jpg',
-      '/images/glasbaustein/img_p37_2.jpg',
-      '/images/glasbaustein/img_p37_3.jpg',
-      '/images/glasbaustein/img_p37_4.jpg',
-      '/images/glasbaustein/img_p38_1.jpg',
-      '/images/glasbaustein/img_p38_2.jpg',
-      '/images/glasbaustein/img_p38_3.jpg',
-      '/images/glasbaustein/img_p38_4.jpg',
-      '/images/glasbaustein/img_p38_5.jpg',
-      '/images/glasbaustein/img_p39_1.jpg',
-      '/images/glasbaustein/img_p39_2.jpg',
-      '/images/glasbaustein/img_p39_3.jpg',
-      '/images/glasbaustein/img_p39_4.jpg',
-      '/images/glasbaustein/img_p39_5.jpg',
-      '/images/glasbaustein/img_p39_6.png',
-      '/images/glasbaustein/img_p40_1.jpg',
-      '/images/glasbaustein/img_p40_2.jpg',
-      '/images/glasbaustein/img_p40_3.jpg',
-      '/images/glasbaustein/img_p41_1.jpg'
+      '/images/3d-print-experiments/img_p35_1.jpg',
+      '/images/3d-print-experiments/img_p36_1.jpg',
+      '/images/3d-print-experiments/img_p37_1.jpg',
+      '/images/3d-print-experiments/img_p37_2.jpg',
+      '/images/3d-print-experiments/img_p37_3.jpg',
+      '/images/3d-print-experiments/img_p38_1.jpg',
+      '/images/3d-print-experiments/img_p39_1.jpg',
+      '/images/3d-print-experiments/img_p39_2.jpg',
+      '/images/3d-print-experiments/img_p39_3.jpg',
+      '/images/3d-print-experiments/img_p39_4.jpg'
     ],
-    year: '2019',
-    month: 'May',
+    year: '2024',
+    month: 'January',
     displayFormat: 'portrait'
   },
   {
+    id: 'infrarotthermometer',
+    title: 'Infrarotthermometer',
+    description: 'Das Fieberthermometer ist ein essenzielles Produkt jeden Haushalts. In Ausnahmesituationen, wie Krankheit, muss das Fieberthermometer bereit sein. Die Interaktion zwischen Mensch und Objekt ist dabei besonders wichtig, da es sich um eine intime Situation handelt.',
+    category: 'Product Design',
+    materials: ['Bio Kunststoff', 'Li-Ion-Akku', 'SMD Elektronik'],
+    techniques: ['Clay-Modellierung', 'Ergonomie', '3D Scanning', 'Flächenrückführung', 'Rendering'],
+    previewImages: [
+      '/images/infrarotthermometer/img_p10_1.jpg',
+      '/images/infrarotthermometer/img_p14_1.jpg',
+      '/images/infrarotthermometer/img_p16_1.jpg'
+    ],
+    images: [
+      '/images/infrarotthermometer/img_p10_1.jpg',
+      '/images/infrarotthermometer/img_p11_1.jpg',
+      '/images/infrarotthermometer/img_p11_2.jpg',
+      '/images/infrarotthermometer/img_p11_3.jpg',
+      '/images/infrarotthermometer/img_p11_4.jpg',
+      '/images/infrarotthermometer/img_p12_1.jpg',
+      '/images/infrarotthermometer/img_p12_2.jpg',
+      '/images/infrarotthermometer/img_p12_3.jpg',
+      '/images/infrarotthermometer/img_p12_4.jpg',
+      '/images/infrarotthermometer/img_p12_5.jpg',
+      '/images/infrarotthermometer/img_p12_6.jpg',
+      '/images/infrarotthermometer/img_p13_1.png',
+      '/images/infrarotthermometer/img_p13_2.jpg',
+      '/images/infrarotthermometer/img_p14_1.jpg',
+      '/images/infrarotthermometer/img_p14_2.jpg',
+      '/images/infrarotthermometer/img_p15_1.png',
+      '/images/infrarotthermometer/img_p16_1.jpg'
+    ],
+    year: '2019',
+    month: 'January',
+    displayFormat: 'portrait'
+  },
+ /* {
     id: 'atobe',
     title: 'A to BE',
     description: 'Mit diesem Konzept wird ein holistischer Ansatz generiert, der Zukunftstechnologie mit Benutzer*innenbeduerfnissen verbindet. Micro-Bus-Tram für teil-individuelle Buslinienerstellung und sinnvoller Einsatz der E-Mobilität im ÖPNV.',
@@ -198,7 +351,7 @@ export const projects: Project[] = [
     month: 'September',
     displayFormat: 'landscape',
     gridSpan: 2
-  },
+  },*/
   {
     id: 'glug',
     title: 'glug!',
@@ -249,102 +402,7 @@ export const projects: Project[] = [
     month: 'February',
     displayFormat: 'portrait'
   },
-  {
-    id: 'glas-metall-fliese',
-    title: 'Glas-Metall-Fliese',
-    description: 'Glas und Metall finden in der Regel ihr Zusammenspiel darin, dass das Metall als begrenzende Form dient. Die Verbindung aus beiden erzeugt spannende Oberflächen, Texturen und Lichteffekte. Eine experimentelle Materialstudie.',
-    category: 'Material Experiment',
-    materials: ['Glas', 'Metall', 'Glasgranulate'],
-    techniques: ['Glasschmelzen', 'Formenbau', 'Metallverarbeitung'],
-    previewImages: [
-      '/images/glas-metall-fliese/img_p11_1.jpg',
-      '/images/glas-metall-fliese/img_p14_1.jpg',
-      '/images/glas-metall-fliese/img_p15_1.jpg'
-    ],
-    images: [
-      '/images/glas-metall-fliese/img_p11_1.jpg',
-      '/images/glas-metall-fliese/img_p11_2.jpg',
-      '/images/glas-metall-fliese/img_p12_1.jpg',
-      '/images/glas-metall-fliese/img_p12_2.jpg',
-      '/images/glas-metall-fliese/img_p12_3.jpg',
-      '/images/glas-metall-fliese/img_p13_1.jpg',
-      '/images/glas-metall-fliese/img_p14_1.jpg',
-      '/images/glas-metall-fliese/img_p14_2.jpg',
-      '/images/glas-metall-fliese/img_p14_3.jpg',
-      '/images/glas-metall-fliese/img_p14_4.jpg',
-      '/images/glas-metall-fliese/img_p14_5.jpg',
-      '/images/glas-metall-fliese/img_p14_6.jpg',
-      '/images/glas-metall-fliese/img_p15_1.jpg'
-    ],
-    year: '2019',
-    month: 'November',
-    displayFormat: 'square'
-  },
-  {
-    id: 'grow-mushrooms',
-    title: 'GROW MUSHROOMS',
-    description: 'Im Bereich des Keramik-3D-Drucks wurden algorithmisch generierte Strukturen mit den Materialeigenschaften von Keramik kombiniert. Durch parametrische Designprozesse entstanden Formen für Pilzzucht mit maximierter Oberfläche für die Feuchtigkeitsregulierung.',
-    category: 'Bio Design',
-    materials: ['Keramik', 'Substrat'],
-    techniques: ['Grasshopper', 'Keramik-3D-Druck', 'Parametrisches Design'],
-    previewImages: [
-      '/images/grow-mushrooms/img_p16_1.jpg',
-      '/images/grow-mushrooms/img_p19_1.jpg',
-      '/images/grow-mushrooms/img_p25_1.jpg'
-    ],
-    images: [
-      '/images/grow-mushrooms/img_p16_1.jpg',
-      '/images/grow-mushrooms/img_p17_1.jpg',
-      '/images/grow-mushrooms/img_p17_2.jpg',
-      '/images/grow-mushrooms/img_p17_3.jpg',
-      '/images/grow-mushrooms/img_p18_1.jpg',
-      '/images/grow-mushrooms/img_p19_1.jpg',
-      '/images/grow-mushrooms/img_p19_2.jpg',
-      '/images/grow-mushrooms/img_p19_3.jpg',
-      '/images/grow-mushrooms/img_p20_2.jpg',
-      '/images/grow-mushrooms/img_p20_3.jpg',
-      '/images/grow-mushrooms/img_p22_1.jpg',
-      '/images/grow-mushrooms/img_p23_1.jpg',
-      '/images/grow-mushrooms/img_p24_1.jpg',
-      '/images/grow-mushrooms/img_p24_2.jpg',
-      '/images/grow-mushrooms/img_p24_3.jpg',
-      '/images/grow-mushrooms/img_p24_4.jpg',
-      '/images/grow-mushrooms/img_p25_1.jpg'
-    ],
-    year: '2022',
-    month: 'April',
-    displayFormat: 'portrait'
-  },
-  {
-    id: 'fast-good-cheap',
-    title: 'FAST GOOD CHEAP',
-    description: 'Das Projekt beschäftigt sich mit den Herausforderungen in Designprozessen. Ein Produkt kann nur zwei der drei Eigenschaften - schnell, gut oder günstig - gleichzeitig erfüllen. Ein interaktives Objekt verdeutlicht diese Problematik spielerisch.',
-    category: 'Interactive Object',
-    materials: ['3D-Druck Kunststoff', 'Arduino', 'Elektronik'],
-    techniques: ['Physical Computing', '3D-Druck', 'Arduino'],
-    previewImages: [
-      '/images/fast-good-cheap/img_p26_1.jpg',
-      '/images/fast-good-cheap/img_p29_1.jpg',
-      '/images/fast-good-cheap/img_p30_1.jpg'
-    ],
-    images: [
-      '/images/fast-good-cheap/img_p26_1.jpg',
-      '/images/fast-good-cheap/img_p27_1.jpg',
-      '/images/fast-good-cheap/img_p27_2.jpg',
-      '/images/fast-good-cheap/img_p28_1.jpg',
-      '/images/fast-good-cheap/img_p28_2.jpg',
-      '/images/fast-good-cheap/img_p28_3.jpg',
-      '/images/fast-good-cheap/img_p28_4.jpg',
-      '/images/fast-good-cheap/img_p29_1.jpg',
-      '/images/fast-good-cheap/img_p29_2.jpg',
-      '/images/fast-good-cheap/img_p29_3.jpg',
-      '/images/fast-good-cheap/img_p30_1.jpg'
-    ],
-    year: '2022',
-    month: 'July',
-    displayFormat: 'square'
-  },
-  {
+/*  {
     id: 'blender-workshop',
     title: 'Blender: Quick & Easy',
     description: 'Im InCollege-Kurs vermittelte ich eine kompakte Einführung in Blender. Der Workshop behandelte Grundlagen der Benutzeroberfläche, 3D-Modellierung mit Polygonmodelling und Modifiern, sowie Materialien, Texturen, Beleuchtung und Animation.',
@@ -371,36 +429,8 @@ export const projects: Project[] = [
     year: '2022',
     month: 'October',
     displayFormat: 'landscape'
-  },
-  {
-    id: '3d-print-experiments',
-    title: '3D Print Experiments',
-    description: 'Experimentelles Arbeiten mit 3D-Druck auf verschiedenen Materialien wie irisierender Folie und Textilien. Diese Kombination eröffnet neue Möglichkeiten in Design, Produktvisualisierung und interaktiven Objekten.',
-    category: 'Experiment',
-    materials: ['Irisierende Folie', 'Textilien', 'PLA'],
-    techniques: ['3D-Druck', 'Materialexperimente'],
-    previewImages: [
-      '/images/3d-print-experiments/img_p35_1.jpg',
-      '/images/3d-print-experiments/img_p37_1.jpg',
-      '/images/3d-print-experiments/img_p39_1.jpg'
-    ],
-    images: [
-      '/images/3d-print-experiments/img_p35_1.jpg',
-      '/images/3d-print-experiments/img_p36_1.jpg',
-      '/images/3d-print-experiments/img_p37_1.jpg',
-      '/images/3d-print-experiments/img_p37_2.jpg',
-      '/images/3d-print-experiments/img_p37_3.jpg',
-      '/images/3d-print-experiments/img_p38_1.jpg',
-      '/images/3d-print-experiments/img_p39_1.jpg',
-      '/images/3d-print-experiments/img_p39_2.jpg',
-      '/images/3d-print-experiments/img_p39_3.jpg',
-      '/images/3d-print-experiments/img_p39_4.jpg'
-    ],
-    year: '2024',
-    month: 'January',
-    displayFormat: 'portrait'
-  },
-  {
+  },*/
+  /*{
     id: 'workshops',
     title: 'Workshops',
     description: 'In den Ferienprogrammen und Spot-Your-Job Workshops der Freien Werkstatt wurden handwerkliche und digitale Fertigkeiten vermittelt. Projekte mit KI-generierten Motiven für Laserschnitt und Arduino-programmierte LEDs.',
@@ -433,35 +463,5 @@ export const projects: Project[] = [
     month: 'August',
     displayFormat: 'landscape',
     gridSpan: 2
-  },
-  {
-    id: 'sonderanfertigungen',
-    title: 'Sonderanfertigungen',
-    description: 'Sonderanfertigungen in Zusammenarbeit mit Vogel Studio. Individuelle Spiegel, Türgriffe und Griffe aus Messing, Glas und Aluminium.',
-    category: 'Collaboration',
-    materials: ['Messing', 'Glas', 'Aluminium'],
-    techniques: ['Metallverarbeitung', 'Guss', 'Handwerk'],
-    previewImages: [
-      '/images/sonderanfertigungen/img_p43_1.jpg',
-      '/images/sonderanfertigungen/img_p44_1.jpg',
-      '/images/sonderanfertigungen/img_p45_1.jpg'
-    ],
-    images: [
-      '/images/sonderanfertigungen/img_p43_1.jpg',
-      '/images/sonderanfertigungen/img_p43_2.jpg',
-      '/images/sonderanfertigungen/img_p43_3.jpg',
-      '/images/sonderanfertigungen/img_p43_4.jpg',
-      '/images/sonderanfertigungen/img_p44_1.jpg',
-      '/images/sonderanfertigungen/img_p44_2.jpg',
-      '/images/sonderanfertigungen/img_p44_3.jpg',
-      '/images/sonderanfertigungen/img_p44_4.jpg',
-      '/images/sonderanfertigungen/img_p45_1.jpg',
-      '/images/sonderanfertigungen/img_p45_2.jpg',
-      '/images/sonderanfertigungen/img_p45_3.jpg',
-      '/images/sonderanfertigungen/img_p45_4.jpg'
-    ],
-    year: '2020',
-    month: 'December',
-    displayFormat: 'square'
-  }
+  },*/
 ];

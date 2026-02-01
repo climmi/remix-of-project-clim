@@ -53,6 +53,9 @@ export default {
           tertiary: "hsl(var(--caustics-tertiary))",
         },
       },
+      fontSize: {
+        lg: ['1.0rem', { lineHeight: '1.6' }],
+      },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],

@@ -11,7 +11,8 @@ export interface Project {
   category: string;
   materials: string[];
   techniques: string[];
-  images: string[];
+  previewImages: string[];  // Max 3 images for card carousel
+  images: string[];         // All photos for detail view
   media?: ProjectMedia[];
   year: string;
   month: string;
@@ -28,6 +29,11 @@ export const projects: Project[] = [
     category: 'Product Design',
     materials: ['Bio-Plastic', 'LED Matrix', 'Li-Ion Battery'],
     techniques: ['Clay Modeling', 'Ergonomics', '3D Scanning', 'Surface Reconstruction', 'Rendering'],
+    previewImages: [
+      '/images/infrarotthermometer/infrarotthermometer-1.jpg',
+      '/images/infrarotthermometer/infrarotthermometer-2.jpg',
+      '/images/infrarotthermometer/infrarotthermometer-3.jpg',
+    ],
     images: [
       '/images/infrarotthermometer/infrarotthermometer-1.jpg',
       '/images/infrarotthermometer/infrarotthermometer-2.jpg',
@@ -40,12 +46,9 @@ export const projects: Project[] = [
       '/images/infrarotthermometer/infrarotthermometer-9.jpg',
       '/images/infrarotthermometer/infrarotthermometer-10.jpg',
       '/images/infrarotthermometer/infrarotthermometer-11.jpg',
-      '/images/infrarotthermometer/infrarotthermometer-12.png',
+      '/images/infrarotthermometer/infrarotthermometer-12.jpg',
       '/images/infrarotthermometer/infrarotthermometer-13.jpg',
       '/images/infrarotthermometer/infrarotthermometer-14.jpg',
-      '/images/infrarotthermometer/infrarotthermometer-15.jpg',
-      '/images/infrarotthermometer/infrarotthermometer-16.png',
-      '/images/infrarotthermometer/infrarotthermometer-17.jpg',
     ],
     year: '2019',
     month: 'MAR',
@@ -59,6 +62,11 @@ export const projects: Project[] = [
     category: 'Furniture',
     materials: ['Wood', '3D Printing'],
     techniques: ['Ergonomics', 'Woodworking', 'Prototypes', 'Construction', 'CNC Milling'],
+    previewImages: [
+      '/images/l-ement/l-ement-1.jpg',
+      '/images/l-ement/l-ement-2.jpg',
+      '/images/l-ement/l-ement-3.jpg',
+    ],
     images: [
       '/images/l-ement/l-ement-1.jpg',
       '/images/l-ement/l-ement-2.jpg',
@@ -88,18 +96,23 @@ export const projects: Project[] = [
     category: 'Lighting',
     materials: ['Plastic', 'LED', '3D Printing'],
     techniques: ['Work Hygiene', 'Plastics', '3D Printing', 'Prototypes', 'Construction'],
+    previewImages: [
+      '/images/oru/oru-1.jpg',
+      '/images/oru/oru-2.jpg',
+      '/images/oru/oru-3.jpg',
+    ],
     images: [
-      '/images/oru/oru-1.png',
+      '/images/oru/oru-1.jpg',
       '/images/oru/oru-2.jpg',
       '/images/oru/oru-3.jpg',
       '/images/oru/oru-4.jpg',
-      '/images/oru/oru-5.png',
-      '/images/oru/oru-6.png',
+      '/images/oru/oru-5.jpg',
+      '/images/oru/oru-6.jpg',
       '/images/oru/oru-7.jpg',
       '/images/oru/oru-8.jpg',
       '/images/oru/oru-9.jpg',
       '/images/oru/oru-10.jpg',
-      '/images/oru/oru-11.png',
+      '/images/oru/oru-11.jpg',
       '/images/oru/oru-12.jpg',
       '/images/oru/oru-13.jpg',
       '/images/oru/oru-14.jpg',
@@ -107,8 +120,8 @@ export const projects: Project[] = [
       '/images/oru/oru-16.jpg',
       '/images/oru/oru-17.jpg',
       '/images/oru/oru-18.jpg',
-      '/images/oru/oru-19.png',
-      '/images/oru/oru-20.png',
+      '/images/oru/oru-19.jpg',
+      '/images/oru/oru-20.jpg',
     ],
     year: '2019',
     month: 'JUN',
@@ -122,6 +135,11 @@ export const projects: Project[] = [
     category: 'Lighting',
     materials: ['Glass', '3D Printing'],
     techniques: ['Glassblowing', '3D Printing', 'Prototyping', 'Construction'],
+    previewImages: [
+      '/images/glasbaustein/glasbaustein-1.jpg',
+      '/images/glasbaustein/glasbaustein-2.jpg',
+      '/images/glasbaustein/glasbaustein-3.jpg',
+    ],
     images: [
       '/images/glasbaustein/glasbaustein-1.jpg',
       '/images/glasbaustein/glasbaustein-2.jpg',
@@ -138,11 +156,10 @@ export const projects: Project[] = [
       '/images/glasbaustein/glasbaustein-13.jpg',
       '/images/glasbaustein/glasbaustein-14.jpg',
       '/images/glasbaustein/glasbaustein-15.jpg',
-      '/images/glasbaustein/glasbaustein-16.png',
+      '/images/glasbaustein/glasbaustein-16.jpg',
       '/images/glasbaustein/glasbaustein-17.jpg',
       '/images/glasbaustein/glasbaustein-18.jpg',
       '/images/glasbaustein/glasbaustein-19.jpg',
-      '/images/glasbaustein/glasbaustein-20.jpg',
     ],
     year: '2020',
     month: 'MAR',
@@ -156,6 +173,11 @@ export const projects: Project[] = [
     category: 'Mobility Concept',
     materials: ['3D Printing', 'Concept'],
     techniques: ['Concept', 'Market Research', 'Personas', 'Analysis', '3D Printing', 'Prototypes'],
+    previewImages: [
+      '/images/atobe/atobe-1.jpg',
+      '/images/atobe/atobe-2.jpg',
+      '/images/atobe/atobe-3.jpg',
+    ],
     images: [
       '/images/atobe/atobe-1.jpg',
       '/images/atobe/atobe-2.jpg',
@@ -176,19 +198,24 @@ export const projects: Project[] = [
     category: 'Social Design',
     materials: ['3D Printing', 'Cargo Bike', 'Reusable Bottles'],
     techniques: ['Social Design', '3D Printing', 'Construction', 'Corporate Design'],
+    previewImages: [
+      '/images/glug/glug-1.jpg',
+      '/images/glug/glug-2.jpg',
+      '/images/glug/glug-3.jpg',
+    ],
     images: [
       '/images/glug/glug-1.jpg',
       '/images/glug/glug-2.jpg',
       '/images/glug/glug-3.jpg',
-      '/images/glug/glug-4.png',
+      '/images/glug/glug-4.jpg',
       '/images/glug/glug-5.jpg',
       '/images/glug/glug-6.jpg',
       '/images/glug/glug-7.jpg',
       '/images/glug/glug-8.jpg',
-      '/images/glug/glug-9.png',
+      '/images/glug/glug-9.jpg',
       '/images/glug/glug-10.jpg',
-      '/images/glug/glug-11.png',
-      '/images/glug/glug-12.png',
+      '/images/glug/glug-11.jpg',
+      '/images/glug/glug-12.jpg',
       '/images/glug/glug-13.jpg',
       '/images/glug/glug-14.jpg',
       '/images/glug/glug-15.jpg',
@@ -196,7 +223,7 @@ export const projects: Project[] = [
       '/images/glug/glug-17.jpg',
       '/images/glug/glug-18.jpg',
       '/images/glug/glug-19.jpg',
-      '/images/glug/glug-20.png',
+      '/images/glug/glug-20.jpg',
     ],
     year: '2023',
     month: 'JUN',
@@ -210,6 +237,11 @@ export const projects: Project[] = [
     category: 'Experiment',
     materials: ['Glass', 'Metal'],
     techniques: ['Glassblowing', 'Metalwork', 'Fusion', 'Experimentation'],
+    previewImages: [
+      '/images/glas-metall-fliese/glas-metall-fliese-1.jpg',
+      '/images/glas-metall-fliese/glas-metall-fliese-2.jpg',
+      '/images/glas-metall-fliese/glas-metall-fliese-3.jpg',
+    ],
     images: [
       '/images/glas-metall-fliese/glas-metall-fliese-1.jpg',
       '/images/glas-metall-fliese/glas-metall-fliese-2.jpg',
@@ -237,6 +269,11 @@ export const projects: Project[] = [
     category: 'Experiment',
     materials: ['Mycelium', 'Organic Substrate', 'Bio-Materials'],
     techniques: ['Bio-Design', 'Cultivation', 'Material Experimentation', 'Documentation'],
+    previewImages: [
+      '/images/grow-mushrooms/grow-mushrooms-1.jpg',
+      '/images/grow-mushrooms/grow-mushrooms-2.jpg',
+      '/images/grow-mushrooms/grow-mushrooms-3.jpg',
+    ],
     images: [
       '/images/grow-mushrooms/grow-mushrooms-1.jpg',
       '/images/grow-mushrooms/grow-mushrooms-2.jpg',
@@ -246,17 +283,15 @@ export const projects: Project[] = [
       '/images/grow-mushrooms/grow-mushrooms-6.jpg',
       '/images/grow-mushrooms/grow-mushrooms-7.jpg',
       '/images/grow-mushrooms/grow-mushrooms-8.jpg',
-      '/images/grow-mushrooms/grow-mushrooms-9.png',
+      '/images/grow-mushrooms/grow-mushrooms-9.jpg',
       '/images/grow-mushrooms/grow-mushrooms-10.jpg',
       '/images/grow-mushrooms/grow-mushrooms-11.jpg',
-      '/images/grow-mushrooms/grow-mushrooms-12.png',
+      '/images/grow-mushrooms/grow-mushrooms-12.jpg',
       '/images/grow-mushrooms/grow-mushrooms-13.jpg',
       '/images/grow-mushrooms/grow-mushrooms-14.jpg',
       '/images/grow-mushrooms/grow-mushrooms-15.jpg',
       '/images/grow-mushrooms/grow-mushrooms-16.jpg',
       '/images/grow-mushrooms/grow-mushrooms-17.jpg',
-      '/images/grow-mushrooms/grow-mushrooms-18.jpg',
-      '/images/grow-mushrooms/grow-mushrooms-19.jpg',
     ],
     year: '2022',
     month: 'AUG',
@@ -270,6 +305,11 @@ export const projects: Project[] = [
     category: 'Interactive Object',
     materials: ['Mixed Media', 'Electronics'],
     techniques: ['Interaction Design', 'Prototyping', 'Physical Computing'],
+    previewImages: [
+      '/images/fast-good-cheap/fast-good-cheap-1.jpg',
+      '/images/fast-good-cheap/fast-good-cheap-2.jpg',
+      '/images/fast-good-cheap/fast-good-cheap-3.jpg',
+    ],
     images: [
       '/images/fast-good-cheap/fast-good-cheap-1.jpg',
       '/images/fast-good-cheap/fast-good-cheap-2.jpg',
@@ -295,6 +335,11 @@ export const projects: Project[] = [
     category: 'Workshop',
     materials: ['Digital', 'Software'],
     techniques: ['3D Modeling', 'Rendering', 'Teaching'],
+    previewImages: [
+      '/images/blender-workshop/blender-workshop-1.jpg',
+      '/images/blender-workshop/blender-workshop-2.jpg',
+      '/images/blender-workshop/blender-workshop-3.jpg',
+    ],
     images: [
       '/images/blender-workshop/blender-workshop-1.jpg',
       '/images/blender-workshop/blender-workshop-2.jpg',
@@ -319,6 +364,11 @@ export const projects: Project[] = [
     category: 'Experiment',
     materials: ['PLA', 'Textiles', 'Wood', 'Paper'],
     techniques: ['3D Printing', 'Material Testing', 'Experimentation', 'Documentation'],
+    previewImages: [
+      '/images/3d-print-materials/3d-print-materials-1.jpg',
+      '/images/3d-print-materials/3d-print-materials-2.jpg',
+      '/images/3d-print-materials/3d-print-materials-3.jpg',
+    ],
     images: [
       '/images/3d-print-materials/3d-print-materials-1.jpg',
       '/images/3d-print-materials/3d-print-materials-2.jpg',
@@ -343,6 +393,11 @@ export const projects: Project[] = [
     category: 'Workshop',
     materials: ['Various', 'Tools', 'Materials'],
     techniques: ['Teaching', 'Woodworking', '3D Printing', 'Prototyping', 'Making'],
+    previewImages: [
+      '/images/workshops/workshops-1.jpg',
+      '/images/workshops/workshops-2.jpg',
+      '/images/workshops/workshops-3.jpg',
+    ],
     images: [
       '/images/workshops/workshops-1.jpg',
       '/images/workshops/workshops-2.jpg',
@@ -372,6 +427,11 @@ export const projects: Project[] = [
     category: 'Collaboration',
     materials: ['Ceramics', 'Glass', 'Metal', 'Digital', '3D Printing'],
     techniques: ['Bio-Algorithms', 'Ceramic 3D Printing', 'Material Fusion', 'AI Art', 'Generative Design'],
+    previewImages: [
+      '/images/sonderanfertigungen/sonderanfertigungen-1.jpg',
+      '/images/sonderanfertigungen/sonderanfertigungen-2.jpg',
+      '/images/sonderanfertigungen/sonderanfertigungen-3.jpg',
+    ],
     images: [
       '/images/sonderanfertigungen/sonderanfertigungen-1.jpg',
       '/images/sonderanfertigungen/sonderanfertigungen-2.jpg',

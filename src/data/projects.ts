@@ -24,10 +24,10 @@ export const projects: Project[] = [
   {
     id: 'glug',
     title: 'Glug',
-    description: 'Das Projekt Glug entstand im Rahmen meines Masterstudiums mit Fokus auf Social Design und setzt sich mit der Müllvermeidung, insbesondere von Plastikflaschen, auseinander. Eine mobile Pop-Up Station dient als interaktiver Informationsstand. Durch ein spielerisches Quiz werden Bürger*innen über die Vorteile von Leitungswasser aufgeklärt.',
+    description: 'The Glug project was developed during my Master\'s studies with a focus on Social Design and addresses waste reduction, particularly plastic bottles. A mobile pop-up station serves as an interactive information stand. Through a playful quiz, citizens learn about the benefits of tap water.',
     category: 'Social Design',
-    materials: ['3D-Druck', 'Lastenrad', 'Mehrwegflaschen'],
-    techniques: ['Social Design', '3D-Druck', 'Konstruktion', 'Corporate Design'],
+    materials: ['3D Printing', 'Cargo Bike', 'Reusable Bottles'],
+    techniques: ['Social Design', '3D Printing', 'Construction', 'Corporate Design'],
     images: [
       '/images/glug/glug-1.jpg',
       '/images/glug/glug-2.jpg',
@@ -42,10 +42,10 @@ export const projects: Project[] = [
   {
     id: 'glasbaustein',
     title: 'Glasbaustein',
-    description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensätze und Gefühle.',
+    description: 'A unique luminaire combining glass with 3D printing technology, merging traditional craftsmanship with cutting-edge technology. The resulting contrast creates a vibrant interplay of opposites and emotions.',
     category: 'Lighting',
-    materials: ['Glas', '3D-Druck'],
-    techniques: ['Glasblasen', '3D-Druck', 'Prototyping', 'Konstruktion'],
+    materials: ['Glass', '3D Printing'],
+    techniques: ['Glassblowing', '3D Printing', 'Prototyping', 'Construction'],
     images: [
       '/images/glasbaustein/glasbaustein-1.jpg',
       '/images/glasbaustein/glasbaustein-2.jpg',
@@ -61,10 +61,10 @@ export const projects: Project[] = [
   {
     id: 'atobe',
     title: 'AtoBe',
-    description: 'Mit diesem Konzept wird ein holistischer Ansatz generiert, der Zukunftstechnologie mit Benutzer*innenbedürfnissen verbindet. Teil-Individuelle Buslinienerstellung und sinnvoller Einsatz der E-Mobilität im ÖPNV. Weniger Fahrzeuge auf der Straße durch attraktiveren ÖPNV.',
+    description: 'This concept generates a holistic approach that combines future technology with user needs. Semi-individual bus route creation and meaningful use of e-mobility in public transport. Fewer vehicles on the road through more attractive public transportation.',
     category: 'Mobility Concept',
-    materials: ['3D-Druck', 'Konzept'],
-    techniques: ['Konzept', 'Marktforschung', 'Personas', 'Analyse', '3D-Druck', 'Prototypen'],
+    materials: ['3D Printing', 'Concept'],
+    techniques: ['Concept', 'Market Research', 'Personas', 'Analysis', '3D Printing', 'Prototypes'],
     images: [
       '/images/atobe/atobe-1.jpg',
       '/images/atobe/atobe-2.jpg',
@@ -79,10 +79,10 @@ export const projects: Project[] = [
   {
     id: 'oru',
     title: 'ORU',
-    description: 'Ein sauberer geordneter Schreibtisch bildet häufig die eigene Gedankenwelt ab. Mit der Idee ein möglichst flaches, wenig aufdringliches Schreibtischbild zu kreieren wurde die Oru (jap. falten) Leuchte entworfen. Durch den minimalen und doch offenen Charakter der Leuchte dringen Licht und Ideen wie von alleine durch.',
+    description: 'A clean, organized desk often reflects one\'s own mindset. With the idea of creating a flat, unobtrusive desk image, the Oru (Japanese: to fold) lamp was designed. Through its minimal yet open character, light and ideas flow through effortlessly.',
     category: 'Lighting',
-    materials: ['Kunststoff', 'LED', '3D-Druck'],
-    techniques: ['Arbeitshygiene', 'Kunststoffe', '3D-Druck', 'Prototypen', 'Konstruktion'],
+    materials: ['Plastic', 'LED', '3D Printing'],
+    techniques: ['Work Hygiene', 'Plastics', '3D Printing', 'Prototypes', 'Construction'],
     images: [
       '/images/oru/oru-1.png',
       '/images/oru/oru-2.jpg',
@@ -92,16 +92,16 @@ export const projects: Project[] = [
     ],
     year: '2019',
     month: 'JUN',
-    displayFormat: 'portrait',
+    displayFormat: 'landscape',
     gridSpan: 1,
   },
   {
     id: 'l-ement',
     title: 'L-Ement',
-    description: 'Die Exploration eines neuen Stuhls aus nur einem Formteil. Aus der zweiten Dimension wird zusammengebaut die dritte Dimension. Dabei spielten besonders die Packmaße eine große Rolle. Werkzeugloser Aufbau durch Holzmutterschrauben.',
+    description: 'The exploration of a new chair from just one molded part. From two dimensions assembled into three dimensions. Pack dimensions played a particularly important role. Tool-free assembly using wooden nut screws.',
     category: 'Furniture',
-    materials: ['Holz', '3D-Druck'],
-    techniques: ['Ergonomie', 'Holzbearbeitung', 'Prototypen', 'Konstruktion', 'CNC-Fräsen'],
+    materials: ['Wood', '3D Printing'],
+    techniques: ['Ergonomics', 'Woodworking', 'Prototypes', 'Construction', 'CNC Milling'],
     images: [
       '/images/l-ement/l-ement-1.jpg',
       '/images/l-ement/l-ement-2.jpg',
@@ -116,11 +116,11 @@ export const projects: Project[] = [
   },
   {
     id: 'infrarotthermometer',
-    title: 'Infrarotthermometer',
-    description: 'Das Fieberthermometer ist ein essenzielles Produkt jeden Haushalts. In Ausnahmesituationen, wie Krankheit, muss das Fieberthermometer bereit sein. Die Interaktion zwischen Mensch und Objekt ist dabei besonders wichtig, da es sich um eine intime Situation handelt.',
+    title: 'Infrared Thermometer',
+    description: 'The fever thermometer is an essential product in every household. In exceptional situations, such as illness, the thermometer must be ready. The interaction between human and object is particularly important, as it is an intimate situation.',
     category: 'Product Design',
-    materials: ['Bio-Kunststoff', 'LED-Matrix', 'Li-Ion-Akku'],
-    techniques: ['Claymodellierung', 'Ergonomie', '3D-Scanning', 'Flächenrückführung', 'Rendering'],
+    materials: ['Bio-Plastic', 'LED Matrix', 'Li-Ion Battery'],
+    techniques: ['Clay Modeling', 'Ergonomics', '3D Scanning', 'Surface Reconstruction', 'Rendering'],
     images: [
       '/images/infrarotthermometer/infrarotthermometer-1.jpg',
       '/images/infrarotthermometer/infrarotthermometer-2.jpg',

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { exhibitions, cooperations, awards } from '@/data/exhibitions';
-import { workshops, teachingExperience, workshopPrograms, skills } from '@/data/experience';
+import { workshops, teachingExperience, workshopPrograms, workExperience, skills } from '@/data/experience';
 
 const About = () => {
   // Group exhibitions by year
@@ -31,7 +31,7 @@ const About = () => {
               className="mb-12 md:mb-16"
             >
               <h1 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                Über mich
+                About
               </h1>
             </motion.div>
             
@@ -58,38 +58,91 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mb-12 md:mb-16"
             >
-              <p className="text-lg md:text-xl text-foreground">
-                So besonders wie mein Name ist auch meine Art zu arbeiten - Nicht immer gleich und auch manchmal alles umgekehrt.
+              <p className="text-lg md:text-xl text-foreground italic">
+                "As unique as my name is, so is my way of working - not always the same and sometimes everything upside down."
               </p>
             </motion.div>
             
-            {/* Philosophy */}
+            {/* About Description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-16 md:mb-24"
             >
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  I am Clim Michel, founder of PROJEKT CLIM, a design studio for experimental design, art and spatial objects. PROJEKT CLIM stands for the connection of aesthetic design, craftsmanship precision and innovative production methods.
+                </p>
+                <p>
+                  The focus is on translating ecological, cultural and social themes into high-quality, functional and sensually experiential products. The portfolio includes furniture, lighting, decorative objects, accessories and temporary spatial concepts.
+                </p>
+                <p>
+                  My passion is to constantly learn something new, whether from person to person, from books or from tutorials. Through comprehensive craftsmanship expertise in wood, metal, ceramics and additive manufacturing, as well as many years of experience in generative design and physical computing, I develop innovative, interactive and functional design concepts.
+                </p>
+              </div>
+            </motion.div>
+            
+            {/* Philosophy */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mb-16 md:mb-24"
+            >
               <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
+                  Philosophy
+                </h2>
                 <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                   <div>
                     <h3 className="text-sm font-medium text-foreground mb-3">Design</h3>
                     <p className="text-muted-foreground leading-relaxed text-sm">
-                      Das Schaffen von Produkten bringt auf den verschiedensten Ebenen einen Mehrwert an Ästhetik, kultureller Bildung und problemlösender Funktionalität.
+                      Creating products brings added value in terms of aesthetics, cultural education and problem-solving functionality on many different levels.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-foreground mb-3">Handwerk</h3>
+                    <h3 className="text-sm font-medium text-foreground mb-3">Craftsmanship</h3>
                     <p className="text-muted-foreground leading-relaxed text-sm">
-                      Das bedeutet mit einer Sorgfalt Objekte und Prototypen zu erschaffen, diese zu begutachten und mit den eigenen Händen zu verändern. Dabei wird jedes mal etwas einzigartiges erschaffen.
+                      This means creating objects and prototypes with care, examining them and changing them with your own hands. Each time something unique is created.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-foreground mb-3">Zwischenmenschlich</h3>
+                    <h3 className="text-sm font-medium text-foreground mb-3">Interpersonal</h3>
                     <p className="text-muted-foreground leading-relaxed text-sm">
-                      Die zwischenmenschlichen Beziehungen machen letztlich einen wichtigen Teil der Arbeit aus. Man arbeitet nie alleine sondern immer im Austausch innerhalb eines Netzwerks.
+                      Interpersonal relationships are an important part of the work. You never work alone but always in exchange within a network.
                     </p>
                   </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Work Experience */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
+                  Work Experience
+                </h2>
+                <div className="border-t border-border/50">
+                  {workExperience.map((exp) => (
+                    <div 
+                      key={exp.id}
+                      className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                    >
+                      <span className="text-foreground">
+                        {exp.title} — {exp.company}
+                      </span>
+                      <span className="text-muted-foreground text-sm">
+                        {exp.year}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -104,7 +157,7 @@ const About = () => {
             >
               <div className="border-t border-border pt-8 md:pt-12">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  Kompetenzen
+                  Competencies
                 </h2>
                 <p className="text-foreground">
                   {skills.competencies.join(', ')}
@@ -140,8 +193,28 @@ const About = () => {
             >
               <div className="border-t border-border pt-8 md:pt-12">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
-                  Workshops & Lehrerfahrung
+                  Teaching & Workshops
                 </h2>
+                
+                {/* Teaching */}
+                <div className="mb-8">
+                  <h3 className="text-sm text-foreground mb-4">Teaching Experience</h3>
+                  <div className="border-t border-border/50">
+                    {teachingExperience.map((exp) => (
+                      <div 
+                        key={exp.id}
+                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                      >
+                        <span className="text-foreground">
+                          {exp.title} — {exp.organization} {exp.duration && `(${exp.duration})`}
+                        </span>
+                        <span className="text-muted-foreground text-sm">
+                          {exp.year}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 
                 {/* Workshops */}
                 <div className="mb-8">
@@ -163,29 +236,9 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Teaching */}
-                <div className="mb-8">
-                  <h3 className="text-sm text-foreground mb-4">Lehrerfahrung</h3>
-                  <div className="border-t border-border/50">
-                    {teachingExperience.map((exp) => (
-                      <div 
-                        key={exp.id}
-                        className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
-                      >
-                        <span className="text-foreground">
-                          {exp.title} — {exp.organization} {exp.duration && `(${exp.duration})`}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {exp.year}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
                 {/* Workshop Programs */}
                 <div>
-                  <h3 className="text-sm text-foreground mb-4">Werkstattleitung (Freie Werkstatt)</h3>
+                  <h3 className="text-sm text-foreground mb-4">Workshop Management (Freie Werkstatt)</h3>
                   <div className="border-t border-border/50">
                     {workshopPrograms.slice(0, 6).map((program) => (
                       <div 
@@ -205,7 +258,7 @@ const About = () => {
               </div>
             </motion.div>
             
-            {/* Ausstellungen & Kooperationen */}
+            {/* Exhibitions & Cooperations */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +268,7 @@ const About = () => {
             >
               <div className="border-t border-border pt-8 md:pt-12">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
-                  Ausstellungen & Kooperationen
+                  Exhibitions & Cooperations
                 </h2>
                 
                 {/* Exhibitions by Year */}
@@ -244,7 +297,7 @@ const About = () => {
                 
                 {/* Cooperations */}
                 <div>
-                  <h3 className="text-sm text-foreground mb-4">Kooperationen</h3>
+                  <h3 className="text-sm text-foreground mb-4">Cooperations</h3>
                   <div className="border-t border-border/50">
                     {cooperations.map((item) => (
                       <div 
@@ -264,7 +317,7 @@ const About = () => {
               </div>
             </motion.div>
             
-            {/* Auszeichnungen */}
+            {/* Awards */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -274,7 +327,7 @@ const About = () => {
             >
               <div className="border-t border-border pt-8 md:pt-12">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  Auszeichnungen
+                  Awards
                 </h2>
                 <div className="border-t border-border/50">
                   {awards.map((award) => (

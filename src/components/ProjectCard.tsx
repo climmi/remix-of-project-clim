@@ -29,8 +29,9 @@ const ProjectCard = ({ project, index, className = '' }: ProjectCardProps) => {
   
   const isInView = useInView(containerRef, { once: false, margin: '-100px' });
 
-  // Build media array from either media prop or images
-  const mediaItems: ProjectMedia[] = project.media || project.images.map(url => ({ type: 'image' as const, url }));
+  // Build media array from previewImages (max 3) for card carousel
+  const previewSource = project.previewImages?.length > 0 ? project.previewImages : project.images.slice(0, 3);
+  const mediaItems: ProjectMedia[] = project.media || previewSource.map(url => ({ type: 'image' as const, url }));
   const mediaCount = mediaItems.length;
   
   const DRAG_THRESHOLD = 5;

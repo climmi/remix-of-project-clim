@@ -32,7 +32,6 @@ const Index = () => {
                   key={project.id}
                   project={project}
                   index={index}
-                  linkTo="/projects"
                 />
               ))}
             </div>
@@ -71,82 +70,41 @@ const Index = () => {
             <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
               Contact
             </h2>
-            <div className="grid md:grid-cols-2 gap-12 md:gap-20">
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="sr-only">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Name"
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="sr-only">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Message"
-                    rows={5}
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors resize-none"
-                  />
-                </div>
-                <Link
-                  to="/contact"
-                  className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors pt-2"
+            <div className="space-y-8">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                  Email
+                </p>
+                <a
+                  href="mailto:mail@projectclim.com"
+                  className="text-foreground hover:text-muted-foreground transition-colors"
                 >
-                  Go to contact →
-                </Link>
-              </form>
-
-              <div className="space-y-8">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                    Email
-                  </p>
-                  <a
-                    href="mailto:mail@projectclim.com"
-                    className="text-foreground hover:text-muted-foreground transition-colors"
-                  >
-                    mail@projectclim.com
-                  </a>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                    Address
-                  </p>
-                  <p className="text-foreground">
-                    Clim Michel<br />
-                    Hottelner Weg 52<br />
-                    31137 Hildesheim<br />
-                    Germany
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                    Social
-                  </p>
-                  <a
-                    href="https://instagram.com/projectclim"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground hover:text-muted-foreground transition-colors"
-                  >
-                    Instagram
-                  </a>
-                </div>
+                  mail@projectclim.com
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                  Address
+                </p>
+                <p className="text-foreground">
+                  Clim Michel<br />
+                  Hottelner Weg 52<br />
+                  31137 Hildesheim<br />
+                  Germany
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                  Social
+                </p>
+                <a
+                  href="https://instagram.com/projectclim"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-muted-foreground transition-colors"
+                >
+                  Instagram
+                </a>
               </div>
             </div>
           </div>

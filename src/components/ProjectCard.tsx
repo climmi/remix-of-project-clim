@@ -32,7 +32,7 @@ const ProjectCard = ({ project, index, className = '', linkTo }: ProjectCardProp
 
   // Build media array from previewImages (max 3) for card carousel
   const previewSource = project.previewImages?.length > 0 ? project.previewImages : (project.images?.slice(0, 3) || []);
-  const mediaItems: ProjectMedia[] = project.media || previewSource.map(url => ({ type: 'image' as const, url }));
+  const mediaItems: ProjectMedia[] = previewSource.map(url => ({ type: 'image' as const, url }));
   const mediaCount = mediaItems.length;
   const hasMedia = mediaCount > 0;
   

@@ -57,7 +57,7 @@ const ProjectDetail = () => {
                   {project.title}
                 </h1>
                 <p className="text-muted-foreground mb-12">
-                  by Project Clim
+                  by {project.author || 'Project Clim'}
                 </p>
                 
                 {/* Meta Grid */}
@@ -231,6 +231,27 @@ const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index:
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, margin: '-100px' });
 
+  const formatClasses: Record<NonNullable<ProjectMedia['format']>, string> = {
+    portrait: 'aspect-[3/4]',
+    square: 'aspect-square',
+    landscape: 'aspect-[16/9]',
+    wide: 'aspect-[21/9]',
+  };
+
+  const maxWidthClasses: Record<NonNullable<ProjectMedia['maxWidth']>, string> = {
+    sm: 'max-w-sm',
+    md: 'max-w-md',
+    lg: 'max-w-lg',
+    xl: 'max-w-xl',
+    '2xl': 'max-w-2xl',
+    '3xl': 'max-w-3xl',
+    '4xl': 'max-w-4xl',
+  };
+
+  const hasCustomLayout = Boolean(media.format || media.maxWidth);
+  const aspectClass = media.format ? formatClasses[media.format] : '';
+  const maxWidthClass = media.maxWidth ? maxWidthClasses[media.maxWidth] : '';
+
   useEffect(() => {
     if (media.type === 'video' && videoRef.current) {
       if (isInView) {
@@ -249,14 +270,16 @@ const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index:
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6 }}
       className={`${
-        index % 3 === 0 
-          ? 'w-full' 
-          : index % 3 === 1 
-            ? 'w-full md:w-2/3 md:ml-auto' 
-            : 'w-full md:w-3/4'
+        hasCustomLayout
+          ? `w-full ${maxWidthClass} mx-auto`
+          : index % 3 === 0 
+            ? 'w-full' 
+            : index % 3 === 1 
+              ? 'w-full md:w-2/3 md:ml-auto' 
+              : 'w-full md:w-3/4'
       }`}
     >
-      <div className="bg-muted overflow-hidden">
+      <div className={`${aspectClass} bg-muted overflow-hidden`}>
         {media.type === 'video' ? (
           <video
             ref={videoRef}
@@ -266,13 +289,13 @@ const GalleryMediaItem = ({ media, index, title }: { media: ProjectMedia; index:
             muted
             loop
             playsInline
-            className="w-full h-auto object-cover"
+            className={aspectClass ? 'w-full h-full object-cover' : 'w-full h-auto object-cover'}
           />
         ) : (
           <img
             src={media.url}
             alt={`${title} - Image ${index + 2}`}
-            className="w-full h-auto object-cover"
+            className={aspectClass ? 'w-full h-full object-cover' : 'w-full h-auto object-cover'}
           />
         )}
       </div>

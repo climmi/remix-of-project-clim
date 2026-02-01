@@ -2,12 +2,15 @@ export interface ProjectMedia {
   type: 'image' | 'video';
   url: string;
   poster?: string;
+  format?: 'portrait' | 'square' | 'landscape' | 'wide';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 }
 
 export interface Project {
   id: string;
   title: string;
   description: string;
+  author?: string;
   category: string;
   materials: string[];
   techniques: string[];
@@ -24,11 +27,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'glasbaustein',
-    title: 'Glasbaustein',
-    description: 'Aus Glas in Kombination mit dem 3D-Druckverfahren wird eine einzigartige Leuchte, die traditionsreiches Handwerk mit neuster Technologie kombiniert. Der dabei entstehende Kontrast erzeugt ein lebendiges Spiel der Gegensätze und Gefühle.',
+    title: 'GLASS BRICK',
+    author: 'PROJECT CLIM',
+    description: 'Using glass combined with 3D printing, a unique lamp is created that merges traditional craftsmanship with the latest technology. The resulting contrast creates a lively play of opposites and emotions.',
     category: 'Lighting Design',
-    materials: ['Glas', 'Stahl', '3D-Druck Kunststoff'],
-    techniques: ['Glasblaserei', 'Schweißen', '3D Druck', 'Konstruktion'],
+    materials: ['Glass', 'Steel', '3D-printed plastic'],
+    techniques: ['Glassblowing', 'Welding', '3D printing', 'Construction'],
     previewImages: [
       '/images/glasbaustein/img_p36_1.jpg',
       '/images/glasbaustein/img_p40_1.jpg',
@@ -36,15 +40,15 @@ export const projects: Project[] = [
     ],
     images: [
       '/images/glasbaustein/img_p36_1.jpg',
-      '/images/glasbaustein/img_p37_1.jpg',
+     /* '/images/glasbaustein/img_p37_1.jpg',
       '/images/glasbaustein/img_p37_2.jpg',
       '/images/glasbaustein/img_p37_3.jpg',
-      '/images/glasbaustein/img_p37_4.jpg',
+      '/images/glasbaustein/img_p37_4.jpg',*/
       '/images/glasbaustein/img_p38_1.jpg',
       '/images/glasbaustein/img_p38_2.jpg',
       '/images/glasbaustein/img_p38_3.jpg',
-      '/images/glasbaustein/img_p38_4.jpg',
-      '/images/glasbaustein/img_p38_5.jpg',
+      /*'/images/glasbaustein/img_p38_4.jpg',
+      '/images/glasbaustein/img_p38_5.jpg',*/
       '/images/glasbaustein/img_p39_1.jpg',
       '/images/glasbaustein/img_p39_2.jpg',
       '/images/glasbaustein/img_p39_3.jpg',
@@ -56,6 +60,22 @@ export const projects: Project[] = [
       '/images/glasbaustein/img_p40_3.jpg',
       '/images/glasbaustein/img_p41_1.jpg'
     ],
+    media: [
+      { type: 'image', url: '/images/glasbaustein/img_p36_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p38_1.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p38_2.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p38_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_4.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_5.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p39_6.png', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p40_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p40_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p40_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glasbaustein/img_p41_1.jpg', format: 'portrait', maxWidth: '3xl' }
+    ],
     year: '2019',
     month: 'May',
     displayFormat: 'portrait'
@@ -63,33 +83,45 @@ export const projects: Project[] = [
   {
     id: 'grow-mushrooms',
     title: 'GROW MUSHROOMS',
-    description: 'Im Bereich des Keramik-3D-Drucks wurden algorithmisch generierte Strukturen mit den Materialeigenschaften von Keramik kombiniert. Durch parametrische Designprozesse entstanden Formen für Pilzzucht mit maximierter Oberfläche für die Feuchtigkeitsregulierung.',
+    author: 'PROJECT CLIM',
+    description: 'In ceramic 3D printing, algorithmically generated structures were combined with the material properties of ceramics. Parametric design processes created forms for mushroom cultivation with maximized surface area for humidity regulation.',
     category: 'Bio Design',
-    materials: ['Keramik', 'Substrat'],
-    techniques: ['Grasshopper', 'Keramik-3D-Druck', 'Parametrisches Design'],
+    materials: ['Ceramic', 'Substrate'],
+    techniques: ['Grasshopper', 'Ceramic 3D printing', 'Parametric design'],
     previewImages: [
-      '/images/grow-mushrooms/img_p16_1.jpg',
-      '/images/grow-mushrooms/img_p19_1.jpg',
-      '/images/grow-mushrooms/img_p25_1.jpg'
+      '/images/grow-mushrooms/img_p24_2.jpg',
+      '/images/grow-mushrooms/img_p18_1.jpg',
+      '/images/grow-mushrooms/img_p24_1.jpg'
     ],
     images: [
       '/images/grow-mushrooms/img_p16_1.jpg',
-      '/images/grow-mushrooms/img_p17_1.jpg',
+      /*'/images/grow-mushrooms/img_p17_1.jpg',
       '/images/grow-mushrooms/img_p17_2.jpg',
-      '/images/grow-mushrooms/img_p17_3.jpg',
+      '/images/grow-mushrooms/img_p17_3.jpg',*/
       '/images/grow-mushrooms/img_p18_1.jpg',
-      '/images/grow-mushrooms/img_p19_1.jpg',
+      //'/images/grow-mushrooms/img_p19_1.jpg',
       '/images/grow-mushrooms/img_p19_2.jpg',
       '/images/grow-mushrooms/img_p19_3.jpg',
-      '/images/grow-mushrooms/img_p20_2.jpg',
-      '/images/grow-mushrooms/img_p20_3.jpg',
+      //'/images/grow-mushrooms/img_p20_2.jpg',
+      /*'/images/grow-mushrooms/img_p20_3.jpg',
       '/images/grow-mushrooms/img_p22_1.jpg',
-      '/images/grow-mushrooms/img_p23_1.jpg',
+      '/images/grow-mushrooms/img_p23_1.jpg',*/
       '/images/grow-mushrooms/img_p24_1.jpg',
       '/images/grow-mushrooms/img_p24_2.jpg',
       '/images/grow-mushrooms/img_p24_3.jpg',
       '/images/grow-mushrooms/img_p24_4.jpg',
       '/images/grow-mushrooms/img_p25_1.jpg'
+    ],
+    media: [
+      { type: 'image', url: '/images/grow-mushrooms/img_p24_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p16_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p18_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p19_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p19_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p24_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p24_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p24_4.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/grow-mushrooms/img_p25_1.jpg', format: 'landscape', maxWidth: '3xl' }
     ],
     year: '2022',
     month: 'April',
@@ -97,17 +129,19 @@ export const projects: Project[] = [
   },
   {
     id: 'glas-metall-fliese',
-    title: 'Glas-Metall-Fliese',
-    description: 'Glas und Metall finden in der Regel ihr Zusammenspiel darin, dass das Metall als begrenzende Form dient. Die Verbindung aus beiden erzeugt spannende Oberflächen, Texturen und Lichteffekte. Eine experimentelle Materialstudie.',
+    title: 'GLASS METAL TILE',
+    author: 'PROJECT CLIM',
+    description: 'Glass and metal typically interact with the metal serving as the bounding form. The combination creates exciting surfaces, textures, and light effects. An experimental material study.',
     category: 'Material Experiment',
-    materials: ['Glas', 'Metall', 'Glasgranulate'],
-    techniques: ['Glasschmelzen', 'Formenbau', 'Metallverarbeitung'],
+    materials: ['Glass', 'Metal', 'Glass granules'],
+    techniques: ['Glass melting', 'Mold making', 'Metalworking'],
     previewImages: [
-      '/images/glas-metall-fliese/img_p11_1.jpg',
+      '/images/glas-metall-fliese/img_p14_5.jpg',
       '/images/glas-metall-fliese/img_p14_1.jpg',
       '/images/glas-metall-fliese/img_p15_1.jpg'
     ],
     images: [
+      '/images/glas-metall-fliese/img_p14_5.jpg',
       '/images/glas-metall-fliese/img_p11_1.jpg',
       '/images/glas-metall-fliese/img_p11_2.jpg',
       '/images/glas-metall-fliese/img_p12_1.jpg',
@@ -118,9 +152,23 @@ export const projects: Project[] = [
       '/images/glas-metall-fliese/img_p14_2.jpg',
       '/images/glas-metall-fliese/img_p14_3.jpg',
       '/images/glas-metall-fliese/img_p14_4.jpg',
-      '/images/glas-metall-fliese/img_p14_5.jpg',
       '/images/glas-metall-fliese/img_p14_6.jpg',
       '/images/glas-metall-fliese/img_p15_1.jpg'
+    ],
+    media: [
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_5.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p11_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p11_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p12_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p12_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p12_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p13_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_2.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_4.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p14_6.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glas-metall-fliese/img_p15_1.jpg', format: 'portrait', maxWidth: '3xl' }
     ],
     year: '2019',
     month: 'November',
@@ -128,29 +176,40 @@ export const projects: Project[] = [
   },
   {
     id: 'sonderanfertigungen',
-    title: 'Sonderanfertigungen',
-    description: 'Sonderanfertigungen in Zusammenarbeit mit Vogel Studio. Individuelle Spiegel, Türgriffe und Griffe aus Messing, Glas und Aluminium.',
+    title: 'CUSTOM OBJECTS',
+    author: 'VOGEL STUDIO & PROJECT CLIM',
+    description: 'Custom commissions in collaboration with Vogel Studio. Individual mirrors, door handles, and handles made of brass, glass, and aluminum.',
     category: 'Collaboration',
-    materials: ['Messing', 'Glas', 'Aluminium'],
-    techniques: ['Metallverarbeitung', 'Guss', 'Handwerk'],
+    materials: ['Brass', 'Glass', 'Aluminum'],
+    techniques: ['Metalworking', 'Casting', 'Craftsmanship'],
     previewImages: [
-      '/images/sonderanfertigungen/img_p43_1.jpg',
-      '/images/sonderanfertigungen/img_p44_1.jpg',
-      '/images/sonderanfertigungen/img_p45_1.jpg'
-    ],
-    images: [
-      '/images/sonderanfertigungen/img_p43_1.jpg',
-      '/images/sonderanfertigungen/img_p43_2.jpg',
-      '/images/sonderanfertigungen/img_p43_3.jpg',
-      '/images/sonderanfertigungen/img_p43_4.jpg',
       '/images/sonderanfertigungen/img_p44_1.jpg',
       '/images/sonderanfertigungen/img_p44_2.jpg',
+      '/images/sonderanfertigungen/img_p45_3.jpg'
+    ],
+    images: [
+      '/images/sonderanfertigungen/img_p44_1.jpg',
+      '/images/sonderanfertigungen/img_p43_1.jpg',
+      //'/images/sonderanfertigungen/img_p43_2.jpg',
+      '/images/sonderanfertigungen/img_p43_3.jpg',
+      //'/images/sonderanfertigungen/img_p43_4.jpg',
+      '/images/sonderanfertigungen/img_p44_2.jpg',
       '/images/sonderanfertigungen/img_p44_3.jpg',
-      '/images/sonderanfertigungen/img_p44_4.jpg',
-      '/images/sonderanfertigungen/img_p45_1.jpg',
+      //'/images/sonderanfertigungen/img_p44_4.jpg',
+      //'/images/sonderanfertigungen/img_p45_1.jpg',
       '/images/sonderanfertigungen/img_p45_2.jpg',
       '/images/sonderanfertigungen/img_p45_3.jpg',
       '/images/sonderanfertigungen/img_p45_4.jpg'
+    ],
+    media: [
+      { type: 'image', url: '/images/sonderanfertigungen/img_p44_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p43_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p43_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p44_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p44_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p45_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p45_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/sonderanfertigungen/img_p45_4.jpg', format: 'square', maxWidth: '3xl' }
     ],
     year: '2020',
     month: 'December',
@@ -159,10 +218,11 @@ export const projects: Project[] = [
   {
     id: 'fast-good-cheap',
     title: 'FAST GOOD CHEAP',
-    description: 'Das Projekt beschäftigt sich mit den Herausforderungen in Designprozessen. Ein Produkt kann nur zwei der drei Eigenschaften - schnell, gut oder günstig - gleichzeitig erfüllen. Ein interaktives Objekt verdeutlicht diese Problematik spielerisch.',
+    author: 'PROJECT CLIM',
+    description: 'The project addresses the challenges in design processes. A product can only fulfill two of the three attributes—fast, good, or cheap—at the same time. An interactive object illustrates this issue playfully.',
     category: 'Interactive Object',
-    materials: ['3D-Druck Kunststoff', 'Arduino', 'Elektronik'],
-    techniques: ['Physical Computing', '3D-Druck', 'Arduino'],
+    materials: ['3D-printed plastic', 'Arduino', 'Electronics'],
+    techniques: ['Physical Computing', '3D printing', 'Arduino'],
     previewImages: [
       '/images/fast-good-cheap/img_p26_1.jpg',
       '/images/fast-good-cheap/img_p29_1.jpg',
@@ -181,17 +241,31 @@ export const projects: Project[] = [
       '/images/fast-good-cheap/img_p29_3.jpg',
       '/images/fast-good-cheap/img_p30_1.jpg'
     ],
+    media: [
+      { type: 'image', url: '/images/fast-good-cheap/img_p26_1.jpg', format: 'square', maxWidth: '3xl' },
+//      { type: 'image', url: '/images/fast-good-cheap/img_p27_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p27_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p28_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p28_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p28_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p28_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p29_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p29_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p29_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/fast-good-cheap/img_p30_1.jpg', format: 'portrait', maxWidth: '3xl' }
+    ],
     year: '2022',
     month: 'July',
-    displayFormat: 'square'
+    displayFormat: 'portrait'
   },
   {
     id: 'l-ement',
-    title: 'L-Ement',
-    description: 'Die Exploration eines neuen Stuhls. Der Anspruch war es aus einem flachen Halbwerkzeug einen Stuhl zu konstruieren, der aus nur einem Formteil besteht. Ziel war ein werkzeugloser Aufbau aus wiederholten L-Elementen.',
+    title: 'L-EMENT',
+    author: 'PROJECT CLIM',
+    description: 'The exploration of a new chair. The goal was to construct a chair from a flat semi-finished part consisting of only one molded piece. The aim was a tool-free assembly from repeated L-elements.',
     category: 'Furniture Design',
-    materials: ['Holz', 'Gewindestangen', 'Muttern'],
-    techniques: ['CNC Fräsen', 'Ergonomie', 'Holzbearbeitung', 'Prototypen', 'Konstruktion'],
+    materials: ['Wood', 'Threaded rods', 'Nuts'],
+    techniques: ['CNC milling', 'Ergonomics', 'Woodworking', 'Prototyping', 'Construction'],
     previewImages: [
       '/images/l-ement/img_p17_1.jpg',
       '/images/l-ement/img_p20_1.jpg',
@@ -214,24 +288,42 @@ export const projects: Project[] = [
       '/images/l-ement/img_p22_1.jpg',
       '/images/l-ement/img_p23_1.jpg'
     ],
+    media: [
+      { type: 'image', url: '/images/l-ement/img_p17_1.jpg', format: 'portrait', maxWidth: '3xl' },
+     /* { type: 'image', url: '/images/l-ement/img_p18_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p19_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p19_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p19_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p19_4.jpg', format: 'portrait', maxWidth: '3xl' },
+      */{ type: 'image', url: '/images/l-ement/img_p20_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p20_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p20_3.jpg', format: 'landscape', maxWidth: '3xl' },
+    //  { type: 'image', url: '/images/l-ement/img_p20_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p21_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p21_2.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p21_3.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p22_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/l-ement/img_p23_1.jpg', format: 'landscape', maxWidth: '3xl' }
+    ],
     year: '2018',
     month: 'March',
-    displayFormat: 'square'
+    displayFormat: 'portrait'
   },
   {
     id: 'oru',
     title: 'ORU',
-    description: 'Ein sauberer geordneter Schreibtisch bildet häufig die eigene Gedankenwelt ab. Mit der Idee ein möglichst flaches, wenig aufdringliches Schreibtischbild zu kreieren wurde die Oru (jap. falten) Leuchte entworfen.',
+    author: 'PROJECT CLIM',
+    description: 'A clean, ordered desk often reflects one’s own thoughts. With the idea of creating a very flat, unobtrusive desktop presence, the Oru (Jap. folding) lamp was designed.',
     category: 'Lighting Design',
-    materials: ['Kunststoff', '95 CRI LED', 'LED Treiber'],
-    techniques: ['3D Druck', 'Prototypen', 'Konstruktion'],
+    materials: ['Plastic', '95 CRI LED', 'LED driver'],
+    techniques: ['3D printing', 'Prototyping', 'Construction'],
     previewImages: [
       '/images/oru/img_p30_1.jpg',
       '/images/oru/img_p33_1.jpg',
       '/images/oru/img_p35_1.jpg'
     ],
     images: [
-      '/images/oru/img_p24_1.png',
+      //'/images/oru/img_p24_1.png',
       /*'/images/oru/img_p25_1.jpg',
       '/images/oru/img_p25_2.jpg',
       '/images/oru/img_p25_3.jpg',
@@ -259,18 +351,37 @@ export const projects: Project[] = [
       '/images/oru/img_p34_1.jpg',
       '/images/oru/img_p35_1.jpg'
     ],
+    media: [
+    //  { type: 'image', url: '/images/oru/img_p24_1.png', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p27_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p27_2.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p27_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p27_4.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p27_5.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p28_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p28_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p29_1.png', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p29_2.png', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p30_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p31_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p32_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p33_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p33_2.png', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p34_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/oru/img_p35_1.jpg', format: 'landscape', maxWidth: '3xl' }
+    ],
     year: '2018',
     month: 'June',
-    displayFormat: 'landscape',
-    gridSpan: 2
+    displayFormat: 'portrait'
   },
   {
     id: '3d-print-experiments',
-    title: '3D Print Experiments',
-    description: 'Experimentelles Arbeiten mit 3D-Druck auf verschiedenen Materialien wie irisierender Folie und Textilien. Diese Kombination eröffnet neue Möglichkeiten in Design, Produktvisualisierung und interaktiven Objekten.',
+    title: '3D PRINT EXPERIMENTS',
+    author: 'PROJECT CLIM',
+    description: 'Experimental work with 3D printing on various materials such as iridescent film and textiles. This combination opens new possibilities in design, product visualization, and interactive objects.',
     category: 'Experiment',
-    materials: ['Irisierende Folie', 'Textilien', 'PLA'],
-    techniques: ['3D-Druck', 'Materialexperimente'],
+    materials: ['Iridescent film', 'Textiles', 'PLA'],
+    techniques: ['3D printing', 'Material experiments'],
     previewImages: [
       '/images/3d-print-experiments/img_p35_1.jpg',
       '/images/3d-print-experiments/img_p37_1.jpg',
@@ -288,17 +399,30 @@ export const projects: Project[] = [
       '/images/3d-print-experiments/img_p39_3.jpg',
       '/images/3d-print-experiments/img_p39_4.jpg'
     ],
+    media: [
+      { type: 'image', url: '/images/3d-print-experiments/img_p35_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p36_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p37_1.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p37_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p37_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p38_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p39_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p39_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p39_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/3d-print-experiments/img_p39_4.jpg', format: 'landscape', maxWidth: '3xl' }
+    ],
     year: '2024',
     month: 'January',
     displayFormat: 'portrait'
   },
   {
     id: 'infrarotthermometer',
-    title: 'Infrarotthermometer',
-    description: 'Das Fieberthermometer ist ein essenzielles Produkt jeden Haushalts. In Ausnahmesituationen, wie Krankheit, muss das Fieberthermometer bereit sein. Die Interaktion zwischen Mensch und Objekt ist dabei besonders wichtig, da es sich um eine intime Situation handelt.',
+    title: 'INFRARED THERMOMETER',
+    author: 'PROJECT CLIM',
+    description: 'The fever thermometer is an essential product in every household. In exceptional situations such as illness, it must be ready. The interaction between human and object is particularly important because it is an intimate situation.',
     category: 'Product Design',
-    materials: ['Bio Kunststoff', 'Li-Ion-Akku', 'SMD Elektronik'],
-    techniques: ['Clay-Modellierung', 'Ergonomie', '3D Scanning', 'Flächenrückführung', 'Rendering'],
+    materials: ['Bio-plastic', 'Li-ion battery', 'SMD electronics'],
+    techniques: ['Clay modeling', 'Ergonomics', '3D scanning', 'Surface reconstruction', 'Rendering'],
     previewImages: [
       '/images/infrarotthermometer/img_p10_1.jpg',
       '/images/infrarotthermometer/img_p14_1.jpg',
@@ -322,6 +446,25 @@ export const projects: Project[] = [
       '/images/infrarotthermometer/img_p14_2.jpg',
       '/images/infrarotthermometer/img_p15_1.png',
       '/images/infrarotthermometer/img_p16_1.jpg'
+    ],
+    media: [
+      { type: 'image', url: '/images/infrarotthermometer/img_p10_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p11_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p11_2.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p11_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p11_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_3.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_4.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_5.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p12_6.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p13_1.png', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p13_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p14_1.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p14_2.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p15_1.png', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/infrarotthermometer/img_p16_1.jpg', format: 'landscape', maxWidth: '3xl' }
     ],
     year: '2019',
     month: 'January',
@@ -355,10 +498,11 @@ export const projects: Project[] = [
   {
     id: 'glug',
     title: 'glug!',
-    description: 'Das Projekt Glug entstand im Masterstudium mit Fokus auf Social Design und setzt sich mit Müllvermeidung, insbesondere von Plastikflaschen, auseinander. Eine mobile Pop-Up Station dient als interaktiver Informationsstand für Leitungswasser.',
+    author: 'PROJECT CLIM',
+    description: 'The project Glug emerged during the master’s program with a focus on social design and addresses waste reduction, especially plastic bottles. A mobile pop-up station serves as an interactive information stand for tap water.',
     category: 'Social Design',
-    materials: ['Holz', '3D-Druck', 'Aluminium'],
-    techniques: ['Social Design', '3D Druck', 'Konstruktion', 'Corporate Design'],
+    materials: ['Wood', '3D printing', 'Aluminum'],
+    techniques: ['Social Design', '3D printing', 'Construction', 'Corporate Design'],
     previewImages: [
       '/images/glug/img_p47_1.jpg',
       '/images/glug/img_p5_1.jpg',
@@ -397,6 +541,40 @@ export const projects: Project[] = [
       '/images/glug/img_p7_6.jpg',
       '/images/glug/img_p8_1.jpg',
       '/images/glug/img_p9_1.jpg'
+    ],
+    media: [
+      { type: 'image', url: '/images/glug/img_p47_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p0_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p0_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p0_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p1_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p1_2.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p2_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p2_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p3_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p3_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p3_5.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p3_6.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p3_7.jpg', format: 'wide', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p4_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p4_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_3.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_4.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_5.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p5_6.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p6_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p6_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p6_3.jpg', format: 'portrait', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_1.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_2.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_3.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_4.jpg', format: 'landscape', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_5.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p7_6.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p8_1.jpg', format: 'square', maxWidth: '3xl' },
+      { type: 'image', url: '/images/glug/img_p9_1.jpg', format: 'portrait', maxWidth: '3xl' }
     ],
     year: '2023',
     month: 'February',

@@ -42,6 +42,9 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="mb-12 md:mb-16"
             >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-foreground uppercase tracking-wide mb-6">
+                CLIM MICHEL
+              </h2>
               <div className="aspect-[3/2] md:aspect-[16/9] bg-muted overflow-hidden">
                 <img
                   src="/images/about/portrait.jpg"
@@ -116,7 +119,43 @@ const About = () => {
                 </div>
               </div>
             </motion.div>
-            
+
+            {/* Competencies */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+                  Competencies
+                </h2>
+                <p className="text-foreground">
+                  {skills.competencies.join(', ')}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Software */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+                  Software
+                </h2>
+                <p className="text-foreground">
+                  {skills.software.join(', ')}
+                </p>
+              </div>
+            </motion.div>
+
             {/* Work Experience */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -150,7 +189,43 @@ const About = () => {
               </div>
             </motion.div>
             
-            {/* Kompetenzen */}
+            {/* Exhibitions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 md:mb-24"
+            >
+              <div className="border-t border-border pt-8 md:pt-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
+                  Exhibitions
+                </h2>
+                
+                {/* Exhibitions */}
+                <div className="border-t border-border/50 mb-12">
+                  {years.flatMap(year => exhibitionsByYear[year]).map((exhibition) => (
+                    <div 
+                      key={exhibition.id}
+                      className="py-3 border-b border-border/50"
+                    >
+                      <div className="flex justify-between items-baseline gap-4">
+                        <span className="text-foreground">{exhibition.title}</span>
+                        <span className="text-muted-foreground text-sm whitespace-nowrap">
+                          {exhibition.date}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground text-sm block">
+                        {exhibition.venue}, {exhibition.location}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                
+              </div>
+            </motion.div>
+            
+            {/* Awards */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -160,15 +235,27 @@ const About = () => {
             >
               <div className="border-t border-border pt-8 md:pt-12">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  Competencies
+                  Awards
                 </h2>
-                <p className="text-foreground">
-                  {skills.competencies.join(', ')}
-                </p>
+                <div className="border-t border-border/50">
+                  {awards.map((award) => (
+                    <div 
+                      key={award.id}
+                      className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
+                    >
+                      <span className="text-foreground">
+                        {award.title} — {award.organization} {award.description && `(${award.description})`}
+                      </span>
+                      <span className="text-muted-foreground text-sm">
+                        {award.year}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
-            
-            {/* Software */}
+
+            {/* Cooperations & Clients */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -177,16 +264,31 @@ const About = () => {
               className="mb-16 md:mb-24"
             >
               <div className="border-t border-border pt-8 md:pt-12">
-                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  Software
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
+                  Cooperations & Clients
                 </h2>
-                <p className="text-foreground">
-                  {skills.software.join(', ')}
-                </p>
+                <div className="border-t border-border/50">
+                  {cooperations.map((item) => (
+                    <div 
+                      key={item.id}
+                      className="py-3 border-b border-border/50"
+                    >
+                      <div className="flex justify-between items-baseline gap-4">
+                        <span className="text-foreground">{item.name}</span>
+                        <span className="text-muted-foreground text-sm whitespace-nowrap">
+                          {item.year}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground text-sm block">
+                        {item.role}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
-            
-            {/* Workshops & Lehrerfahrung */}
+
+            {/* Teaching & Workshops */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -263,101 +365,6 @@ const About = () => {
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Exhibitions & Cooperations */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-16 md:mb-24"
-            >
-              <div className="border-t border-border pt-8 md:pt-12">
-                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
-                  Exhibitions & Cooperations
-                </h2>
-                
-                {/* Exhibitions by Year */}
-                <div className="space-y-12 mb-12">
-                  {years.map(year => (
-                    <div key={year}>
-                      <h3 className="text-sm text-foreground mb-4">{year}</h3>
-                        <div className="border-t border-border/50">
-                          {exhibitionsByYear[year].map((exhibition) => (
-                            <div 
-                              key={exhibition.id}
-                              className="py-3 border-b border-border/50"
-                            >
-                              <div className="flex justify-between items-baseline gap-4">
-                                <span className="text-foreground">{exhibition.title}</span>
-                                <span className="text-muted-foreground text-sm whitespace-nowrap">
-                                  {exhibition.date}
-                                </span>
-                              </div>
-                              <span className="text-muted-foreground text-sm block">
-                                {exhibition.venue}, {exhibition.location}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Cooperations */}
-                <div>
-                  <h3 className="text-sm text-foreground mb-4">Cooperations</h3>
-                  <div className="border-t border-border/50">
-                    {cooperations.map((item) => (
-                      <div 
-                        key={item.id}
-                        className="py-3 border-b border-border/50"
-                      >
-                        <div className="flex justify-between items-baseline gap-4">
-                          <span className="text-foreground">{item.name}</span>
-                          <span className="text-muted-foreground text-sm whitespace-nowrap">
-                            {item.year}
-                          </span>
-                        </div>
-                        <span className="text-muted-foreground text-sm block">
-                          {item.role}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Awards */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-16 md:mb-24"
-            >
-              <div className="border-t border-border pt-8 md:pt-12">
-                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  Awards
-                </h2>
-                <div className="border-t border-border/50">
-                  {awards.map((award) => (
-                    <div 
-                      key={award.id}
-                      className="py-3 border-b border-border/50 flex flex-col md:flex-row md:justify-between md:items-baseline gap-1"
-                    >
-                      <span className="text-foreground">
-                        {award.title} — {award.organization} {award.description && `(${award.description})`}
-                      </span>
-                      <span className="text-muted-foreground text-sm">
-                        {award.year}
-                      </span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </motion.div>

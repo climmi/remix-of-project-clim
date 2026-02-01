@@ -87,6 +87,13 @@ export const workshopPrograms: WorkshopProgram[] = [
 
 export const workExperience: WorkExperience[] = [
   {
+    id: 'work-0',
+    title: 'Lecturer, Physical Computing',
+    company: 'HAWK Hildesheim',
+    year: '2025–Now',
+    description: 'Teaching position in Physical Computing.',
+  },
+  {
     id: 'work-1',
     title: 'Workshop Manager, Construction & Visual Artist',
     company: 'Cluster Projekte GmbH & Freie Werkstatt Hildesheim gGmbH',

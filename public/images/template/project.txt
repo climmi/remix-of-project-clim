@@ -1,0 +1,16 @@
+title: Template Project
+description: Short description of the project. Include concept, materials, and context.
+category: Category Name
+year: 2026
+month: February
+author: PROJECT CLIM
+materials:
+  - Material 1
+  - Material 2
+techniques:
+  - Technique 1
+  - Technique 2
+previewImages:
+  - img_01.jpg
+  - img_02.jpg
+  - img_03.jpg
